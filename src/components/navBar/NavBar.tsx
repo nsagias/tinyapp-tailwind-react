@@ -4,6 +4,7 @@ import NavBarRight from "./NavBarRIght";
 import NavButtons from "./NavButtons";
 import NavMenuItem from "./NavMenuItem";
 import NavBarLeft from "./NavBarLeft";
+import NavBarContainer from "./NavBarContainer";
 
 type NavBarMenuItem = {
   id: number,
@@ -30,13 +31,12 @@ export default function NavBar() {
     <nav className="relative container mx-auto p-6">
 
       {/* Container for all items */}
-      <div className="flex items-center justify-between">
-
+      <NavBarContainer>
         {/* Left Side Container for Logo and Menu */}
+        
         <NavBarLeft>
           {/* Logo */}
           <img src="images/logo.svg" alt="" className="" />
-
           {/* Menu */}
           <NavMenu>
             {Array.isArray(menu) && menu.length > 0 && menu.map((menuItem) => (
@@ -44,15 +44,12 @@ export default function NavBar() {
               ))}
           </NavMenu>
         </NavBarLeft>
-          
 
         {/* Right Side Menu */}
         <NavBarRight>
           <NavButtons />
         </NavBarRight>
-
-      </div>
-
+      </NavBarContainer>
     </nav>
   );
 } 
