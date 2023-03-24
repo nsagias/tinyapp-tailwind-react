@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import NavBarLeft from "./NavBarLeft";
 import NavMenuItem from "./NavMenuItem";
 
@@ -15,6 +16,14 @@ const navBarMenuList: NavBarMenuItem[] = [
 
 
 export default function NavBar() {
+  const [menu, setMenu] = useState();
+
+  // Generte menu
+  // TODO: update menu if logged in
+  useEffect(() => {
+
+  },[]);
+
   return (
     <nav className="relative container mx-auto p-6">
 
