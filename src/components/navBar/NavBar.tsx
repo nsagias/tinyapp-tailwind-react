@@ -1,6 +1,19 @@
 import NavBarLeft from "./NavBarLeft";
 import NavMenuItem from "./NavMenuItem";
 
+type NavBarMenuItem = {
+  id: number,
+  menuItemName: string,
+  url: string;
+};
+
+const navBarMenuList: NavBarMenuItem[] = [
+  { id: 1, menuItemName: "Features" , url: "#"},
+  { id: 2, menuItemName: "Pricing", url: "#" },
+  { id: 3, menuItemName: "Resources", url: "#" },
+];
+
+
 export default function NavBar() {
   return (
     <nav className="relative container mx-auto p-6">
@@ -16,8 +29,13 @@ export default function NavBar() {
 
           {/*  Lett Side Menu */}
           <NavBarLeft>
-            <NavMenuItem menuItemName="Features" pageLink="#" />
-            <NavMenuItem menuItemName="Features" pageLink="#" />
+            { Array.isArray(navBarMenuList) &&  
+              navBarMenuList.length > 0 && 
+              navBarMenuList.map((menuItem) => (
+
+                <NavMenuItem menuItemName={menuItem.menuItemName} url={menuItem.url} key={menuItem.id} />
+
+            )) }
           </NavBarLeft>
           
         </div>
