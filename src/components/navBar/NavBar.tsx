@@ -16,12 +16,11 @@ const navBarMenuList: NavBarMenuItem[] = [
 
 
 export default function NavBar() {
-  const [menu, setMenu] = useState();
+  const [menu, setMenu] = useState<NavBarMenuItem[]>();
 
-  // Generte menu
   // TODO: update menu if logged in
   useEffect(() => {
-
+    setMenu(navBarMenuList);
   },[]);
 
   return (
@@ -38,13 +37,9 @@ export default function NavBar() {
 
           {/*  Lett Side Menu */}
           <NavBarLeft>
-            { Array.isArray(navBarMenuList) &&  
-              navBarMenuList.length > 0 && 
-              navBarMenuList.map((menuItem) => (
-
-                <NavMenuItem menuItemName={menuItem.menuItemName} url={menuItem.url} key={menuItem.id} />
-
-            )) }
+            {Array.isArray(menu) && menu.length > 0 && menu.map((menuItem) => (
+              <NavMenuItem menuItemName={menuItem.menuItemName} url={menuItem.url} key={menuItem.id} />
+            ))}
           </NavBarLeft>
           
         </div>
