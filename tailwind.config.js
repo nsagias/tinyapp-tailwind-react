@@ -14,7 +14,13 @@ module.exports = {
         grayViolet: "hsl(257, 7%, 63%)",
         darkerBlue: "(255, 11%, 22%)",
         darkerViolet: "hsl(260, 8%, 15%)"
-      }
+      },
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"]
+      },
+      spacing: {
+        180: "32rem",
+      },
     },
   },
   plugins: [],
