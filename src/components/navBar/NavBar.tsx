@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import NavBarLeft from "./NavBarLeft";
+import NavMenu from "./NavMenu";
+import NavBarRight from "./NavBarRIght";
+import NavButtons from "./NavButtons";
 import NavMenuItem from "./NavMenuItem";
 
 type NavBarMenuItem = {
@@ -29,22 +31,26 @@ export default function NavBar() {
       {/* Container for all items */}
       <div className="flex items-center justify-between">
 
-        {/* Container for Logo and Menu */}
+        {/* Left Side Container for Logo and Menu */}
         <div className="flex items-center space-x-20">
 
           {/* Logo */}
           <img src="images/logo.svg" alt="" className="" />
 
-          {/*  Lett Side Menu */}
-          <NavBarLeft>
+          {/* Menu */}
+          <NavMenu>
             {Array.isArray(menu) && menu.length > 0 && menu.map((menuItem) => (
               <NavMenuItem menuItemName={menuItem.menuItemName} url={menuItem.url} key={menuItem.id} />
             ))}
-          </NavBarLeft>
+          </NavMenu>
           
         </div>
-
+        {/* Right Side Menu */}
+        <NavBarRight>
+          <NavButtons />
+        </NavBarRight>
       </div>
+
     </nav>
   );
 } 
