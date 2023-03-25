@@ -1,4 +1,5 @@
 import HeroContainer from "./HeroContainer";
+import HeroContentContainer from "./HeroContentContainer";
 
 export default function Hero() {
   return (
@@ -6,6 +7,9 @@ export default function Hero() {
       {/* Hero Container */}
         <HeroContainer>
           {/* Content Container */}
+          <HeroContentContainer>
+
+          </HeroContentContainer>
           {/* Image Container */}
         </HeroContainer>
     </section>
