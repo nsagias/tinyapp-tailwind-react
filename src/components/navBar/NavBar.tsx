@@ -5,6 +5,7 @@ import NavButtons from "./NavButtons";
 import NavMenuItem from "./NavMenuItem";
 import NavBarLeft from "./NavBarLeft";
 import NavBarContainer from "./NavBarContainer";
+import NavLogo from "./NavLogo";
 
 type NavBarMenuItem = {
   id: number,
@@ -36,7 +37,9 @@ export default function NavBar() {
         
         <NavBarLeft>
           {/* Logo */}
-          <img src="images/logo.svg" alt="" className="" />
+          <NavLogo />
+   
+          
           {/* Menu */}
           <NavMenu>
             {Array.isArray(menu) && menu.length > 0 && menu.map((menuItem) => (
