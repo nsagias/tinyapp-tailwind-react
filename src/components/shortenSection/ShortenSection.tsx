@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ShortenLinkData } from "../../types/ShortenLinks";
 import ShortenLink from "./ShortenLink";
 import ShortenForm from "./ShortenForm";
@@ -11,7 +11,13 @@ const shortenLinkData: ShortenLinkData[] = [
 ];
 
 export default function ShortenSection() {
-  const [shortenLinks, setShortLinks] = useState<any>(shortenLinkData);
+  const [shortenLinks, setShortLinks] = useState<ShortenLinkData[]>([]);
+
+
+  useEffect(() => {
+    setShortLinks(shortenLinkData);
+  }, []);
+
   return (
     <section id="shorten-section" className="relative bg-gray-100">
 
