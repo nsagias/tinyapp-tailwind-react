@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ShortenLinkData } from "../../types/ShortenLinks";
-import { copyToClipboard } from "../Utils/utils";
+import CopyToClipboardButton from "../buttons/CopyToClipboardButton";
+
 
 export default function ShortenLink({ shortenLinks }: { shortenLinks: ShortenLinkData }): JSX.Element {
 
@@ -21,10 +22,12 @@ export default function ShortenLink({ shortenLinks }: { shortenLinks: ShortenLin
            {shortenLinks.shortLink}
         </div>
         {/* Copy Button */}
-        <button  
-          onClick={() =>  copyToClipboard(copied)} 
-          className={`p-2 px-8 text-white bg-cyan rounded-lg hover:opacity-70 focus:outline-none`}>Copy</button>
+        <CopyToClipboardButton 
+          copy={copied} 
+          className={`p-2 px-8 text-white bg-cyan rounded-lg hover:opacity-70 focus:outline-none`}
+        />
+    
       </div>
     </div>
-  );
+  ); 
 }
