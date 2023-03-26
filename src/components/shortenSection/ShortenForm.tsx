@@ -22,13 +22,11 @@ export default function ShortenForm() {
     }
    
     // setvalue to clear
-    console.log("ISVALIDURL:",isValidURL);
-    // TODO: update database here
+    // TODO: Axios update database here
     // TODO: refresh screen after database is updated
-    
     // clear error message
     setErrorMessage("");
-    
+    setShortenLink("");
   };
 
   return (
