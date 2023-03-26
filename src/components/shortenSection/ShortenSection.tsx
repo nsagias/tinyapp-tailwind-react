@@ -22,8 +22,14 @@ export default function ShortenSection() {
         <ShortenForm />
 
         {/* Display Shorten Links */}
-        {shortenLinks && Array.isArray(shortenLinks) && shortenLinks.map((links, index) => (
-          <ShortenLink shortenLinks={links} key={links.id} />
+        {shortenLinks && Array.isArray(shortenLinks) && shortenLinks.map((links, index: number) => (
+      
+          <ShortenLink 
+            shortenLinks={links}
+            key={links.id} 
+            index={index} 
+            // idx={index}
+            />
         ))}
       </ShortenSectionContainer>
 

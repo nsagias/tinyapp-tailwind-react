@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { ShortenLinkData } from "../../types/ShortenLinks";
+import { IShortenLinkProps } from "../../types/ShortenLinks";
 import CopyToClipboardButton from "../buttons/CopyToClipboardButton";
 
-
-export default function ShortenLink({ shortenLinks }: { shortenLinks: ShortenLinkData }): JSX.Element {
+export default function ShortenLink({ shortenLinks, index }: IShortenLinkProps ): JSX.Element {
 
   const [copied, setCopied] = useState<string>(shortenLinks.shortLink);
-
+  console.log("INDEX", index)
 
   return (
     <div className="flex flex-col items-center justify-between w-full p-6 bg-white rounded-lg md:flex-row">
@@ -21,11 +20,11 @@ export default function ShortenLink({ shortenLinks }: { shortenLinks: ShortenLin
         <div className="font-bold text-cyan">
            {shortenLinks.shortLink}
         </div>
-        
+
         {/* Copy Button */}
         <CopyToClipboardButton 
           copy={copied} 
-          className={`p-2 px-8 text-white bg-cyan rounded-lg hover:opacity-70 focus:outline-none`}
+          className={`p-2 px-8 text-white ${ true ? "bg-cyan" : "bg-darkViolet"} rounded-lg hover:opacity-70 focus:outline-none`}
         />
     
       </div>

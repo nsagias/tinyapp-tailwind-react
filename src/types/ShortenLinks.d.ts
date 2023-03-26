@@ -3,3 +3,8 @@ export type ShortenLinkData = {
   fullLink: string,
   shortLink: string,
 }
+
+export interface IShortenLinkProps {
+  shortenLinks: IShortenLinkData;
+  index: number;
+}
