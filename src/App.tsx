@@ -1,6 +1,6 @@
 import './App.css';
 import Hero from './components/heroSection/Hero';
-import MarketStatisticsSection from './components/marketing/MarketingSection';
+import MarketingSectionContainer from './components/marketing/MarketingSectionContainer';
 import NavBar from './components/navBar/NavBar';
 import ShortenSection from './components/shortenSection/ShortenSection';
 
@@ -10,7 +10,7 @@ export default function App() {
       <NavBar />
       <Hero />
       <ShortenSection />
-      <MarketStatisticsSection />
+      <MarketingSectionContainer />
     </div>
   );
 }
