@@ -17,10 +17,11 @@ export default function ShortenLink({ shortenLinks }: { shortenLinks: ShortenLin
       {/* Shortened Link Container */}
       <div className="flex flex-col items-center justify-end flex-1 space-x-4 space-y-2 md:flex-row md:space-y-0">
         
-        {/* Short Link */}
+        {/* Display Short Link */}
         <div className="font-bold text-cyan">
            {shortenLinks.shortLink}
         </div>
+        
         {/* Copy Button */}
         <CopyToClipboardButton 
           copy={copied} 
