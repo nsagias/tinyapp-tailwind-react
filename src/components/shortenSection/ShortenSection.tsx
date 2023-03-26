@@ -3,8 +3,6 @@ import { ShortenLinkData } from "../../types/ShortenLinks";
 import ShortenLink from "./ShortendLink";
 import ShortenForm from "./ShortenForm";
 import ShortenSectionContainer from "./ShortenSectionContainer";
-
-
   
 const shorteLinkData: ShortenLinkData[] = [
   { id: 1, fullLink: "https://somecoolwebsite.com", shortLink: "https//tinyapp.ink/k4Ikyk" },
@@ -24,7 +22,7 @@ export default function ShortenSection() {
         <ShortenForm />
 
         {/* Display Shorten Links */}
-        {shortenLinks && Array.isArray(shortenLinks) && shortenLinks.map((links) => (
+        {shortenLinks && Array.isArray(shortenLinks) && shortenLinks.map((links, index) => (
           <ShortenLink shortenLinks={links} key={links.id} />
         ))}
       </ShortenSectionContainer>
