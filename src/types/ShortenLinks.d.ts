@@ -1,5 +1,5 @@
 export type ShortenLinkData = {
   id: number,
   fullLink: string,
-  // shortenedLink: string,
+  shortLink: string,
 }
