@@ -1,6 +1,6 @@
 import './App.css';
 import Hero from './components/heroSection/Hero';
-import MarketStatisticsSection from './components/marketing/MarketingStatisticsSection';
+import MarketStatisticsSection from './components/marketing/MarketingSection';
 import NavBar from './components/navBar/NavBar';
 import ShortenSection from './components/shortenSection/ShortenSection';
 
