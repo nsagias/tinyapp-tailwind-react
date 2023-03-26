@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ShortenLinkData } from "../../types/ShortenLinks";
-import ShortenLink from "./ShortendLink";
+import ShortenLink from "./ShortenLink";
 import ShortenForm from "./ShortenForm";
 import ShortenSectionContainer from "./ShortenSectionContainer";
   
