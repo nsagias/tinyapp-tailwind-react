@@ -13,10 +13,17 @@ const shortenLinkData: ShortenLinkData[] = [
 export default function ShortenSection() {
   const [shortenLinks, setShortLinks] = useState<ShortenLinkData[]>([]);
 
-
+  // TODO: Add new shorten link call to depency array.
   useEffect(() => {
-    setShortLinks(shortenLinkData);
+    getLatestData();
   }, []);
+
+  // TODO: Refactor
+  const getLatestData = async() => {
+    // TODO: Update with axios call 
+    const data: ShortenLinkData[] = await shortenLinkData;
+    await setShortLinks(data);
+  };
 
   return (
     <section id="shorten-section" className="relative bg-gray-100">
@@ -29,12 +36,10 @@ export default function ShortenSection() {
 
         {/* Display Shorten Links */}
         {shortenLinks && Array.isArray(shortenLinks) && shortenLinks.map((links, index: number) => (
-      
           <ShortenLink 
             shortenLinks={links}
             key={links.id} 
             index={index} 
-            // idx={index}
             />
         ))}
       </ShortenSectionContainer>
