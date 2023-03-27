@@ -1,5 +1,6 @@
 import './App.css';
 import CTASection from './components/CTASection/CTASection';
+import Footer from './components/footerSection/Footer';
 import Hero from './components/heroSection/Hero';
 import MarketingSectionContainer from './components/marketing/MarketingSectionContainer';
 import NavBar from './components/navBar/NavBar';
@@ -13,6 +14,7 @@ export default function App() {
       <ShortenSection />
       <MarketingSectionContainer />
       <CTASection />
+      <Footer />
     </div>
   );
 }
