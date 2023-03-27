@@ -18,7 +18,7 @@ export default function MarketingFeatures() {
           </div>
         </div>
           <h5 className="pt-6 text-xl font-bold text-center capitalize md:text-left">Brand Recognition</h5>
-          <p className="text-center text-gray-400 md:text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit eum inventore modi dolorem asperiores consequuntur officiis similique, facere porro dolor!</p>
+          <p className="text-center text-gray-400 md:text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, quibusdam alias.</p>
       </div>
 
 
@@ -32,7 +32,7 @@ export default function MarketingFeatures() {
           </div>
         </div>
           <h5 className="pt-6 text-xl font-bold text-center capitalize md:text-left">Marketing Statistics</h5>
-          <p className="text-center text-gray-400 md:text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nostrum dignissimos laboriosam similique cum voluptatibus numquam eius modi incidunt cupiditate.</p>
+          <p className="text-center text-gray-400 md:text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, aspernatur. Quod?</p>
       </div>
 
        {/* Marketing Box 3 */}
@@ -45,7 +45,7 @@ export default function MarketingFeatures() {
           </div>
         </div>
           <h5 className="pt-6 text-xl font-bold text-center capitalize md:text-left">Fully Customizable</h5>
-          <p className="text-center text-gray-400 md:text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque unde beatae illum et excepturi! Omnis necessitatibus dolor cum quasi quo.</p>
+          <p className="text-center text-gray-400 md:text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, incidunt sequi.</p>
         </div>
 
       </div>
