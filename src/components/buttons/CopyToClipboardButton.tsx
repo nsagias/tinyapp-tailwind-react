@@ -1,9 +1,5 @@
+import { CopyToClipboardButtonProps } from "../../types/Buttons";
 import { copyToClipboard } from "../Utils/utils";
-
-type CopyToClipboardButtonProps = {
-  copy: string,
-  className: string,
-}
 
 export default function CopyToClipboardButton({ copy, className} : CopyToClipboardButtonProps): JSX.Element {
   return (

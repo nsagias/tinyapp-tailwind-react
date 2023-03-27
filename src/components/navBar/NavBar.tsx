@@ -6,14 +6,10 @@ import NavMenuItem from "./NavMenuItem";
 import NavBarLeft from "./NavBarLeft";
 import NavBarContainer from "./NavBarContainer";
 import NavLogo from "./NavLogo";
+import NavButtonHamburger from "./NavButtonHamburger";
+import { NavBarMenuItemData } from "../../types/NavBar";
 
-type NavBarMenuItem = {
-  id: number,
-  menuItemName: string,
-  url: string;
-};
-
-const navBarMenuList: NavBarMenuItem[] = [
+const navBarMenuList: NavBarMenuItemData[] = [
   { id: 1, menuItemName: "Features" , url: "#"},
   { id: 2, menuItemName: "Pricing", url: "#" },
   { id: 3, menuItemName: "Resources", url: "#" },
@@ -21,7 +17,8 @@ const navBarMenuList: NavBarMenuItem[] = [
 
 
 export default function NavBar() {
-  const [menu, setMenu] = useState<NavBarMenuItem[]>();
+  const [menu, setMenu] = useState<NavBarMenuItemData[]>();
+   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   // TODO: update menu if logged in
   useEffect(() => {
@@ -44,14 +41,16 @@ export default function NavBar() {
           <NavMenu>
             {Array.isArray(menu) && menu.length > 0 && menu.map((menuItem) => (
               <NavMenuItem menuItemName={menuItem.menuItemName} url={menuItem.url} key={menuItem.id} />
-              ))}
+            ))}
           </NavMenu>
         </NavBarLeft>
 
         {/* Right Side Menu */}
         <NavBarRight>
           <NavButtonsAuth />
+          
         </NavBarRight>
+        <NavButtonHamburger isOpen={isOpen}/>
       </NavBarContainer>
     </nav>
   );

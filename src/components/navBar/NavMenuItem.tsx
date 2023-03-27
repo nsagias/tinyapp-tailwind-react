@@ -1,7 +1,7 @@
-// A type that describe menu item input
-type MenuItemName = { menuItemName: string, url: string} 
+import { NavBarMenuItemName } from "../../types/NavBar";
 
-export default function NavMenuItem({ menuItemName, url} : MenuItemName ): JSX.Element {
+
+export default function NavMenuItem({ menuItemName, url} : NavBarMenuItemName): JSX.Element {
   return (
     <a href={url} className="text-grayViolet hover:text-darkerViolet">{menuItemName}</a>
   );
