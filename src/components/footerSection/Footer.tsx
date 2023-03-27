@@ -35,10 +35,12 @@ export default function Footer() {
 
         {/* Menus Container */}
         <MenuContainer>
-          <FooterMenu 
-            heading={footerData[0].footerMenuTitle}
-            footerData={footerData[0].footerData} 
-          />
+          {footerData && Array.isArray(footerData) && footerData.length > 0 && footerData.map((data) => (
+            <FooterMenu 
+              footerMenuTitle={data.footerMenuTitle}
+              footerData={data.footerData} 
+            />
+          ))}
         </MenuContainer>
       </div>
     </footer>
