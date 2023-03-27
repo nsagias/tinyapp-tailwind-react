@@ -7,12 +7,23 @@ import NavBarLeft from "./NavBarLeft";
 import NavBarContainer from "./NavBarContainer";
 import NavLogo from "./NavLogo";
 import NavButtonHamburger from "./NavButtonHamburger";
-import { NavBarMenuItemData } from "../../types/NavBar";
+import { MobileMenuItem, NavBarMenuItemData } from "../../types/NavBar";
+import NavMobileMenuContainer from "./NavMobileMenuContainer";
+import NavMobileMenu from "./NavMobileMenu";
 
 const navBarMenuList: NavBarMenuItemData[] = [
   { id: 1, menuItemName: "Features" , url: "#"},
   { id: 2, menuItemName: "Pricing", url: "#" },
   { id: 3, menuItemName: "Resources", url: "#" },
+];
+
+const mobileMenuItems: MobileMenuItem[] = [
+  { linkURL: "# ", className: "w-full text-center", buttonName: "Features"},
+  { linkURL: "# ", className: "w-full text-center", buttonName: "Pricing"},
+  { linkURL: "# ", className: "w-full text-center", buttonName: "Resources"},
+  { linkURL: "# ", className: "w-full pt-6 border-t border-gray-400 text-center", buttonName: "Login"},
+  { linkURL: "# ", className: "w-full text-center py-3 rounded-full bg-cyan", buttonName: "Sign Up"},
+  { linkURL: "# ", className: "w-full pt-6 border-t rounded-full bg-cyan text-center", buttonName: "Logout"},
 ];
 
 
@@ -51,6 +62,12 @@ export default function NavBar() {
           
         </NavBarRight>
         <NavButtonHamburger isOpen={isOpen}/>
+
+        <NavMobileMenuContainer>
+          {mobileMenuItems && Array.isArray(mobileMenuItems) && mobileMenuItems.length > 0 && mobileMenuItems.map((data, index) => (
+            <NavMobileMenu linkURL={data.linkURL} className={data.className} buttonName={data.buttonName} key={index}/>
+          ))}
+        </NavMobileMenuContainer>
       </NavBarContainer>
     </nav>
   );
