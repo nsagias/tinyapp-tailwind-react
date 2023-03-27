@@ -1,8 +1,17 @@
-export type FooterMenuData = {
-  footerMenuTitle: string,
-  footerData: { URL: string, linkName: string}[]
+
+export type FooterData = {
+  footerData: { 
+    URL: string, 
+    linkName: string
+  }
 }
 
 export type FooterDataItem = {
-  footerData: { URL: string, linkName: string}
+   URL: string, 
+   linkName: string
+}
+
+export type FooterMenuData = {
+  footerMenuTitle: string,
+  footerData: { URL: string, linkName: string}[]
 }
