@@ -6,10 +6,9 @@ export default function ShortenForm() {
   const [shortenLink, setShortenLink] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
   
-  const handleSubmitLink = async (e: any) => {
+  const handleSubmitLink = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     
-    console.log("FORM INPUT:", shortenLink);
     // check for value
     if (shortenLink === "") {
       return setErrorMessage("Please Enter Value");
