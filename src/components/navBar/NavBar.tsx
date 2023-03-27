@@ -21,6 +21,9 @@ const mobileMenuItems: MobileMenuItem[] = [
   { linkURL: "# ", className: "w-full text-center", buttonName: "Features"},
   { linkURL: "# ", className: "w-full text-center", buttonName: "Pricing"},
   { linkURL: "# ", className: "w-full text-center", buttonName: "Resources"},
+];
+
+const mobileMenuItemsAuth: MobileMenuItem[] = [
   { linkURL: "# ", className: "w-full pt-6 border-t border-gray-400 text-center", buttonName: "Login"},
   { linkURL: "# ", className: "w-full text-center py-3 rounded-full bg-cyan", buttonName: "Sign Up"},
   { linkURL: "# ", className: "w-full pt-6 border-t rounded-full bg-cyan text-center", buttonName: "Logout"},
@@ -65,6 +68,9 @@ export default function NavBar() {
 
         <NavMobileMenuContainer>
           {mobileMenuItems && Array.isArray(mobileMenuItems) && mobileMenuItems.length > 0 && mobileMenuItems.map((data, index) => (
+            <NavMobileMenu linkURL={data.linkURL} className={data.className} buttonName={data.buttonName} key={index}/>
+          ))}
+          {mobileMenuItemsAuth && Array.isArray(mobileMenuItemsAuth) && mobileMenuItemsAuth.length > 0 && mobileMenuItemsAuth.map((data, index) => (
             <NavMobileMenu linkURL={data.linkURL} className={data.className} buttonName={data.buttonName} key={index}/>
           ))}
         </NavMobileMenuContainer>
