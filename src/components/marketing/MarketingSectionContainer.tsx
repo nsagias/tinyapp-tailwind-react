@@ -1,11 +1,11 @@
 import MarketingFeatures from "./MarketingFeatures";
-import MarketingHeaderSection from "./MarketingSection";
+import MarketingHeaderSection from "./MarketingHeaderSection";
 
 export default function MarketingSectionContainer() {
   return (
-    <div className="container mx-auto px-3">
+    <>
       <MarketingHeaderSection />
       <MarketingFeatures />
-    </div>
-  )
+    </>
+  );
 }
