@@ -15,3 +15,9 @@ export type FooterMenuData = {
   footerMenuTitle: string,
   footerData: { URL: string, linkName: string}[]
 }
+
+export type FooterSocialMediaItemData = {
+  linkURL: string, 
+  imageURL: string,
+}
+  
