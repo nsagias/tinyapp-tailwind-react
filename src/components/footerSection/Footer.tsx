@@ -41,7 +41,7 @@ export default function Footer() {
       <div className="container flex flex-col items-center justify-between mx-auto space-y-16 md:flex-row md:space-y-0 md:items-start">
         
         {/* LOGO */}
-        <img src="images/logo-tiny-app.svg" alt="" className="w-32 border-8 border-cyan px-4 py-1 pt-2 rounded-full bg-white" />
+        <img src="images/logo-tiny-app.svg" alt="" className="w-32 border-8 border-cyan px-4 py-1 pt-2 rounded-full bg-white hover:opacity-70" />
 
         {/* Menus Container */}
         <MenuContainer>
