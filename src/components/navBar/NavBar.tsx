@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import NavMenu from "./NavMenu";
 import NavBarRight from "./NavBarRIght";
-import NavButtons from "./NavButtons";
+import NavButtonsAuth from "./NavButtonsAuthentication";
 import NavMenuItem from "./NavMenuItem";
 import NavBarLeft from "./NavBarLeft";
 import NavBarContainer from "./NavBarContainer";
@@ -50,7 +50,7 @@ export default function NavBar() {
 
         {/* Right Side Menu */}
         <NavBarRight>
-          <NavButtons />
+          <NavButtonsAuth />
         </NavBarRight>
       </NavBarContainer>
     </nav>

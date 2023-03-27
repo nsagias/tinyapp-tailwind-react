@@ -1,4 +1,4 @@
-export default function NavButtons() {
+export default function NavButtonsAuthentication() {
   return (
     <>
       {/* TODO add onclick method and routing */}
