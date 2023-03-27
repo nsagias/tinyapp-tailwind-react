@@ -1,10 +1,7 @@
 import { FooterMenuData } from "../../types/Footer";
 import FooterMenuItem from "./FooterMenuItem";
 
-
-
 export default function FooterMenu({ footerMenuTitle, footerData }: FooterMenuData): JSX.Element {
-
   return (
     <div className="flex flex-col items-center w-full md:items-start">
       {/* Menu Heading */}

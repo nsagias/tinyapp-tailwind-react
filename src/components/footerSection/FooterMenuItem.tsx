@@ -3,7 +3,7 @@ import { FooterData } from "../../types/Footer";
 export default function FooterMenuItem({ footerData }: FooterData): JSX.Element {
   return (
     <div className="flex flex-col items-center space-y-3 md:items-start">
-    <a href={`${footerData.URL}`} className="capitalize text-grayViolet hover:text-cyan">{footerData.linkName}</a>
-  </div>
+      <a href={`${footerData.URL}`} className="capitalize text-grayViolet hover:text-cyan">{footerData.linkName}</a>
+    </div>
   );
 }
