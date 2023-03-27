@@ -1,7 +1,10 @@
 import MenuContainer from "./MenuContainer";
 import FooterMenu from "./FooterMenu";
-import { FooterMenuData } from "../../types/Footer";
+import { FooterMenuData, FooterSocialMediaItemData } from "../../types/Footer";
 import { useState } from "react";
+import FooterSocialMediaContainer from "./FooterSocialMediaContainer";
+import FooterSocialMediaItem from "./FooterSocialMediaItem";
+
 
 const footerMenuList: FooterMenuData[] = [ 
   { footerMenuTitle: "Features", footerData: [
@@ -18,8 +21,14 @@ const footerMenuList: FooterMenuData[] = [
     { URL: "# ", linkName: "About"},
     { URL: "# ", linkName: "Our Team"},
     { URL: "# ", linkName: "Careers"},
-    { URL: "# ", linkName: "Contact Us"},
+    { URL: "# ", linkName: "Contact Us"}
   ]}
+];
+
+export const footerSocialMediaList: FooterSocialMediaItemData[] = [
+  {linkURL: "# ", imageURL: "images/icon-facebook.svg"},
+  {linkURL: "# ", imageURL: "images/icon-twitter.svg"},
+  {linkURL: "# ", imageURL: "images/icon-instagram.svg"}
 ];
 
 export default function Footer() {
@@ -44,6 +53,14 @@ export default function Footer() {
             />
           ))}
         </MenuContainer>
+
+        {/* Social Media Footer */}
+        <FooterSocialMediaContainer>
+          {footerSocialMediaList && Array.isArray(footerSocialMediaList) && footerSocialMediaList.length > 0 && footerSocialMediaList.map((data) => (
+            <FooterSocialMediaItem linkURL={data.linkURL} imageURL={data.imageURL} />
+          ))}
+        </FooterSocialMediaContainer>
+        
       </div>
     </footer>
   );
