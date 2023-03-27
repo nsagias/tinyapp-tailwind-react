@@ -35,7 +35,8 @@ export default function Footer() {
 
         {/* Menus Container */}
         <MenuContainer>
-          {footerData && Array.isArray(footerData) && footerData.length > 0 && footerData.map((data) => (
+          {/* Null check and only slice first three items off list */}
+          {footerData && Array.isArray(footerData) && footerData.length > 0 && footerData.slice(0, 3).map((data) => (
             <FooterMenu 
               footerMenuTitle={data.footerMenuTitle}
               footerData={data.footerData} 
