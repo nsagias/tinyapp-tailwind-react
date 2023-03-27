@@ -11,7 +11,8 @@ export default function FooterMenu({ footerMenuTitle, footerData }: FooterMenuDa
       <div className="mb-5 font-bold text-white capitalize">{footerMenuTitle}</div>
       
       {/* Menu Links */}
-      {footerData && Array.isArray(footerData) && footerData.length  > 0 && footerData.map((data) => (
+      {/* array and null check and slice first three items off list */}
+      {footerData && Array.isArray(footerData) && footerData.length  > 0 && footerData.slice(0, 3).map((data) => (
         <FooterMenuItem footerData={data} />
       ))}
   
