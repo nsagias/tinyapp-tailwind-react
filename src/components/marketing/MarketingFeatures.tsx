@@ -31,12 +31,12 @@ export default function MarketingFeatures() {
             <img src="images/icon-brand-recognition.svg" alt="" className="" />
           </div>
         </div>
-          <h5 className="pt-6 text-xl font-bold text-center capitalize md:text-left">Marketing Statistics</h5>
+          <h5 className="pt-6 text-xl font-bold text-center capitalize md:text-left">Marketing & Statistics</h5>
           <p className="text-center text-gray-400 md:text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, aspernatur. Quod?</p>
       </div>
 
        {/* Marketing Box 3 */}
-       <div className="relative flex flex-col mt-24 p-6 space-y-6 bg-white rounded-lg md:w-1/3">
+       <div className="relative flex flex-col mt-24 p-6 space-y-6 bg-white rounded-lg md:mt-16 md:w-1/3">
         {/* Image Wrapper/Position */}
         <div className="absolute -ml-10 left-1/2 -top-10 md:left-16">
           {/* Image Container */}
