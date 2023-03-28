@@ -30,7 +30,7 @@ const mobileMenuItemsAuth: MobileMenuItem[] = [
 ];
 
 
-export default function NavBar() {
+export default function NavBar({ authorized}: {authorized: boolean}): JSX.Element {
   const [menu, setMenu] = useState<NavBarMenuItemData[]>();
    const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -61,9 +61,9 @@ export default function NavBar() {
 
         {/* Right Side Menu */}
         <NavBarRight>
-          <NavButtonsAuth />
-          
+          <NavButtonsAuth authorized={authorized}/>
         </NavBarRight>
+
         <NavButtonHamburger isOpen={isOpen}/>
 
         <NavMobileMenuContainer isOpen={isOpen}>

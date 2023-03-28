@@ -31,13 +31,12 @@ export const footerSocialMediaList: FooterSocialMediaItemData[] = [
   {linkURL: "# ", imageURL: "images/icon-instagram.svg"}
 ];
 
-export default function Footer() {
+export default function Footer({ authorized}: {authorized: boolean}): JSX.Element {
 
   const [footerData, setFooterData] = useState<FooterMenuData[]>(footerMenuList)
 
-
   return (
-    <footer className="absolute py-16 bg-darkerViolet bottom-0 left-0 right-0">
+    <footer className={`py-16 bg-darkerViolet ${authorized && ("absolute bottom-0 left-0 right-0")}`}>
       <div className="container flex flex-col items-center justify-between mx-auto space-y-16 md:flex-row md:space-y-0 md:items-start">
         
         {/* LOGO */}
