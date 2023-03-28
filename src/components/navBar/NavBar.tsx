@@ -44,16 +44,16 @@ export default function NavBar() {
 
       {/* Container for all items */}
       <NavBarContainer>
-        {/* Left Side Container for Logo and Menu */}
         
+        {/* Left Side Container for Logo and Menu */}
         <NavBarLeft>
+
           {/* Logo */}
           <NavLogo />
-   
-          
+
           {/* Menu */}
           <NavMenu>
-            {Array.isArray(menu) && menu.length > 0 && menu.map((menuItem) => (
+            {menu && Array.isArray(menu) && menu.length > 0 && menu.map((menuItem) => (
               <NavMenuItem menuItemName={menuItem.menuItemName} url={menuItem.url} key={menuItem.id} />
             ))}
           </NavMenu>
