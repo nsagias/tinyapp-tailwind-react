@@ -66,7 +66,7 @@ export default function NavBar() {
         </NavBarRight>
         <NavButtonHamburger isOpen={isOpen}/>
 
-        <NavMobileMenuContainer>
+        <NavMobileMenuContainer isOpen={isOpen}>
           {mobileMenuItems && Array.isArray(mobileMenuItems) && mobileMenuItems.length > 0 && mobileMenuItems.map((data, index) => (
             <NavMobileMenu linkURL={data.linkURL} styling={data.styling} buttonName={data.buttonName} key={index}/>
           ))}
