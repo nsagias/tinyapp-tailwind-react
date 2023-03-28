@@ -37,7 +37,7 @@ export default function Footer() {
 
 
   return (
-    <footer className="py-16 bg-darkerViolet">
+    <footer className="absolute py-16 bg-darkerViolet bottom-0 left-0 right-0">
       <div className="container flex flex-col items-center justify-between mx-auto space-y-16 md:flex-row md:space-y-0 md:items-start">
         
         {/* LOGO */}
