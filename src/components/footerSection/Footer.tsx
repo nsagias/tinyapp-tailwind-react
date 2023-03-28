@@ -46,18 +46,23 @@ export default function Footer() {
         {/* Menus Container */}
         <MenuContainer>
           {/* Null check and only slice first three items off list */}
-          {footerData && Array.isArray(footerData) && footerData.length > 0 && footerData.slice(0, 3).map((data) => (
+          {footerData && Array.isArray(footerData) && footerData.length > 0 && footerData.slice(0, 3).map((data, index) => (
             <FooterMenu 
               footerMenuTitle={data.footerMenuTitle}
-              footerData={data.footerData} 
+              footerData={data.footerData}
+              key={index}
             />
           ))}
         </MenuContainer>
 
         {/* Social Media Footer */}
         <FooterSocialMediaContainer>
-          {footerSocialMediaList && Array.isArray(footerSocialMediaList) && footerSocialMediaList.length > 0 && footerSocialMediaList.map((data) => (
-            <FooterSocialMediaItem linkURL={data.linkURL} imageURL={data.imageURL} />
+          {footerSocialMediaList && Array.isArray(footerSocialMediaList) && footerSocialMediaList.length > 0 && footerSocialMediaList.map((data, index) => (
+            <FooterSocialMediaItem 
+              linkURL={data.linkURL} 
+              imageURL={data.imageURL} 
+              key={index}
+            />
           ))}
         </FooterSocialMediaContainer>
         

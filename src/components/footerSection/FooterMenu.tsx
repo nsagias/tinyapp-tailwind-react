@@ -9,8 +9,11 @@ export default function FooterMenu({ footerMenuTitle, footerData }: FooterMenuDa
       
       {/* Menu Links */}
       {/* array and null check and slice first three items off list */}
-      {footerData && Array.isArray(footerData) && footerData.length  > 0 && footerData.slice(0, 3).map((data) => (
-        <FooterMenuItem footerData={data} />
+      {footerData && Array.isArray(footerData) && footerData.length  > 0 && footerData.slice(0, 3).map((data, index) => (
+        <FooterMenuItem 
+          footerData={data} 
+          key={index} 
+        />
       ))}
   
     </div>
