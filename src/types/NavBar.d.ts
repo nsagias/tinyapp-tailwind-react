@@ -12,6 +12,6 @@ export type NavBarMenuItemData = {
 
 export type MobileMenuItem = {
   linkURL: string,
-  className: string,
+  styling: string,
   buttonName: string,
 };
