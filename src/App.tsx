@@ -6,7 +6,8 @@ import Hero from './components/heroSection/Hero';
 import MarketingSectionContainer from './components/marketing/MarketingSectionContainer';
 import NavBar from './components/navBar/NavBar';
 import ShortenSection from './components/shortenSection/ShortenSection';
-import Login from './components/login/Login';
+import Login from './components/loginSection/LoginContainer';
+import RegisterContainter from './components/registrationSection/RegistrationContainer';
 
 export default function App() {
 
@@ -19,7 +20,8 @@ export default function App() {
       {!isLoggedIn && (<MarketingSectionContainer />)}
       {!isLoggedIn && ( <CTASection />)}
       <Footer authorized={isLoggedIn} /> */}
-      <Login />
+      {/* <Login /> */}
+      <RegisterContainter />
     </div>
   );
 }
