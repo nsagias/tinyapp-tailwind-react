@@ -25,13 +25,13 @@ export default function RegistrationForm({}): JSX.Element {
         <div className="p-6 md:p-20">
           {/* Top of card */}
           <h2 className="mb-5 text-4xl font-bold">Register</h2>
-          <p className="max-w-sm mb-8 font-sans font-bold text-grayViolet">Create your account.</p>
+          <p className="max-w-sm mb-8 font-sans font-bold text-grayViolet ">Create your account.</p>
 
           <form onSubmit={handleRegistration} >
 
             {/* FirstName Input */}
             <input
-              className={`w-full p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none`}
+              className={`w-full p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none md:flex`}
               id="registration-first-name" 
               name="firstName"
               type="text"
@@ -42,7 +42,7 @@ export default function RegistrationForm({}): JSX.Element {
 
             {/* LastName Input */}
             <input
-              className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none`}
+              className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none md:flex`}
               id="registration-last-name"
               name="lastName"
               type="text"
@@ -64,7 +64,7 @@ export default function RegistrationForm({}): JSX.Element {
 
             {/* Password Input */}
             <input
-              className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none`}
+              className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none `}
               id="login-password" 
               name="password"
               type="password"
@@ -75,7 +75,7 @@ export default function RegistrationForm({}): JSX.Element {
 
             {/* Form button */}
             <button 
-              className={`w-full mt-5 md:width-auto flex justify-center items-center px-6 space-x-4 py-3 font-bold text-white bg-cyan rounded-full hover:opacity-70`}
+              className={`w-full mt-5 md:width-auto flex justify-center items-center px-6 space-x-4 py-3 font-bold text-white bg-cyan rounded-full hover:opacity-70 `}
               disabled={formDisabled}  
             >
               <span>Login</span>
