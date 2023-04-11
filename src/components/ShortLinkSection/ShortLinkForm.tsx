@@ -40,7 +40,7 @@ export default function ShortLinkForm() {
         placeholder={"Enter Link Here"}
         value={shortLink}
         onChange={(e) => setShortLink(e.target.value)}
-        >  
+      >  
       </input>
       <button
         className="px-10 py-3 text-white bg-cyan rounded-lg hover:bg-cyanLight focus:outline-none md:py-2" 
