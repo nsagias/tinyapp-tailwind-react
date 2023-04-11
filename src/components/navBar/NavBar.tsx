@@ -14,13 +14,13 @@ import NavMobileMenu from "./NavMobileMenu";
 const navBarMenuList: NavBarMenuItemData[] = [
   { id: 1, menuItemName: "Features" , url: "#"},
   { id: 2, menuItemName: "Pricing", url: "#" },
-  { id: 3, menuItemName: "Resources", url: "#" },
+  { id: 3, menuItemName: "Documentation", url: "#" },
 ];
 
 const mobileMenuItems: MobileMenuItem[] = [
   { linkURL: "# ", styling: "w-full text-center", buttonName: "Features"},
   { linkURL: "# ", styling: "w-full text-center", buttonName: "Pricing"},
-  { linkURL: "# ", styling: "w-full text-center", buttonName: "Resources"},
+  { linkURL: "# ", styling: "w-full text-center", buttonName: "Documentation"},
 ];
 
 const mobileMenuItemsAuth: MobileMenuItem[] = [
