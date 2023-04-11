@@ -13,6 +13,8 @@ export default function LoginForm({}): JSX.Element {
 
   const handleLogin = (e: any) => {
     e.preventDefault();
+    setEmail("");
+    setPassword("");
   };
 
   return (
