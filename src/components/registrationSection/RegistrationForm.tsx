@@ -16,7 +16,10 @@ export default function RegistrationForm({}): JSX.Element {
 
   const handleRegistration = (e: any) => {
     e.preventDefault();
-    console.log(`FORM VALUES: ${firstName} ${lastName} ${email} ${password}`)
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -56,7 +59,7 @@ export default function RegistrationForm({}): JSX.Element {
               className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none`}
               id="login-email" 
               name="email"
-              type="text"
+              type="email"
               value={email}
               onChange={e => setEmail(e.target.value.trim())}
               placeholder="Enter your email"
