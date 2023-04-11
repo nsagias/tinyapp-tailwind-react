@@ -14,7 +14,7 @@ export default function RegistrationForm({}): JSX.Element {
   }, [firstName, lastName, password, email]);
   
 
-  const handleRegistration = (e: any) => {
+  const handleRegistration = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setFirstName("");
     setLastName("");

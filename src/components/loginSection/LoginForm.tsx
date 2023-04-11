@@ -10,8 +10,7 @@ export default function LoginForm({}): JSX.Element {
     setFormDisabled(password.length < 7 || email.length < 5)
   }, [password, email]);
   
-
-  const handleLogin = (e: any) => {
+  const handleLogin = async (e: React.FormEvent): Promise<void>  => {
     e.preventDefault();
     setEmail("");
     setPassword("");
