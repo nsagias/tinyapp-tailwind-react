@@ -12,15 +12,15 @@ import NavMobileMenuContainer from "./NavMobileMenuContainer";
 import NavMobileMenu from "./NavMobileMenu";
 
 const navBarMenuList: NavBarMenuItemData[] = [
-  { id: 1, menuItemName: "Features" , url: "#"},
-  { id: 2, menuItemName: "Pricing", url: "#" },
-  { id: 3, menuItemName: "Documentation", url: "#" },
+  { id: 1, menuItemName: "Features" , url: "/features"},
+  { id: 2, menuItemName: "Pricing", url: "/pricing" },
+  { id: 3, menuItemName: "Documentation", url: "/docs" },
 ];
 
 const mobileMenuItems: MobileMenuItem[] = [
-  { linkURL: "# ", styling: "w-full text-center", buttonName: "Features"},
-  { linkURL: "# ", styling: "w-full text-center", buttonName: "Pricing"},
-  { linkURL: "# ", styling: "w-full text-center", buttonName: "Documentation"},
+  { linkURL: "/features", styling: "w-full text-center", buttonName: "Features"},
+  { linkURL: "/pricing ", styling: "w-full text-center", buttonName: "Pricing"},
+  { linkURL: "/docs ", styling: "w-full text-center", buttonName: "Documentation"},
 ];
 
 const mobileMenuItemsAuth: MobileMenuItem[] = [
