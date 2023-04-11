@@ -5,9 +5,9 @@ import MarketingSectionContainer from "../../components/marketingSection/Marketi
 export default function HomeContainer({}): JSX.Element {
   return (
     <>
-    <HeroLandingPage  />
-    <MarketingSectionContainer />
-    <CTASection />
+      <HeroLandingPage  />
+      <MarketingSectionContainer />
+      <CTASection />
     </>
-  )
+  );
 }

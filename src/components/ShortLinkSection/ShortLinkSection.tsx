@@ -19,7 +19,8 @@ export default function ShortLinkSection() {
 
   
   const getLatestData = async() => {
-    // TODO: Update with axios call 
+    // TODO: Update with axios call
+    // will use awai on axios
     const data: ShortLinkData = await shortLinkData;
     await setShortLink(data);
   };
