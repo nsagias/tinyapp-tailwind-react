@@ -6,7 +6,7 @@ import NavBar from "./components/navBar/NavBar";
 import ShortenSection from "./components/shortenSection/ShortenSection";
 import Login from "./components/loginSection/LoginContainer";
 import RegistrationContainter from "./components/registrationSection/RegistrationContainer";
-import HomeContainer from "./pages/home/HomeContainer";
+import HomeContainer from "./pages/home/Home";
 import Features from "./pages/features/Features";
 import Pricing from "./pages/pricing/Pricing";
 import Docs from "./pages/documentation/Docs";
@@ -41,7 +41,7 @@ export default function App() {
           <Route path="/register" element={<RegistrationContainter />} />
           <Route path="/shorturls" element={ <ShortenSection />} />
           <Route path="/shorturls/:id" element={ <ShortLinkSection />} />
-          <Route path="/" element={<HomeContainer isLoggedIn={isLoggedIn} />} /> 
+          <Route path="/" element={<HomeContainer />} /> 
           <Route path="*" element={<NotFound />} />
 
         </Routes>

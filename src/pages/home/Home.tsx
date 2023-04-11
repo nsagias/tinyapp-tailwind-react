@@ -1,11 +1,11 @@
 import CTASection from "../../components/CTASection/CTASection";
-import Hero from "../../components/heroSection/Hero";
+import HeroLandingPage from "../../components/heroSection/HeroLandingPage";
 import MarketingSectionContainer from "../../components/marketing/MarketingSectionContainer";
 
-export default function HomeContainer({isLoggedIn}: { isLoggedIn: boolean}): JSX.Element {
+export default function HomeContainer({}): JSX.Element {
   return (
     <>
-    <Hero authorized={isLoggedIn} />
+    <HeroLandingPage  />
     <MarketingSectionContainer />
     <CTASection />
     </>
