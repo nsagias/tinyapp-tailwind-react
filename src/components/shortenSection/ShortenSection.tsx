@@ -26,7 +26,7 @@ export default function ShortenSection() {
   };
 
   return (
-    <section id="shorten-section" className="relative bg-gray-100">
+    <section id="shorten-section" className="relative bg-gray-100 pb-10">
 
       {/* Shorten Section Container */}
       <ShortenSectionContainer>
