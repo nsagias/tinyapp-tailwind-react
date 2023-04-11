@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { IShortenLinkProps } from "../../types/ShortenLinks";
+import { IShortenLinkProps as IShortLinkProps } from "../../types/ShortLinks";
 import CopyToClipboardButton from "../buttons/CopyToClipboardButton";
 
-export default function ShortenLink({ shortenLinks, index }: IShortenLinkProps ): JSX.Element {
+export default function ShortenLink({ shortenLinks, index }: IShortLinkProps ): JSX.Element {
 
   const [copied, setCopied] = useState<string>(shortenLinks && shortenLinks.shortLink);
 
