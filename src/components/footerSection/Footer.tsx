@@ -36,7 +36,7 @@ export default function Footer({ authorized}: {authorized: boolean}): JSX.Elemen
   const [footerData, setFooterData] = useState<FooterMenuData[]>(footerMenuList)
 
   return (
-    <footer className={`py-16 bg-darkerViolet ${authorized && ("absolute bottom-0 left-0 right-0")}`}>
+    <footer className={`py-16 bg-darkerViolet`}>
       <div className="container flex flex-col items-center justify-between mx-auto space-y-16 md:flex-row md:space-y-0 md:items-start">
         
         {/* LOGO */}

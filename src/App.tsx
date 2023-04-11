@@ -14,14 +14,14 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   return (
     <div className="App">
-      {/* <NavBar authorized={isLoggedIn} />
+      <NavBar authorized={isLoggedIn} />
       <Hero authorized={isLoggedIn} />
-      {isLoggedIn && (<ShortenSection />)}
-      {!isLoggedIn && (<MarketingSectionContainer />)}
-      {!isLoggedIn && ( <CTASection />)}
-      <Footer authorized={isLoggedIn} /> */}
       {/* <Login /> */}
-      <RegisterContainter />
+      {/* <RegisterContainter /> */}
+      {/* <ShortenSection /> */}
+      {!isLoggedIn && <MarketingSectionContainer /> }
+      {!isLoggedIn && <CTASection />}
+      <Footer authorized={true}/>
     </div>
   );
 }
