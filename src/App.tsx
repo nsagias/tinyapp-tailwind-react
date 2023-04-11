@@ -33,6 +33,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegistrationContainter />} />
           <Route path="/shorturls" element={ <ShortenSection />} />
+          <Route path="/shorturls/:id" element={ <ShortenSection />} />
           <Route path="/" element={<HomeContainer isLoggedIn={isLoggedIn} />} /> 
 
         </Routes>
