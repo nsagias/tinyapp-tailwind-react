@@ -3,10 +3,13 @@ import { ShortLinkData } from "../../types/ShortLinks";
 import ShortLink from "./ShortLink";
 import ShortLinkForm from "./ShortLinkForm";
 import ShortLinkContainer from "./ShortLinkSectionContainer";
+import { useParams } from "react-router-dom";
+
   
 const shortLinkData: ShortLinkData= { id: 1, fullLink: "https://somecoolwebsite.com", shortLink: "https//tinyapp.ink/k4Ikyk" }
 
 export default function ShortLinkSection() {
+  const {id} = useParams();
   const [shortLink, setShortLink] = useState<ShortLinkData>();
 
   // TODO: Add new shorten link call to depency array.
