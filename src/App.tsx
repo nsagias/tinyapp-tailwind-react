@@ -10,7 +10,7 @@ import HomeContainer from "./pages/home/Home";
 import Features from "./pages/features/Features";
 import Pricing from "./pages/pricing/Pricing";
 import Docs from "./pages/documentation/Docs";
-import ShortLinkSection from "./components/ShortLinkSection/ShortLinkSection";
+import ShortLinkSection from "./components/shortLinkSection/ShortLinkSection";
 import NotFound from "./components/routeComponents/NotFound";
 
 export default function App() {
