@@ -17,6 +17,7 @@ import HomeContainer from "./components/home/HomeContainer";
 import Features from "./components/features/Features";
 import Pricing from "./components/pricing/Pricing";
 import Docs from "./components/documentation/Docs";
+import ShortLinkSection from "./components/ShortLinkSection/ShortLinkSection";
 
 export default function App() {
 
@@ -33,7 +34,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegistrationContainter />} />
           <Route path="/shorturls" element={ <ShortenSection />} />
-          <Route path="/shorturls/:id" element={ <ShortenSection />} />
+          <Route path="/shorturls/:id" element={ <ShortLinkSection />} />
           <Route path="/" element={<HomeContainer isLoggedIn={isLoggedIn} />} /> 
 
         </Routes>
