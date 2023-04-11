@@ -39,7 +39,7 @@ export default function ShortenSection() {
           <ShortenLink 
             shortenLinks={links}
             key={links.id} 
-            index={index} 
+            index={index + 1} 
             />
         ))}
       </ShortenSectionContainer>
