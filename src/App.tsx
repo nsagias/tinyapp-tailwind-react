@@ -25,7 +25,7 @@ export default function App() {
     {path:"/register", element:"RegistrationContainter"},
     {path:"/shorturls", element:"ShortenSection", isLoggedIn: isLoggedIn},
     {path:"/shorturls/:id", element:"ShortLinkSection", isLoggedIn: isLoggedIn},
-    {path:"/", element:"<HomeContaine", isLoggedIn: isLoggedIn }, 
+    {path:"/", element:"<HomeContainer", isLoggedIn: isLoggedIn }, 
     {path:"*", element:"<NotFound"},
   ];
 

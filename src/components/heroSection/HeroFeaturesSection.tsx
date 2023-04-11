@@ -3,7 +3,7 @@ import HeroContainer from "./components/HeroContainer";
 import HeroContentContainer from "./components/HeroContentContainer";
 import HeroImage from "./components/HeroLandingPageImage";
 
-export default function Hero({}):JSX.Element {
+export default function HeroFeaturesSection({}):JSX.Element {
   return (
     <section id="hero">
       {/* Hero Container */}
