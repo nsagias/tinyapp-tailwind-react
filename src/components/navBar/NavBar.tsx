@@ -15,12 +15,14 @@ const navBarMenuList: NavBarMenuItemData[] = [
   { id: 1, menuItemName: "Features" , url: "/features"},
   { id: 2, menuItemName: "Pricing", url: "/pricing" },
   { id: 3, menuItemName: "Documentation", url: "/docs" },
+  { id: 4, menuItemName: "Short Links", url: "/shorturls"},
 ];
 
 const mobileMenuItems: MobileMenuItem[] = [
   { linkURL: "/features", styling: "w-full text-center", buttonName: "Features"},
   { linkURL: "/pricing ", styling: "w-full text-center", buttonName: "Pricing"},
   { linkURL: "/docs ", styling: "w-full text-center", buttonName: "Documentation"},
+  { linkURL: "/shorturls ", styling: "w-full text-center", buttonName: "Short Links"},
 ];
 
 const mobileMenuItemsAuth: MobileMenuItem[] = [

@@ -8,6 +8,7 @@ export type NavBarMenuItemData = {
   id: number,
   menuItemName: string,
   url: string,
+  isLoggedIn?: boolean
 };
 
 export type MobileMenuItem = {
