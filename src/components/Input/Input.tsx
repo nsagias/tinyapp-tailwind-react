@@ -7,22 +7,22 @@ export interface InputProps {
   type?: string;
   id?: string;
   value?: string;
-  changeHandler?: () => void;
-  validationHandler?: () => void;
+  changeEventHandler?: () => void;
+  focusEventHandler?: () => void;
   placeholder?: string;
 };
 
-export default function Input({classname, isValid, inValid, label, type, id, value, changeHandler, validationHandler, placeholder}: InputProps ): JSX.Element {
+export default function Input({classname, isValid, inValid, label, type, id, value, changeEventHandler, focusEventHandler, placeholder}: InputProps ): JSX.Element {
   return (
-    <div className={`${classname} ${isValid === false ? inValid : ""} `}>
-      <label htmlFor={id}>{label}</label>
+    <div className={`${classname && classname} ${isValid === false ? inValid  : ""} `}>
+      <label htmlFor={id || undefined}>{label || undefined}</label>
       <input 
-        type={type}
-        id={id}
-        value={value}
-        onChange={changeHandler}
-        onBlur={validationHandler}
-        placeholder={placeholder}
+        type={type || undefined}
+        id={id || undefined}
+        value={value || undefined}
+        onChange={changeEventHandler || undefined}
+        onBlur={focusEventHandler || undefined}
+        placeholder={placeholder || undefined}
       />
     </div>
   );
