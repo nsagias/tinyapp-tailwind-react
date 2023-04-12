@@ -7,41 +7,44 @@ export default function LoginForm({}): JSX.Element {
   const [enteredPassword, setEnteredPassword] =  useState<string>("");
 
   // Login Form Validatioin
-  const [emailIsValid, setEmailIsValid] = useState<boolean>(true);
-  const [passwordIsValid, setPasswordIsValid] = useState<boolean>(true);
-  const [formDisabled, setFormDisabled] = useState<boolean>(true);
+  const [enteredEmailTouched, setEnteredEmailTouched] = useState<boolean>(false);
+  const [enteredPasswordTouched, setEnteredPasswordTouch] = useState<boolean>(false);
+ 
+  const enteredEmailIsValid = enteredEmail.trim().length > 8;
+  const enteredPasswordIsValid = enteredPassword.trim().length > 8;
 
-console.log(formDisabled)
-  useEffect(() => {
-    // add email and password validation
-    setEmailIsValid(enteredEmail.length > 5);
-    setPasswordIsValid(enteredPassword.length > 7);
-
-    setFormDisabled(emailIsValid || passwordIsValid);
-
-  }, [enteredPassword, enteredEmail]);
+  const emailInputIsValid = !enteredEmailIsValid && enteredEmailTouched;
+  const passwordInputIsValid = !enteredPasswordIsValid && enteredPasswordTouched;
   
   const handleSubmitLogin = async (e: React.FormEvent): Promise<void>  => {
     e.preventDefault();
+    setEnteredEmailTouched(true);
+    setEnteredPasswordTouch(true);
+
+    if (!enteredEmailIsValid) return;
+    if (!enteredPasswordIsValid) return;
+
+    // Reset form
     setEnteredEmail("");
     setEnteredPassword("");
+    setEnteredEmailTouched(false);
+    setEnteredPasswordTouch(false);
   };
-
 
   const emailInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEnteredEmail(e.target.value.trim());
- 
   };
 
   const passwordInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEnteredPassword(e.target.value.trim());
   };
 
-  const emailInputFocusHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
-
+  const emailInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
+    setEnteredEmailTouched(true);
   };
-  const passwordInputFocusHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
 
+  const passwordInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
+    setEnteredPasswordTouch(true);
   };
 
 
@@ -68,6 +71,7 @@ console.log(formDisabled)
                 type="text"
                 value={enteredEmail}
                 onChange={emailInputChangeHandler}
+                onBlur={emailInputBlurHandler}
                 placeholder="Enter your email"
               />  
 
@@ -79,16 +83,17 @@ console.log(formDisabled)
                 type="password"
                 value={enteredPassword}
                 onChange={passwordInputChangeHandler}
+                onBlur={passwordInputBlurHandler}
                 placeholder="Enter your password"
               /> 
-              {!emailIsValid && (<p className="text-red italic">Please enterd a valid email</p>)}
-              {!passwordIsValid && (<p className="text-red italic">Password must have mininum length of 8 characters</p>)}
+              {emailInputIsValid  && (<p className="text-red italic">Please enterd a valid email</p>)}
+              {passwordInputIsValid && (<p className="text-red italic">Password must be min 8 characters</p>)}
             </div>
-            
+
             {/* Form button */}
             <button 
-              className={`w-full mt-5 md:width-auto flex justify-center items-center px-6 space-x-4 py-3 font-bold text-white bg-cyan rounded-full  ${formDisabled ? "hover:opacity-70" : "opacity-70"}`}
-              disabled={formDisabled}  
+              className={`w-full mt-5 md:width-auto flex justify-center items-center px-6 space-x-4 py-3 font-bold text-white bg-cyan rounded-full  ${!enteredEmailIsValid || !enteredPasswordIsValid ? "opacity-70" : "hover:opacity-70"}`}
+              disabled={!enteredEmailIsValid || !enteredPasswordIsValid}  
             >
               <span>Login</span>
             </button>
