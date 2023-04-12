@@ -5,7 +5,6 @@ export default function NotFoundPage({}): JSX.Element {
   return (
     <>
       <HeroNotFoundSection />
-      <NotFound />
     </>
   );
 }
