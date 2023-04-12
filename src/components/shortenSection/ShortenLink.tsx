@@ -29,7 +29,7 @@ export default function ShortenLink({ shortenLinks, index }: IShortLinkProps ): 
           className={`p-2 px-8 text-white ${ index && index % 2 ? "bg-darkViolet" : "bg-cyan" } rounded-lg hover:opacity-70 focus:outline-none`}
         />
         {/* Edit Button */}
-        <button><Link to={`/shorturls/${index}`}>Edit</Link></button>
+        <button className="p-2 px-10 text-white bg-yellow-500 rounded-lg hover:opacity-70 focus:outline-none"><Link to={`/shorturls/${index}`}>Edit</Link></button>
       </div>
 
 
