@@ -34,9 +34,6 @@ export default function ShortLinkSection() {
         {/* Shorten Form */}
         <ShortLinkForm />
 
-        {/* Display Shorten Links */}
-        <ShortLink shortenLinks={shortLinkData.shortLink}/>
-    
       </ShortLinkContainer>
 
     </section>
