@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 export default function RegistrationForm({}): JSX.Element {
 
   // Form Fields
-  const [firstName, setFirstName] =  useState<string>("");
-  const [lastName, setLastName] =  useState<string>("");
-  const [email, setEmail] =  useState<string>("");
-  const [password, setPassword] =  useState<string>("");
+  const [enteredFirstName, setEnteredFirstName] =  useState<string>("");
+  const [enteredLastName, setEnteredLastName] =  useState<string>("");
+  const [enteredEmail, setEnteredEmail] =  useState<string>("");
+  const [password, setEnteredPassword] =  useState<string>("");
 
   // Form Validation
   const [firstNameIsValid, setFirstNameIsValid] = useState<boolean>(false);
@@ -17,26 +17,35 @@ export default function RegistrationForm({}): JSX.Element {
 
   useEffect(() => {
     // set form state as disables if min length are not met
-    setFormDisabled(password.length < 7 || email.length < 5 || firstName.length < 3 || lastName.length < 3);
-  }, [firstName, lastName, password, email]);
+    setFormDisabled(password.length < 7 || enteredEmail.length < 5 || enteredFirstName.length < 3 || enteredLastName.length < 3);
+  }, [enteredFirstName, enteredLastName, password, enteredEmail]);
   
 
   const handleRegistration = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
+
+
+    if (true) {
+      setEnteredFirstName("");
+      setEnteredLastName("");
+      setEnteredEmail("");
+      setEnteredPassword("");
+    }
+   
   };
 
   return (
     <div className="relative flex flex-col  -mt-44 sm:m-0 m-6 space-y-10 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0">
+
       {/* Left Side Of Login Card */}
         <div className="p-6 md:p-20">
+
           {/* Top of card */}
           <h2 className="mb-5 text-4xl font-bold">Register</h2>
           <p className="max-w-sm mb-8 font-sans font-bold text-grayViolet ">Create your account.</p>
 
+
+          {/* Registration Form */}
           <form onSubmit={handleRegistration} >
 
             {/* FirstName Input */}
@@ -45,8 +54,8 @@ export default function RegistrationForm({}): JSX.Element {
               id="registration-first-name" 
               name="firstName"
               type="text"
-              value={firstName}
-              onChange={e => setFirstName(e.target.value.trim())}
+              value={enteredFirstName}
+              onChange={e => setEnteredFirstName(e.target.value.trim())}
               placeholder="Enter your first name"
             />  
 
@@ -56,8 +65,8 @@ export default function RegistrationForm({}): JSX.Element {
               id="registration-last-name"
               name="lastName"
               type="text"
-              value={lastName}
-              onChange={e => setLastName(e.target.value.trim())}
+              value={enteredLastName}
+              onChange={e => setEnteredLastName(e.target.value.trim())}
               placeholder="Enter your last name"
             />  
 
@@ -67,8 +76,8 @@ export default function RegistrationForm({}): JSX.Element {
               id="login-email" 
               name="email"
               type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value.trim())}
+              value={enteredEmail}
+              onChange={e => setEnteredEmail(e.target.value.trim())}
               placeholder="Enter your email"
             /> 
 
@@ -79,7 +88,7 @@ export default function RegistrationForm({}): JSX.Element {
               name="password"
               type="password"
               value={password}
-              onChange={e => setPassword(e.target.value.trim())}
+              onChange={e => setEnteredPassword(e.target.value.trim())}
               placeholder="Enter your password"
             /> 
 
