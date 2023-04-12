@@ -28,15 +28,17 @@ export default function RegistrationForm({}): JSX.Element {
 
   // Form is disabled
   const isFormDisabled = !firstNameInputIsValid || !lastNameInputIsValid || !emailInputIsValid || !passwordInputIsValid;
+  const enteredFormInputIsValid = !enteredFirstNameIsValid || !enteredLastNameIsValid || !enteredEmailIsValid || !enteredPasswordIsValid;
 
   // Registration Form Handler
   const handleRegistration = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
+    setEnteredFirstNameIsTouched(true);
+    setEnteredLastNameIsTouched(true);
     setEnteredEmailTouched(true);
     setEnteredPasswordTouch(true);
 
-    if (!enteredEmailIsValid) return;
-    if (!enteredPasswordIsValid) return;
+    if (!enteredFormInputIsValid) return;
 
     // Reset form
     setEnteredEmail("");
