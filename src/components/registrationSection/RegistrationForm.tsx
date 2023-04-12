@@ -1,36 +1,48 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function RegistrationForm({}): JSX.Element {
 
-  // Form Fields
+  // Registration Form Input
   const [enteredFirstName, setEnteredFirstName] =  useState<string>("");
   const [enteredLastName, setEnteredLastName] =  useState<string>("");
   const [enteredEmail, setEnteredEmail] =  useState<string>("");
-  const [password, setEnteredPassword] =  useState<string>("");
+  const [enteredPassword, setEnteredPassword] =  useState<string>("");
+
+  // Registration Form Validation
+  const [enteredFirstNameIsTouched, setEnteredFirstNameIsTouched] = useState<boolean>(false);
+  const [enteredLastNameIsTouched, setEnteredLastNameIsTouched] = useState<boolean>(false);
+  const [enteredEmailTouched, setEnteredEmailTouched] = useState<boolean>(false);
+  const [enteredPasswordTouched, setEnteredPasswordTouch] = useState<boolean>(false);
 
   // Form Validation
-  const [firstNameIsValid, setFirstNameIsValid] = useState<boolean>(false);
-  const [lastNameIsValid, setLastNameIsValid] = useState<boolean>(false);
-  const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
-  const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
-  const [formDisabled, setFormDisabled] = useState<boolean>(true);
-
-  useEffect(() => {
-    // set form state as disables if min length are not met
-    setFormDisabled(password.length < 7 || enteredEmail.length < 5 || enteredFirstName.length < 3 || enteredLastName.length < 3);
-  }, [enteredFirstName, enteredLastName, password, enteredEmail]);
+  const enteredFirstNameIsValid = enteredFirstName.trim().length > 3;
+  const enteredLastNameIsValid = enteredLastName.trim()
+  const enteredEmailIsValid = enteredEmail.trim().length > 8;
+  const enteredPasswordIsValid = enteredPassword.trim().length > 8;
   
+  // Derived Values
+  const firstNameInputIsValid = !enteredFirstNameIsValid && enteredFirstNameIsTouched;
+  const lastNameInputIsValid = !enteredLastNameIsValid && enteredLastNameIsTouched;
+  const emailInputIsValid = !enteredEmailIsValid && enteredEmailTouched;
+  const passwordInputIsValid = !enteredPasswordIsValid && enteredPasswordTouched;
 
+  // Form is disabled
+  const isFormDisabled = !firstNameInputIsValid || !lastNameInputIsValid || !emailInputIsValid || !passwordInputIsValid;
+
+  // Registration Form Handler
   const handleRegistration = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
+    setEnteredEmailTouched(true);
+    setEnteredPasswordTouch(true);
 
+    if (!enteredEmailIsValid) return;
+    if (!enteredPasswordIsValid) return;
 
-    if (true) {
-      setEnteredFirstName("");
-      setEnteredLastName("");
-      setEnteredEmail("");
-      setEnteredPassword("");
-    }
+    // Reset form
+    setEnteredEmail("");
+    setEnteredPassword("");
+    setEnteredEmailTouched(false);
+    setEnteredPasswordTouch(false);
    
   };
 
@@ -47,54 +59,62 @@ export default function RegistrationForm({}): JSX.Element {
         {/* Registration Form */}
         <form onSubmit={handleRegistration} >
 
-          {/* FirstName Input */}
-          <input
-            className={`w-full p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none md:flex`}
-            id="registration-first-name" 
-            name="firstName"
-            type="text"
-            value={enteredFirstName}
-            onChange={e => setEnteredFirstName(e.target.value.trim())}
-            placeholder="Enter your first name"
-          />  
+          {/* Login Form Control */}
+          <div className="">
 
-          {/* LastName Input */}
-          <input
-            className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none md:flex`}
-            id="registration-last-name"
-            name="lastName"
-            type="text"
-            value={enteredLastName}
-            onChange={e => setEnteredLastName(e.target.value.trim())}
-            placeholder="Enter your last name"
-          />  
+            {/* FirstName Input */}
+            <input
+              className={`w-full p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none md:flex`}
+              id="registration-first-name" 
+              name="firstName"
+              type="text"
+              value={enteredFirstName}
+              onChange={e => setEnteredFirstName(e.target.value.trim())}
+              placeholder="Enter your first name"
+            />  
 
-          {/* Email Input */}
-          <input
-            className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none`}
-            id="login-email" 
-            name="email"
-            type="email"
-            value={enteredEmail}
-            onChange={e => setEnteredEmail(e.target.value.trim())}
-            placeholder="Enter your email"
-          /> 
+            {/* LastName Input */}
+            <input
+              className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none md:flex`}
+              id="registration-last-name"
+              name="lastName"
+              type="text"
+              value={enteredLastName}
+              onChange={e => setEnteredLastName(e.target.value.trim())}
+              placeholder="Enter your last name"
+            />  
 
-          {/* Password Input */}
-          <input
-            className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none `}
-            id="login-password" 
-            name="password"
-            type="password"
-            value={password}
-            onChange={e => setEnteredPassword(e.target.value.trim())}
-            placeholder="Enter your password"
-          /> 
+            {/* Email Input */}
+            <input
+              className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none`}
+              id="login-email" 
+              name="email"
+              type="email"
+              value={enteredEmail}
+              onChange={e => setEnteredEmail(e.target.value.trim())}
+              placeholder="Enter your email"
+            /> 
 
+            {/* Password Input */}
+            <input
+              className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none `}
+              id="login-password" 
+              name="password"
+              type="password"
+              value={enteredPassword}
+              onChange={e => setEnteredPassword(e.target.value.trim())}
+              placeholder="Enter your password"
+            /> 
+
+          {!firstNameInputIsValid && (<p>First name must be min 3 characters.</p>)}
+          {!lastNameInputIsValid  && (<p>Last name must be min 3 characters.</p>)}
+          {!emailInputIsValid && (<p>Please enterd a valid email.</p>)}
+          {!passwordInputIsValid  && (<p>Password must be min 8 characters.</p>)}
+          </div> 
           {/* Form button */}
           <button 
-            className={`w-full mt-5 md:width-auto flex justify-center items-center px-6 space-x-4 py-3 font-bold text-white bg-cyan rounded-full hover:opacity-70 `}
-            disabled={formDisabled}  
+            className={`w-full mt-5 md:width-auto flex justify-center items-center px-6 space-x-4 py-3 font-bold text-white bg-cyan rounded-full  ${isFormDisabled ? "opacity-70" : "hover:opacity-70"}`}
+            disabled={isFormDisabled}  
           >
             <span>Login</span>
           </button>
