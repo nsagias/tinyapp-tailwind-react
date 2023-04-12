@@ -15,23 +15,25 @@ import RegistrationPage from "./pages/registration/RegistrationPage";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const routesAuth = [
-    {path:"/features", element:"Features"},
-    {path:"/pricing", element:"Pricing"},
-    {path:"/docs", element:"Docs"},
-    {path:"/login", element:"Login"},
-    {path:"/register", element:"RegistrationContainter"},
-    {path:"/shorturls", element:"ShortenSection", isLoggedIn: isLoggedIn},
-    {path:"/shorturls/:id", element:"ShortLinkSection", isLoggedIn: isLoggedIn},
-    {path:"/", element:"<HomeContainer", isLoggedIn: isLoggedIn }, 
-    {path:"*", element:"<NotFound"},
-  ];
+  // const routesAuthList = [
+  //   {path:"/features", element:[<FeaturesPage />], logginRequired: isLoggedIn},
+  //   {path:"/pricing", element:[<PricingPage />],logginRequired: isLoggedIn},
+  //   {path:"/docs", element:[<DocsPage />], logginRequired: isLoggedIn},
+  //   {path:"/login", element:[<LoginPage />], logginRequired: isLoggedIn},
+  //   {path:"/register", element:[<RegistrationPage />],logginRequired: isLoggedIn},
+  //   {path:"/shorturls", element:[<ShortenUrlPage />], logginRequired: isLoggedIn},
+  //   {path:"/shorturls/:id", element:[<ShortLinkPage />], logginRequired: isLoggedIn},
+  //   {path:"/", element:[<HomePage />], ilogginRequired: isLoggedIn }, 
+  //   {path:"*", element:[<NotFoundPage />], logginRequired: isLoggedIn},
+  // ];
+  // const routeAuth =  routesAuthList && Array.isArray(routesAuthList) && routesAuthList.map((route, index) => (
+  //   <Route path={`${route.path}`} element={route.element} key={index} />
+  // ));
 
   return (
     <div className="App">
       <NavBar authorized={isLoggedIn} />
         <Routes>
-        
           <Route path="/features" element={<FeaturesPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/docs" element={ <DocsPage />} />
@@ -41,7 +43,6 @@ export default function App() {
           <Route path="/shorturls/:id" element={<ShortLinkPage />}/>
           <Route path="/" element={<HomePage />} /> 
           <Route path="*" element={<NotFoundPage />} />
-
         </Routes>
       <Footer authorized={true}/>
     </div>
