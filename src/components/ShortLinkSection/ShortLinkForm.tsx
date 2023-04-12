@@ -3,7 +3,7 @@ import { validURL } from "../Utils/utils";
 
 export default function ShortLinkForm() {
 
-  const [shortLink, setShortLink] = useState<string>("");
+  const [shortLink, setShortLink] = useState<string>("http://google.com");
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
   
   const handleSubmitUpdateLink = async (e: React.FormEvent): Promise<void> => {
@@ -20,10 +20,6 @@ export default function ShortLinkForm() {
       return setErrorMessage("Please Valid Link");
     }
    
-    // setvalue to clear
-    // TODO: Axios update database here
-    // TODO: refresh screen after database is updated
-    // clear error message
     setErrorMessage("");
     setShortLink("");
   };
@@ -42,10 +38,17 @@ export default function ShortLinkForm() {
         onChange={(e) => setShortLink(e.target.value)}
       >  
       </input>
+      {/* Update Button */}
       <button
         className="px-10 py-3 text-white bg-cyan rounded-lg hover:bg-cyanLight focus:outline-none md:py-2" 
         disabled={false}
-        >Shorten Link</button>
+        >Update</button>
+
+      {/* Delete Button */}
+      <button
+        className="px-10 py-3 text-white bg-red rounded-lg hover:bg-cyanLight focus:outline-none md:py-2" 
+        disabled={false}
+        >Delete</button>
         
       {/* Error Message */}
       { errorMessage && (
