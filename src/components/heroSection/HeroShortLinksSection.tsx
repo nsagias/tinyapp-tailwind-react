@@ -1,35 +1,44 @@
+import { Link } from "react-router-dom";
 import HeroButtonsContainer from "./components/HeroButtonsContainer";
 import HeroContainer from "./components/HeroContainer";
-import HeroContentContainer from "./components/HeroContentContainer";
+
 import HeroImage from "./components/HeroLandingPageImage";
+import HeroContentContainerShortLink from "./components/HeroContentContainerShortLink";
+import HeroContainerShortLink from "./components/HeroContainerShortLink";
 
 export default function HeroShortLinksSection({}):JSX.Element {
   return (
     <section id="hero">
-      {/* Hero Container */}
-        <HeroContainer>
+      {/* Hero Container ShortLink */}
+        <HeroContainerShortLink>
+
 
           {/* Content Container */}
-          <HeroContentContainer>
+          <HeroContentContainerShortLink>
+
+    
             {/* Title */}
             <>
-              <h1 className="text-5xl font-bold text-center lg:text-6xl lg:max-w-md lg:text-left">Your short links host</h1>
-              {/* Marketing  brangind text*/}
-              <p className="text-2xl text-center text-gray-400 lg:max-w-md lg:text-left">Build your brand and get detailed insights on how your links are ranking.</p>
+            <h3 className="text-5xl font-bold text-center lg:text-6xl">Link Stats</h3>
+            {/* Marketing  brangind text*/}
+            <p className="text-2xl text-center text-gray-400 ">Click count: 232322</p>
             </>
 
             {/* Button */}
             <HeroButtonsContainer>
             {/* TODO ADD onClick and routing */}
-              <a href="# " className="py-5 px-10 text-2xl font-bold text-white bg-cyan rounded-full lg:py-4 hover:opacity-70">Get Started</a>
+        
+            <Link to={"/shorturls"} className="py-5 px-10 text-xl font-bold text-white bg-cyan rounded-full lg:py-4 hover:opacity-70">go to short urls</Link>
             </HeroButtonsContainer>
            
-          </HeroContentContainer>
+
+          </HeroContentContainerShortLink>
 
           {/* Hero Image */}
           <HeroImage />
+        </HeroContainerShortLink>
           
-        </HeroContainer>
+     
     </section>
   );
 }
