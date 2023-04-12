@@ -2,10 +2,17 @@ import { useEffect, useState } from "react";
 
 export default function RegistrationForm({}): JSX.Element {
 
+  // Form Fields
   const [firstName, setFirstName] =  useState<string>("");
   const [lastName, setLastName] =  useState<string>("");
   const [email, setEmail] =  useState<string>("");
   const [password, setPassword] =  useState<string>("");
+
+  // Form Validation
+  const [firstNameIsValid, setFirstNameIsValid] = useState<boolean>(false);
+  const [lastNameIsValid, setLastNameIsValid] = useState<boolean>(false);
+  const [emailIsValid, setEmailIsValid] = useState<boolean>(false);
+  const [passwordIsValid, setPasswordIsValid] = useState<boolean>(false);
   const [formDisabled, setFormDisabled] = useState<boolean>(true);
 
   useEffect(() => {

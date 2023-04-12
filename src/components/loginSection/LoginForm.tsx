@@ -4,7 +4,11 @@ export default function LoginForm({}): JSX.Element {
 
   const [email, setEmail] =  useState<string>("");
   const [password, setPassword] =  useState<string>("");
+  
   const [formDisabled, setFormDisabled] = useState<boolean>(true);
+  const [emailIsValid, setEmailIsValid] = useState<boolean>();
+  const [passwordIsValid, setPasswordIsValid] = useState<boolean>();
+
 
   useEffect(() => {
     setFormDisabled(password.length < 7 || email.length < 5)
@@ -19,7 +23,9 @@ export default function LoginForm({}): JSX.Element {
   return (
     <div className="relative flex flex-col m-6 -mt-80 space-y-10 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0 ">
       {/* Left Side Of Login Card */}
+
         <div className="p-6 md:p-20">
+
           {/* Top of card */}
           <h2 className="mb-5 text-4xl font-bold">Login</h2>
           <p className="max-w-sm mb-8 font-sans font-bold text-grayViolet">Login to your account.</p>
