@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function LoginForm({}): JSX.Element {
 
@@ -10,12 +10,15 @@ export default function LoginForm({}): JSX.Element {
   const [enteredEmailTouched, setEnteredEmailTouched] = useState<boolean>(false);
   const [enteredPasswordTouched, setEnteredPasswordTouch] = useState<boolean>(false);
  
+  // Form Validation
   const enteredEmailIsValid = enteredEmail.trim().length > 8;
   const enteredPasswordIsValid = enteredPassword.trim().length > 8;
-
+  
+  // Derived Values
   const emailInputIsValid = !enteredEmailIsValid && enteredEmailTouched;
   const passwordInputIsValid = !enteredPasswordIsValid && enteredPasswordTouched;
   
+  // Login Form Handler
   const handleSubmitLogin = async (e: React.FormEvent): Promise<void>  => {
     e.preventDefault();
     setEnteredEmailTouched(true);
@@ -86,8 +89,8 @@ export default function LoginForm({}): JSX.Element {
                 onBlur={passwordInputBlurHandler}
                 placeholder="Enter your password"
               /> 
-              {emailInputIsValid  && (<p className="text-red italic">Please enterd a valid email</p>)}
-              {passwordInputIsValid && (<p className="text-red italic">Password must be min 8 characters</p>)}
+              {emailInputIsValid  && (<p className="text-red italic">Please enterd a valid emai.l</p>)}
+              {passwordInputIsValid && (<p className="text-red italic">Password must be min 8 characters.</p>)}
             </div>
 
             {/* Form button */}
