@@ -2,6 +2,7 @@ import { useState } from "react";
 import useInput from "../../hooks/use-input";
 
 export default function RegistrationForm({}): JSX.Element {
+  // First Name Input
   const {
     inputValue: enteredFirstName,
     inputValueIsValid: enteredFirstNameIsValid,
@@ -11,6 +12,7 @@ export default function RegistrationForm({}): JSX.Element {
     inputValueReset: firstNameValueReset
   } = useInput( (value: string) => value.trim().length >= 3 );
 
+  // Last Name Input
   const {
     inputValue: enteredLastName,
     inputValueIsValid: enteredLastNameIsValid ,
@@ -20,62 +22,42 @@ export default function RegistrationForm({}): JSX.Element {
     inputValueReset: lastNameValueReset
   } = useInput( (value: string) => value.trim().length >= 3 );
 
+  // Email Input
   const {
     inputValue: enteredEmail,
     inputValueIsValid: enteredEmailIsValid,
     hasError: emailInputIsValid,
     inputChangeHandler: emailInputChangeHandler,
     inputBlurHandler: emailInputBlurHandler,
-    inputValueReset: emailResetInput
-
+    inputValueReset: emaiValueReset
   } = useInput((value: string) => 
     value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) && value.trim().length > 5
   );
 
-  // Registration Form Input
-  const [enteredPassword, setEnteredPassword] =  useState<string>("");
-
-  // Registration Form Validation
-  const [enteredPasswordTouched, setEnteredPasswordTouch] = useState<boolean>(false);
-
-  // Form Validation
-  // const enteredFirstNameIsValid = enteredFirstName.trim().length >= 3;
-  const enteredPasswordIsValid = enteredPassword.trim().length >= 8;
-  
-  // Derived Values
-  const passwordInputIsValid = !enteredPasswordIsValid && enteredPasswordTouched;
+  // Password Input
+  const {
+    inputValue: enteredPassword,
+    inputValueIsValid: enteredPasswordIsValid,
+    hasError: passwordInputIsValid,
+    inputChangeHandler: passwordInputChangeHandler,
+    inputBlurHandler: passwordInputBlurHandler,
+    inputValueReset: passwordValueReset
+  } = useInput((value: string) => value.trim().length >= 8);
 
   // Form is disabled
   const isFormDisabled = !firstNameInputIsValid || !lastNameInputIsValid || !emailInputIsValid || !passwordInputIsValid;
   const enteredFormInputIsValid = !enteredFirstNameIsValid || !enteredLastNameIsValid || !enteredEmailIsValid || !enteredPasswordIsValid;
 
-
- 
   // Registration Form Handler
   const handleRegistration = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault(); 
-    setEnteredPasswordTouch(true);
-
     if (enteredFormInputIsValid) return;
 
     // Reset form
-    setEnteredPassword("");
-    setEnteredPasswordTouch(false);
-
     firstNameValueReset();
     lastNameValueReset();
-    emailResetInput();
-  };
-
-  
-  
-  const passwordInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setEnteredPassword(e.target.value.trim());
-  };
-
-  
-  const passwordInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
-    setEnteredPasswordTouch(true);
+    emaiValueReset();
+    passwordValueReset();
   };
 
   return (
