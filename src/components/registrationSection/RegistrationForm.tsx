@@ -1,27 +1,33 @@
 import { useState } from "react";
+import useInput from "../../hooks/use-input";
 
 export default function RegistrationForm({}): JSX.Element {
+  const {
+    inputValue: enteredFirstName,
+    hasError: firstNameInputIsValid,
+    inputValueIsValid: enteredFirstNameIsValid,
+    inputChangeHandler: firstNamInputChangeHandler,
+    inputBlurHandler: firstNameInputBlurHandler,
+    inputValueReset: firstNameValueReset
+  } = useInput( (value: string) => value.trim().length >= 3 );
 
   // Registration Form Input
-  const [enteredFirstName, setEnteredFirstName] =  useState<string>("");
   const [enteredLastName, setEnteredLastName] =  useState<string>("");
   const [enteredEmail, setEnteredEmail] =  useState<string>("");
   const [enteredPassword, setEnteredPassword] =  useState<string>("");
 
   // Registration Form Validation
-  const [enteredFirstNameIsTouched, setEnteredFirstNameIsTouched] = useState<boolean>(false);
   const [enteredLastNameIsTouched, setEnteredLastNameIsTouched] = useState<boolean>(false);
   const [enteredEmailTouched, setEnteredEmailTouched] = useState<boolean>(false);
   const [enteredPasswordTouched, setEnteredPasswordTouch] = useState<boolean>(false);
 
   // Form Validation
-  const enteredFirstNameIsValid = enteredFirstName.trim().length >= 3;
+  // const enteredFirstNameIsValid = enteredFirstName.trim().length >= 3;
   const enteredLastNameIsValid = enteredLastName.trim().length >= 3;
   const enteredEmailIsValid = enteredEmail.trim().length >= 7 && enteredEmail.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
   const enteredPasswordIsValid = enteredPassword.trim().length >= 8;
   
   // Derived Values
-  const firstNameInputIsValid = !enteredFirstNameIsValid && enteredFirstNameIsTouched;
   const lastNameInputIsValid = !enteredLastNameIsValid && enteredLastNameIsTouched;
   const emailInputIsValid = !enteredEmailIsValid && enteredEmailTouched;
   const passwordInputIsValid = !enteredPasswordIsValid && enteredPasswordTouched;
@@ -30,33 +36,34 @@ export default function RegistrationForm({}): JSX.Element {
   const isFormDisabled = !firstNameInputIsValid || !lastNameInputIsValid || !emailInputIsValid || !passwordInputIsValid;
   const enteredFormInputIsValid = !enteredFirstNameIsValid || !enteredLastNameIsValid || !enteredEmailIsValid || !enteredPasswordIsValid;
 
+
+ 
   // Registration Form Handler
   const handleRegistration = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    setEnteredFirstNameIsTouched(true);
+ 
     setEnteredLastNameIsTouched(true);
     setEnteredEmailTouched(true);
     setEnteredPasswordTouch(true);
 
-    console.log("is Form valid", enteredFormInputIsValid)
     if (enteredFormInputIsValid) return;
 
     // Reset form
-    setEnteredFirstName("");
+    // setEnteredFirstName("");
     setEnteredLastName("")
     setEnteredEmail("");
     setEnteredPassword("");
 
-    setEnteredFirstNameIsTouched(false);
+    firstNameValueReset()
     setEnteredLastNameIsTouched(false);
     setEnteredEmailTouched(false);
     setEnteredPasswordTouch(false);
   };
 
   // Change Handlers
-  const firstNamInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setEnteredFirstName(e.target.value.trim());
-  };
+  // const firstNamInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  //   // setEnteredFirstName(e.target.value.trim());
+  // };
   const lastNameInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEnteredLastName(e.target.value.trim());
   };
@@ -69,9 +76,9 @@ export default function RegistrationForm({}): JSX.Element {
 
 
   // Blur/Focus handlers
-  const firstNameInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
-    setEnteredFirstNameIsTouched(true);
-  };
+  // const firstNameInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
+  //   setEnteredFirstNameIsTouched(true);
+  // };
   const lastNamedInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
     setEnteredLastNameIsTouched(true);
   };
@@ -146,10 +153,10 @@ export default function RegistrationForm({}): JSX.Element {
               placeholder="Enter your password"
             /> 
 
-          {firstNameInputIsValid && (<p>First name must be min 3 characters.</p>)}
-          {lastNameInputIsValid  && (<p>Last name must be min 3 characters.</p>)}
-          {emailInputIsValid && (<p>Please enterd a valid email.</p>)}
-          {passwordInputIsValid  && (<p>Password must be min 8 characters.</p>)}
+          {firstNameInputIsValid && (<p className="text-red italic">First name must be min 3 characters.</p>)}
+          {lastNameInputIsValid  && (<p className="text-red italic">Last name must be min 3 characters.</p>)}
+          {emailInputIsValid && (<p className="text-red italic">Please enterd a valid email.</p>)}
+          {passwordInputIsValid  && (<p className="text-red italic">Password must be min 8 characters.</p>)}
           </div> 
           {/* Form button */}
           <button 
