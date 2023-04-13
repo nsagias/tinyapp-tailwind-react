@@ -15,10 +15,10 @@ export default function RegistrationForm({}): JSX.Element {
   const [enteredPasswordTouched, setEnteredPasswordTouch] = useState<boolean>(false);
 
   // Form Validation
-  const enteredFirstNameIsValid = enteredFirstName.trim().length > 3;
-  const enteredLastNameIsValid = enteredLastName.trim()
-  const enteredEmailIsValid = enteredEmail.trim().length > 8;
-  const enteredPasswordIsValid = enteredPassword.trim().length > 8;
+  const enteredFirstNameIsValid = enteredFirstName.trim().length >= 3;
+  const enteredLastNameIsValid = enteredLastName.trim().length >= 3;
+  const enteredEmailIsValid = enteredEmail.trim().length >= 8;
+  const enteredPasswordIsValid = enteredPassword.trim().length >= 8;
   
   // Derived Values
   const firstNameInputIsValid = !enteredFirstNameIsValid && enteredFirstNameIsTouched;
@@ -38,14 +38,48 @@ export default function RegistrationForm({}): JSX.Element {
     setEnteredEmailTouched(true);
     setEnteredPasswordTouch(true);
 
-    if (!enteredFormInputIsValid) return;
+    console.log("is Form valid", enteredFormInputIsValid)
+    if (enteredFormInputIsValid) return;
 
     // Reset form
+    setEnteredFirstName("");
+    setEnteredLastName("")
     setEnteredEmail("");
     setEnteredPassword("");
+
+    setEnteredFirstNameIsTouched(false);
+    setEnteredLastNameIsTouched(false);
     setEnteredEmailTouched(false);
     setEnteredPasswordTouch(false);
-   
+  };
+
+  // Change Handlers
+  const firstNamInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setEnteredFirstName(e.target.value.trim());
+  };
+  const lastNameInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setEnteredLastName(e.target.value.trim());
+  };
+  const emailInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setEnteredEmail(e.target.value.trim());
+  };
+  const passwordInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setEnteredPassword(e.target.value.trim());
+  };
+
+
+  // Blur/Focus handlers
+  const firstNameInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
+    setEnteredFirstNameIsTouched(true);
+  };
+  const lastNamedInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
+    setEnteredLastNameIsTouched(true);
+  };
+  const emailInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
+    setEnteredEmailTouched(true);
+  };
+  const passwordInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
+    setEnteredPasswordTouch(true);
   };
 
   return (
@@ -71,7 +105,8 @@ export default function RegistrationForm({}): JSX.Element {
               name="firstName"
               type="text"
               value={enteredFirstName}
-              onChange={e => setEnteredFirstName(e.target.value.trim())}
+              onChange={firstNamInputChangeHandler}
+              onBlur={firstNameInputBlurHandler}
               placeholder="Enter your first name"
             />  
 
@@ -82,7 +117,8 @@ export default function RegistrationForm({}): JSX.Element {
               name="lastName"
               type="text"
               value={enteredLastName}
-              onChange={e => setEnteredLastName(e.target.value.trim())}
+              onChange={lastNameInputChangeHandler}
+              onBlur={lastNamedInputBlurHandler}
               placeholder="Enter your last name"
             />  
 
@@ -91,9 +127,10 @@ export default function RegistrationForm({}): JSX.Element {
               className={`w-full p-3 mt-2 border-2 rounded-lg placeholder-yellow-500 focus:outline-none`}
               id="login-email" 
               name="email"
-              type="email"
+              type="text"
               value={enteredEmail}
-              onChange={e => setEnteredEmail(e.target.value.trim())}
+              onChange={emailInputChangeHandler}
+              onBlur={emailInputBlurHandler}
               placeholder="Enter your email"
             /> 
 
@@ -104,21 +141,22 @@ export default function RegistrationForm({}): JSX.Element {
               name="password"
               type="password"
               value={enteredPassword}
-              onChange={e => setEnteredPassword(e.target.value.trim())}
+              onChange={passwordInputChangeHandler}
+              onBlur={passwordInputBlurHandler}
               placeholder="Enter your password"
             /> 
 
-          {!firstNameInputIsValid && (<p>First name must be min 3 characters.</p>)}
-          {!lastNameInputIsValid  && (<p>Last name must be min 3 characters.</p>)}
-          {!emailInputIsValid && (<p>Please enterd a valid email.</p>)}
-          {!passwordInputIsValid  && (<p>Password must be min 8 characters.</p>)}
+          {firstNameInputIsValid && (<p>First name must be min 3 characters.</p>)}
+          {lastNameInputIsValid  && (<p>Last name must be min 3 characters.</p>)}
+          {emailInputIsValid && (<p>Please enterd a valid email.</p>)}
+          {passwordInputIsValid  && (<p>Password must be min 8 characters.</p>)}
           </div> 
           {/* Form button */}
           <button 
-            className={`w-full mt-5 md:width-auto flex justify-center items-center px-6 space-x-4 py-3 font-bold text-white bg-cyan rounded-full  ${isFormDisabled ? "opacity-70" : "hover:opacity-70"}`}
-            disabled={isFormDisabled}  
+            className={`w-full mt-5 md:width-auto flex justify-center items-center px-6 space-x-4 py-3 font-bold text-white bg-cyan rounded-full  ${!isFormDisabled ? "opacity-70" : "hover:opacity-70"}`}
+            disabled={!isFormDisabled}  
           >
-            <span>Login</span>
+            <span>Sign Up</span>
           </button>
         </form>
       </div>

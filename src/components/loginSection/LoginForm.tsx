@@ -38,7 +38,6 @@ export default function LoginForm({}): JSX.Element {
   const emailInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEnteredEmail(e.target.value.trim());
   };
-
   const passwordInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEnteredPassword(e.target.value.trim());
   };
@@ -48,7 +47,6 @@ export default function LoginForm({}): JSX.Element {
   const emailInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
     setEnteredEmailTouched(true);
   };
-
   const passwordInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
     setEnteredPasswordTouch(true);
   };
