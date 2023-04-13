@@ -2,8 +2,8 @@ import { useState } from "react";
 
 export interface IUseInputHook {
   value: string;
-  enteredValueTouched: boolean;
-  enteredValueIsValid: boolean;
+  inputValueTouched: boolean;
+  inputValueIsValid: boolean;
   hasError: boolean;
   inputChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputBlurHandler: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -14,16 +14,16 @@ export interface IUseInputHook {
 export default function useInput (validateInputValue?: any): IUseInputHook {
 
   // Input entered value state
-  const [enteredValue, setEnteredValue] =  useState<string>("");
+  const [inputValue, setEnteredValue] =  useState<string>("");
   
   // Input entered value touch state
-  const [enteredValueTouched, setEnteredValueTouched] = useState<boolean>(false);
+  const [inputValueTouched, setEnteredValueTouched] = useState<boolean>(false);
 
   // Input validation
-  const enteredValueIsValid: boolean= validateInputValue(enteredValue);
+  const inputValueIsValid: boolean= validateInputValue(inputValue);
 
   // Input has error
-  const hasError = !enteredValue && enteredValueTouched;
+  const hasError = !inputValue && inputValueTouched;
 
   // Change Handler
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -41,11 +41,10 @@ export default function useInput (validateInputValue?: any): IUseInputHook {
     setEnteredValueTouched(false);
   }
 
-
   return {
-    value: enteredValue,
-    enteredValueTouched,
-    enteredValueIsValid,
+    value: inputValue,
+    inputValueTouched,
+    inputValueIsValid,
     hasError,
     inputChangeHandler,
     inputBlurHandler,
