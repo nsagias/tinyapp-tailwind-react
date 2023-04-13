@@ -20,7 +20,7 @@ export default function LoginForm({}): JSX.Element {
     inputChangeHandler: passwordInputChangeHandler,
     inputBlurHandler: passwordInputBlurHandler,
     inputValueReset:  passswordResetInput
-  } = useInput( (value: string) => value.trim().length >= 8);
+  } = useInput( (value: string) => value.trim().length >= 8 );
   
   // Login Form Handler
   const handleSubmitLogin = async (e: React.FormEvent): Promise<void>  => {

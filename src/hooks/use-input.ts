@@ -2,14 +2,14 @@ import { useState } from "react";
 
 export interface IUseInputHook {
   inputValue: string;
-  inputValueIsValid: boolean;
   hasError: boolean;
+  inputValueIsValid: boolean;
   inputChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputBlurHandler: () => void;
   inputValueReset: () => void;
 };
 
-export default function useInput (validateInputValue?: any): IUseInputHook {
+export default function useInput (validateInputValue?: any):  IUseInputHook {
   // Input entered value state
   const [inputValue, setEnteredValue] =  useState<string>("");
   
