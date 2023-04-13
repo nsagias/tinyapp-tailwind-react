@@ -1,56 +1,68 @@
 import { useState } from "react";
+import useInput from "../../hooks/use-input";
 
 export default function LoginForm({}): JSX.Element {
 
+ const {
+  value: enteredEmail,
+  hasError: emailInputIsValid,
+  inputValueIsValid: enteredEmailIsValid,
+  inputChangeHandler: emailInputChangeHandler,
+  inputBlurHandler: emailInputBlurHandler,
+  inputValueReset: emailResetInput,
+} = useInput( (
+  value: string) => value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) && value.trim().length > 5
+);
+//  } = useInput( (value: string) => value.trim().length > 5);
+
   // Login Form Input
-  const [enteredEmail, setEnteredEmail] =  useState<string>("");
+  // const [enteredEmail, setEnteredEmail] =  useState<string>("");
   const [enteredPassword, setEnteredPassword] =  useState<string>("");
 
   // Login Form Validatioin
-  const [enteredEmailTouched, setEnteredEmailTouched] = useState<boolean>(false);
+  // const [enteredEmailTouched, setEnteredEmailTouched] = useState<boolean>(false);
   const [enteredPasswordTouched, setEnteredPasswordTouch] = useState<boolean>(false);
  
   // Form Validation
-  const enteredEmailIsValid = enteredEmail.trim().length > 7 && enteredEmail.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+  // const enteredEmailIsValid = enteredEmail.trim().length > 7 && enteredEmail.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
   const enteredPasswordIsValid = enteredPassword.trim().length > 8;
   
   // Derived Values
-  const emailInputIsValid = !enteredEmailIsValid && enteredEmailTouched;
+  // const emailInputIsValid = !enteredEmailIsValid && enteredEmailTouched;
   const passwordInputIsValid = !enteredPasswordIsValid && enteredPasswordTouched;
   
   // Login Form Handler
   const handleSubmitLogin = async (e: React.FormEvent): Promise<void>  => {
     e.preventDefault();
-    setEnteredEmailTouched(true);
     setEnteredPasswordTouch(true);
 
     if (!enteredEmailIsValid) return;
     if (!enteredPasswordIsValid) return;
 
     // Reset form
-    setEnteredEmail("");
+    emailResetInput();
     setEnteredPassword("");
-    setEnteredEmailTouched(false);
     setEnteredPasswordTouch(false);
   };
 
   // Change Handlers
-  const emailInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setEnteredEmail(e.target.value.trim());
-  };
+  // const emailInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  //   setEnteredEmail(e.target.value.trim());
+  // };
   const passwordInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEnteredPassword(e.target.value.trim());
   };
 
 
   // Blur/Focus handlers
-  const emailInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
-    setEnteredEmailTouched(true);
-  };
+  // const emailInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
+  //   setEnteredEmailTouched(true);
+  // };
   const passwordInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
     setEnteredPasswordTouch(true);
   };
 
+  console.log("is this valid",emailInputIsValid)
 
   return (
     <div className="relative flex flex-col m-6 -mt-80 space-y-10 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0 ">
@@ -90,7 +102,7 @@ export default function LoginForm({}): JSX.Element {
                 onBlur={passwordInputBlurHandler}
                 placeholder="Enter your password"
               /> 
-              {emailInputIsValid  && (<p className="text-red italic">Please enterd a valid emai.l</p>)}
+              {emailInputIsValid  && (<p className="text-red italic">Please enterd a valid email.</p>)}
               {passwordInputIsValid && (<p className="text-red italic">Password must be min 8 characters.</p>)}
             </div>
 
