@@ -1,9 +1,17 @@
 import { useState } from "react";
 
+export interface IUseInputHook {
+  value: string;
+  enteredValueTouched: boolean;
+  enteredValueIsValid: any;
+  hasError: boolean;
+  inputChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputBlurHandler: (e: React.FocusEvent<HTMLInputElement>) => void;
+};
 
-export default function useInput (validateValues: any) {
 
-  
+export default function useInput (validateInputValue?: any): IUseInputHook {
+
   // Input entered value state
   const [enteredValue, setEnteredValue] =  useState<string>("");
   
@@ -11,29 +19,29 @@ export default function useInput (validateValues: any) {
   const [enteredValueTouched, setEnteredValueTouched] = useState<boolean>(false);
 
   // Input validation
-  const enteredValueIsValid = enteredValue.trim().length > 7 && enteredValue.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+  const enteredValueIsValid = validateInputValue(enteredValue);
 
   // Input has error
   const hasError = !enteredValue && enteredValueTouched;
 
   // Change Handler
-  const valueInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setEnteredValue(e.target.value.trim());
+  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setEnteredValue(e.target.value);
   };
   // Blur/Focus handler
 
-  const emailInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
+  const inputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
     setEnteredValueTouched(true);
   };
 
 
   return {
-    enteredValue,
+    value: enteredValue,
     enteredValueTouched,
     enteredValueIsValid,
     hasError,
-    valueInputChangeHandler,
-    emailInputBlurHandler
+    inputChangeHandler,
+    inputBlurHandler
   };
 
 }
