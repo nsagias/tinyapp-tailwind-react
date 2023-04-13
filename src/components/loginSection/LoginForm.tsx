@@ -11,7 +11,7 @@ export default function LoginForm({}): JSX.Element {
   const [enteredPasswordTouched, setEnteredPasswordTouch] = useState<boolean>(false);
  
   // Form Validation
-  const enteredEmailIsValid = enteredEmail.trim().length > 8;
+  const enteredEmailIsValid = enteredEmail.trim().length > 7 && enteredEmail.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
   const enteredPasswordIsValid = enteredPassword.trim().length > 8;
   
   // Derived Values

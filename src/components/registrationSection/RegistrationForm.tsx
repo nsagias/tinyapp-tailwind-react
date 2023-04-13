@@ -17,7 +17,7 @@ export default function RegistrationForm({}): JSX.Element {
   // Form Validation
   const enteredFirstNameIsValid = enteredFirstName.trim().length >= 3;
   const enteredLastNameIsValid = enteredLastName.trim().length >= 3;
-  const enteredEmailIsValid = enteredEmail.trim().length >= 8;
+  const enteredEmailIsValid = enteredEmail.trim().length >= 7 && enteredEmail.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
   const enteredPasswordIsValid = enteredPassword.trim().length >= 8;
   
   // Derived Values
