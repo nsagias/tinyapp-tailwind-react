@@ -11,24 +11,30 @@ export default function RegistrationForm({}): JSX.Element {
     inputValueReset: firstNameValueReset
   } = useInput( (value: string) => value.trim().length >= 3 );
 
+  const {
+    inputValue: enteredLastName,
+    hasError: lastNameInputIsValid,
+    inputValueIsValid: enteredLastNameIsValid ,
+    inputChangeHandler: lastNameInputChangeHandler,
+    inputBlurHandler: lastNamedInputBlurHandler,
+    inputValueReset: lastNameValueReset
+
+  } = useInput( (value: string) => value.trim().length >= 3 );
+
   // Registration Form Input
-  const [enteredLastName, setEnteredLastName] =  useState<string>("");
   const [enteredEmail, setEnteredEmail] =  useState<string>("");
   const [enteredPassword, setEnteredPassword] =  useState<string>("");
 
   // Registration Form Validation
-  const [enteredLastNameIsTouched, setEnteredLastNameIsTouched] = useState<boolean>(false);
   const [enteredEmailTouched, setEnteredEmailTouched] = useState<boolean>(false);
   const [enteredPasswordTouched, setEnteredPasswordTouch] = useState<boolean>(false);
 
   // Form Validation
   // const enteredFirstNameIsValid = enteredFirstName.trim().length >= 3;
-  const enteredLastNameIsValid = enteredLastName.trim().length >= 3;
   const enteredEmailIsValid = enteredEmail.trim().length >= 7 && enteredEmail.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
   const enteredPasswordIsValid = enteredPassword.trim().length >= 8;
   
   // Derived Values
-  const lastNameInputIsValid = !enteredLastNameIsValid && enteredLastNameIsTouched;
   const emailInputIsValid = !enteredEmailIsValid && enteredEmailTouched;
   const passwordInputIsValid = !enteredPasswordIsValid && enteredPasswordTouched;
 
@@ -42,7 +48,7 @@ export default function RegistrationForm({}): JSX.Element {
   const handleRegistration = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
  
-    setEnteredLastNameIsTouched(true);
+  
     setEnteredEmailTouched(true);
     setEnteredPasswordTouch(true);
 
@@ -50,23 +56,23 @@ export default function RegistrationForm({}): JSX.Element {
 
     // Reset form
     // setEnteredFirstName("");
-    setEnteredLastName("")
+    // setEnteredLastName("")
     setEnteredEmail("");
     setEnteredPassword("");
 
-    firstNameValueReset()
-    setEnteredLastNameIsTouched(false);
     setEnteredEmailTouched(false);
     setEnteredPasswordTouch(false);
+    firstNameValueReset();
+    lastNameValueReset();
   };
 
   // Change Handlers
   // const firstNamInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
   //   // setEnteredFirstName(e.target.value.trim());
   // };
-  const lastNameInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setEnteredLastName(e.target.value.trim());
-  };
+  // const lastNameInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  //   // setEnteredLastName(e.target.value.trim());
+  // };
   const emailInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEnteredEmail(e.target.value.trim());
   };
@@ -79,9 +85,9 @@ export default function RegistrationForm({}): JSX.Element {
   // const firstNameInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
   //   setEnteredFirstNameIsTouched(true);
   // };
-  const lastNamedInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
-    setEnteredLastNameIsTouched(true);
-  };
+  // const lastNamedInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
+  //   setEnteredLastNameIsTouched(true);
+  // };
   const emailInputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
     setEnteredEmailTouched(true);
   };
