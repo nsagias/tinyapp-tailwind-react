@@ -7,6 +7,7 @@ export interface IUseInputHook {
   hasError: boolean;
   inputChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputBlurHandler: (e: React.FocusEvent<HTMLInputElement>) => void;
+  inputValueReset: () => void;
 };
 
 
@@ -28,11 +29,18 @@ export default function useInput (validateInputValue?: any): IUseInputHook {
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEnteredValue(e.target.value.trim());
   };
-  // Blur/Focus handler
 
+  // Blur/Focus handle
   const inputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
     setEnteredValueTouched(true);
   };
+
+  // Reset values
+  const inputValueReset = (): void => {
+    setEnteredValue("");
+    setEnteredValueTouched(false);
+  }
+
 
   return {
     value: enteredValue,
@@ -40,7 +48,8 @@ export default function useInput (validateInputValue?: any): IUseInputHook {
     enteredValueIsValid,
     hasError,
     inputChangeHandler,
-    inputBlurHandler
+    inputBlurHandler,
+    inputValueReset
   };
 
 }
