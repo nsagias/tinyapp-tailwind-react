@@ -1,17 +1,15 @@
 import { useState } from "react";
 
 export interface IUseInputHook {
-  value: string;
+  inputValue: string;
   inputValueIsValid: boolean;
   hasError: boolean;
   inputChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  inputBlurHandler: (e: React.FocusEvent<HTMLInputElement>) => void;
+  inputBlurHandler: () => void;
   inputValueReset: () => void;
 };
 
-
 export default function useInput (validateInputValue?: any): IUseInputHook {
-
   // Input entered value state
   const [inputValue, setEnteredValue] =  useState<string>("");
   
@@ -20,7 +18,6 @@ export default function useInput (validateInputValue?: any): IUseInputHook {
 
   // Input validation
   const inputValueIsValid: boolean = validateInputValue(inputValue);
-
 
   // Input has error
   const hasError = !inputValueIsValid && inputValueTouched;
@@ -31,7 +28,7 @@ export default function useInput (validateInputValue?: any): IUseInputHook {
   };
 
   // Blur/Focus handle
-  const inputBlurHandler = (e: React.FocusEvent<HTMLInputElement> ): void => {
+  const inputBlurHandler = (): void => {
     setEnteredValueTouched(true);
   };
 
@@ -42,7 +39,7 @@ export default function useInput (validateInputValue?: any): IUseInputHook {
   }
 
   return {
-    value: inputValue,
+    inputValue,
     inputValueIsValid,
     hasError,
     inputChangeHandler,
