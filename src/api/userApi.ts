@@ -7,7 +7,7 @@ const userApi: AxiosInstance = axios.create({
 });
 
 
-export const registerUser = async (userData: RegisterUser): Promise< RegisterUserSuccessResponse| UserErrorResponse> => {
+export const registerUser = async (userData: RegisterUser): Promise<RegisterUserSuccessResponse| UserErrorResponse> => {
   const response = await userApi.post("/register", userData);
   return response.data;
 };
