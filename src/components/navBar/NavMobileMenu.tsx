@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MobileMenuItem } from "../../types/NavBar";
+import { MobileMenuItem } from "../../types/components/NavBar";
 
 export default function NavMobileMenu({ linkURL, styling, buttonName }: MobileMenuItem): JSX.Element {
   return (

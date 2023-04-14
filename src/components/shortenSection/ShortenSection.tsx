@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ShortLinkData } from "../../types/ShortLinks";
+import { ShortLinkData } from "../../types/components/ShortLinks";
 import ShortenLink from "./ShortenLink";
 import ShortenForm from "./ShortenForm";
 import ShortenSectionContainer from "./ShortenSectionContainer";

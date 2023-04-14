@@ -7,7 +7,7 @@ import NavBarLeft from "./NavBarLeft";
 import NavBarContainer from "./NavBarContainer";
 import NavLogo from "./NavLogo";
 import NavButtonHamburger from "./NavButtonHamburger";
-import { MobileMenuItem, NavBarMenuItemData } from "../../types/NavBar";
+import { MobileMenuItem, NavBarMenuItemData } from "../../types/components/NavBar";
 import NavMobileMenuContainer from "./NavMobileMenuContainer";
 import NavMobileMenu from "./NavMobileMenu";
 

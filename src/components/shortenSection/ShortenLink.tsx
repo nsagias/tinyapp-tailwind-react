@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IShortenLinkProps as IShortLinkProps } from "../../types/ShortLinks";
+import { IShortenLinkProps as IShortLinkProps } from "../../types/components/ShortLinks";
 import CopyToClipboardButton from "../buttons/CopyToClipboardButton";
 import { Link } from "react-router-dom";
 
