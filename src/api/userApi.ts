@@ -7,20 +7,20 @@ const userApi: AxiosInstance = axios.create({
 });
 
 
-export const registerUser = async (userData: RegisterUser): Promise<RegisterUserSuccessResponse| UserErrorResponse> => {
-  const response = await userApi.post("/register", userData);
+export const registerUser = async (params: RegisterUser): Promise<RegisterUserSuccessResponse| UserErrorResponse> => {
+  const response = await userApi.post("/register", params);
   return response.data;
 };
 
 
-export const loginUser = async (userData: LoginUser): Promise<LoginUserSuccessResponse | UserErrorResponse> => {
-  const response = await userApi.post("/login", userData);
+export const loginUser = async (params: LoginUser): Promise<LoginUserSuccessResponse | UserErrorResponse> => {
+  const response = await userApi.post("/login", params);
   return response.data;
 };
 
 
-export const logoutUser = async (userData: Logout): Promise<LogoutResponse | UserErrorResponse> => {
-  const response = await userApi.post("/logout", userData);
+export const logoutUser = async (params: Logout): Promise<LogoutResponse | UserErrorResponse> => {
+  const response = await userApi.post("/logout", params);
   return response.data;
 };
 
