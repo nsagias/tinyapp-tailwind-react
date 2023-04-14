@@ -9,6 +9,11 @@ export type UrlModel = {
   updatedAt?: Date,
 };
 
+export type LinkSuccessReponse = {
+  message: string,  
+  data: UrlModel,
+}
+
 export type LinkErrorMessage = {
   message: string
 }

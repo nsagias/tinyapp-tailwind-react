@@ -1,6 +1,6 @@
 import { Token } from "aws-sdk/clients/cloudwatchlogs";
 import axios, { AxiosInstance } from "axios";
-import { UrlModel, LinkErrorMessage } from "../types/api/linkApi";
+import { UrlModel, LinkErrorMessage, LinkSuccessReponse } from "../types/api/linkApi";
 
 const linkApi: AxiosInstance = axios.create({
   baseURL: `${process.env.LINK_URL}:${process.env.LINK_URL_PORT}`
@@ -29,11 +29,7 @@ export type NewShortLink = {
   longUrl: string
 }
 
-export type NewShortLinkSuccessReponse = {
-  message: string,  
-  data: UrlModel,
-}
-export const getCreateShortLink = async (params: NewShortLink ) => {
+export const getCreateShortLink = async (params: NewShortLink ): Promise<LinkSuccessReponse | LinkErrorMessage> => {
   const response = await linkApi.post(`/urls/new`, {data: params}) ;
   return response.data;
 };
@@ -44,7 +40,7 @@ export type UpdateShortLink = {
   shortUrl: string,
   updatedUrlData: UrlModel
 }
-export const updateShortLinkByUserId = async (params: UpdateShortLink) => {
+export const updateShortLinkByUserId = async (params: UpdateShortLink): Promise<LinkSuccessReponse | LinkErrorMessage> => {
   const response = await linkApi.patch(`/urls/delete`, {data: params}) ;
   return response.data;
 };
@@ -55,17 +51,23 @@ export type DeleteShortLink = {
   userId: number,
   shortUrl: string,
 }
-export const deleteShorLinkByUserId = async (params: DeleteShortLink) => {
+
+export type DeleteShortLinkResponse = {
+  message: boolean
+}
+export const deleteShorLinkByUserId = async (params: DeleteShortLink): Promise<DeleteShortLinkResponse | LinkErrorMessage> => {
   const response = await linkApi.delete("/urls/delete", {data: params});
   return response.data;
 };
+
 
 export type  GetLongURL = {
   token: Token,
   userId: number,
   shortUrl: string,
 }
-export const getLinkByUserIdAndShortLink = async (params: GetLongURL) => {
+
+export const getLinkByUserIdAndShortLink = async (params: GetLongURL): Promise<LinkSuccessReponse | LinkErrorMessage> => {
   const response = await linkApi.get(`/urls/users/${params.userId}/shortUrl/${params.shortUrl}`, {data: params});
   return response.data;
 };
