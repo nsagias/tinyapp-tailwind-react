@@ -1,5 +1,13 @@
 import axios, { AxiosInstance } from "axios";
-import { LoginUser, LoginUserSuccessResponse, Logout, LogoutResponse, RegisterUser, RegisterUserSuccessResponse, UserErrorResponse, UserInfo } from "../types/api/userApi";
+import {
+  LoginUser,
+  LoginUserSuccessResponse,
+  Logout,
+  LogoutResponse,
+  RegisterUser,
+  RegisterUserSuccessResponse,
+  UserErrorResponse
+} from "../types/api/userApi";
 
 
 const userApi: AxiosInstance = axios.create({
