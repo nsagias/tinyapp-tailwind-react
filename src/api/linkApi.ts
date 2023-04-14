@@ -8,7 +8,7 @@ const linkApi: AxiosInstance = axios.create({
 // const authToken = await req.body && req.body.token || null;
 // const userId = req.params && req.params.userId || null; 
 export const getLinksByUserId = async () => {
-
+  
 };
 
 // post("/urls/new"
