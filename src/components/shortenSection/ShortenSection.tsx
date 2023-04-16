@@ -3,6 +3,8 @@ import { ShortLinkData } from "../../types/components/ShortLinks";
 import ShortenLink from "./ShortenLink";
 import ShortenForm from "./ShortenForm";
 import ShortenSectionContainer from "./ShortenSectionContainer";
+import axios from "axios";
+import { getLinksByUserId } from "../../api/linkApi";
   
 const shortenLinkData: ShortLinkData[] = [
   { id: 1, fullLink: "https://somecoolwebsite.com", shortLink: "https//tinyapp.ink/k4Ikyk" },
@@ -23,7 +25,10 @@ export default function ShortenSection() {
     // TODO: Update with axios call 
     const data: ShortLinkData[] = await shortenLinkData;
     await setShortLinks(data);
+
   };
+
+
 
   return (
     <section id="shorten-section" className="relative bg-gray-100 pb-10">
