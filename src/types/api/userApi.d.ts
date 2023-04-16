@@ -24,26 +24,19 @@ export type RegisterUser = {
 }
 
 export type RegisterUserSuccessResponse = {
-  token: Token;
   userInfo: UserInfo;
 }
 
 // Login User Section
 export type LoginUser = {
-  email: string,
   password: string,
 }
 
 export type LoginUserSuccessResponse = {
-  token: Token;
   userInfo: UserInfo;
 }
 
 
-// Logout User Section
-export type Logout = {
-  authToken: string;
-}
 
 export type LogoutResponse = {
   message: string
