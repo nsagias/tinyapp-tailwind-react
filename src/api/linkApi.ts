@@ -16,7 +16,7 @@ const linkApi: AxiosInstance = axios.create();
 
 
 export const getLinksByUserId = async (id: any, token: string): Promise<LinksListSuccessReponse> => {
-  const response = await linkApi.get(`/urls/users/${id}`, { headers: {
+  const response = await linkApi.get<LinksListSuccessReponse>(`/urls/users/${id}`, { headers: {
     "Authorization": token
   }});
   return response.data;
