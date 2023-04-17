@@ -19,7 +19,7 @@ export type LinkErrorMessage = {
 }
 
 export type UserId = {
-  userId: number,
+  userId: any,
 }
 
 export type LinksListSuccessReponse = {
