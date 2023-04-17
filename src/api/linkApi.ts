@@ -15,31 +15,31 @@ import {
 const linkApi: AxiosInstance = axios.create();
 
 
-export const getLinksByUserId = async (id: any, headers: any): Promise<LinksListSuccessReponse | LinkErrorMessage> => {
-  const response = await linkApi.get(`/urls/users/${id}`);
+export const getLinksByUserId = async (id: GetLinksByUserId, headers: any): Promise<LinksListSuccessReponse | LinkErrorMessage> => {
+  const response = await linkApi.get(`/urls/users/${id}`, { headers } );
   return response.data;
 };
 
 
-export const getCreateShortLink = async (params: NewShortLink, headers: any): Promise<LinkSuccessReponse | LinkErrorMessage> => {
-  const response = await linkApi.post(`/urls/new`, {data: params}) ;
+export const getCreateShortLink = async (req: NewShortLink, headers: any): Promise<LinkSuccessReponse | LinkErrorMessage> => {
+  const response = await linkApi.post(`/urls/new`, { req, headers}) ;
   return response.data;
 };
 
 
-export const updateShortLinkByUserId = async (params: UpdateShortLink, headers: any): Promise<LinkSuccessReponse | LinkErrorMessage> => {
-  const response = await linkApi.patch(`/urls/delete`, {data: params}) ;
+export const updateShortLinkByUserId = async (req: UpdateShortLink, headers: any): Promise<LinkSuccessReponse | LinkErrorMessage> => {
+  const response = await linkApi.patch(`/urls/delete`, { req, headers }) ;
   return response.data;
 };
 
 
-export const deleteShorLinkByUserId = async (params: DeleteShortLink, headers: any): Promise<DeleteShortLinkResponse | LinkErrorMessage> => {
-  const response = await linkApi.delete("/urls/delete", {data: params});
+export const deleteShorLinkByUserId = async (req: DeleteShortLink, headers: any): Promise<DeleteShortLinkResponse | LinkErrorMessage> => {
+  const response = await linkApi.delete("/urls/delete", {data: req, headers});
   return response.data;
 };
 
 
-export const getLinkByUserIdAndShortLink = async (params: GetLongURL, headers: any): Promise<LinkSuccessReponse | LinkErrorMessage> => {
-  const response = await linkApi.get(`/urls/users/${params.userId}/shortUrl/${params.shortUrl}`, {data: params});
+export const getLinkByUserIdAndShortLink = async (req: GetLongURL, headers: any): Promise<LinkSuccessReponse | LinkErrorMessage> => {
+  const response = await linkApi.get(`/urls/users/${req.userId}/shortUrl/${req.shortUrl}`, { headers });
   return response.data;
 };
