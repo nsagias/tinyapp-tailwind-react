@@ -1,6 +1,4 @@
 import axios, { AxiosInstance } from "axios";
-// import * as dotenv from "dotenv";
-// dotenv.config({ path: __dirname+'/.env' });
 import {
   LoginUser,
   LoginUserSuccessResponse,
@@ -14,20 +12,20 @@ import {
 const userApi: AxiosInstance = axios.create();
 
 
-export const registerUser = async (params: RegisterUser): Promise<RegisterUserSuccessResponse| UserErrorResponse> => {
-  const response = await userApi.post("/register", params);
+export const registerUser = async (data: RegisterUser): Promise<RegisterUserSuccessResponse| UserErrorResponse> => {
+  const response = await userApi.post("/register", data);
   return response.data;
 };
 
 
-export const loginUser = async (params: LoginUser): Promise<LoginUserSuccessResponse | UserErrorResponse> => {
-  const response = await userApi.post("/login", params);
+export const loginUser = async (data: LoginUser): Promise<LoginUserSuccessResponse | UserErrorResponse> => {
+  const response = await userApi.post("/login", data);
   return response.data;
 };
 
 
-export const logoutUser = async (header: any): Promise<LogoutResponse | UserErrorResponse> => {
-  const response = await userApi.post("/logout");
+export const logoutUser = async (headers: any): Promise<LogoutResponse | UserErrorResponse> => {
+  const response = await userApi.post("/logout", { headers });
   return response.data;
 };
 
