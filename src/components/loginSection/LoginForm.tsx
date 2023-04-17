@@ -38,12 +38,11 @@ export default function LoginForm({}): JSX.Element {
     if (!enteredPasswordIsValid) return;
 
     try {
-      const data = { email: enteredEmail, password: enteredPassword};
-      const response = await loginUser(data) as LoginUserSuccessResponse;
-      if (response && response.token && response.token.authToken) {
-        setToken(response.token.authToken)
-      }
-      console.log(response.userInfo)
+      // ltry to login user
+      const response = await loginUser({ email: enteredEmail, password: enteredPassword}) as LoginUserSuccessResponse;
+
+      // Set token
+      if (response && response.token && response.token.authToken) setToken(response.token.authToken)
 
       // Reset form values
       emailResetInput();
