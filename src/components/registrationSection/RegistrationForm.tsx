@@ -1,7 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useInput from "../../hooks/use-input";
+import { registerUser } from "../../api/userApi";
+import { RegisterUserSuccessResponse } from "../../types/api/userApi";
 
 export default function RegistrationForm({}): JSX.Element {
+
+  const [token, setToken] = useState<string>("");
+
+  useEffect(() => {
+    localStorage.setItem("token", token);
+  }, [token]);
+
+
   // First Name Input
   const {
     inputValue: enteredFirstName,
@@ -53,11 +63,24 @@ export default function RegistrationForm({}): JSX.Element {
     e.preventDefault(); 
     if (enteredFormInputIsValid) return;
 
-    // Reset form
-    firstNameValueReset();
-    lastNameValueReset();
-    emaiValueReset();
-    passwordValueReset();
+    try {
+      // try register user
+      const response = await registerUser({ firstName: enteredFirstName, lastName: enteredLastName, email: enteredEmail, password: enteredPassword}) as RegisterUserSuccessResponse;
+
+      // Set token
+      if (response && response.token && response.token.authToken) setToken(response.token.authToken)
+
+      // Reset form
+      firstNameValueReset();
+      lastNameValueReset();
+      emaiValueReset();
+      passwordValueReset();
+      
+    } catch (error) {
+      
+    }
+
+ 
   };
 
   return (
