@@ -8,7 +8,6 @@ export default function LoginForm({}): JSX.Element {
 
   useEffect(() => {
     localStorage.setItem("token", token);
-    console.log("TOKEN LOCAL STORAGE",localStorage.getItem("token"));
   }, [token]);
 
   const {
