@@ -2,20 +2,20 @@ import axios, { AxiosInstance } from "axios";
 import { 
   DeleteShortLink,
   DeleteShortLinkResponse,
-  GetLinksByUserId,
   GetLongURL,
   LinkErrorMessage,
   LinksListSuccessReponse,
   LinkSuccessReponse,
   NewShortLink,
-  UpdateShortLink
+  UpdateShortLink,
+  UserId
 } from "../types/api/linkApi";
 
 
 const linkApi: AxiosInstance = axios.create();
 
 
-export const getLinksByUserId = async (id: GetLinksByUserId, headers: any): Promise<LinksListSuccessReponse | LinkErrorMessage> => {
+export const getLinksByUserId = async (id: UserId, headers: any): Promise<LinksListSuccessReponse | LinkErrorMessage> => {
   const response = await linkApi.get(`/urls/users/${id}`, { headers } );
   return response.data;
 };

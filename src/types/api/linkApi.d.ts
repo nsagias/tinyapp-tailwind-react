@@ -18,7 +18,7 @@ export type LinkErrorMessage = {
   message: string
 }
 
-export type GetLinksByUserId = {
+export type UserId = {
   userId: number,
 }
 
