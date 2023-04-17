@@ -1,6 +1,15 @@
+import { useEffect, useState } from "react";
+import { loginUser } from "../../api/userApi";
 import useInput from "../../hooks/use-input";
+import { LoginUserSuccessResponse } from "../../types/api/userApi";
 
 export default function LoginForm({}): JSX.Element {
+  const [token, setToken] = useState<string>("");
+
+  useEffect(() => {
+    localStorage.setItem("token", token);
+    console.log("TOKEN LOCAL STORAGE",localStorage.getItem("token"));
+  }, [token]);
 
   const {
     inputValue: enteredEmail,
@@ -20,17 +29,34 @@ export default function LoginForm({}): JSX.Element {
     inputChangeHandler: passwordInputChangeHandler,
     inputBlurHandler: passwordInputBlurHandler,
     inputValueReset:  passswordResetInput
-  } = useInput( (value: string) => value.trim().length >= 8 );
+  } = useInput( (value: string) => value.trim().length >= 3 );
   
   // Login Form Handler
   const handleSubmitLogin = async (e: React.FormEvent): Promise<void>  => {
     e.preventDefault();
+
     if (!enteredEmailIsValid) return;
     if (!enteredPasswordIsValid) return;
-    // Reset form values
-    emailResetInput();
-    passswordResetInput();
+
+    try {
+      const data = { email: enteredEmail, password: enteredPassword};
+      const response = await loginUser(data) as LoginUserSuccessResponse;
+      if (response && response.token && response.token.authToken) {
+        setToken(response.token.authToken)
+      }
+      console.log(response.userInfo)
+
+      // Reset form values
+      emailResetInput();
+      passswordResetInput();
+
+    } catch (error: any) {
+      console.error(error)
+    }
+   
   };
+
+
 
   return (
     <div className="relative flex flex-col m-6 -mt-80 space-y-10 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0 ">
