@@ -26,7 +26,7 @@ export type RegisterUser = {
 }
 
 export type RegisterUserSuccessResponse = {
-  toke: Token,
+  token: Token,
   userInfo: UserInfo,
 }
 
