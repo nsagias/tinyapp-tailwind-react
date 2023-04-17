@@ -1,3 +1,5 @@
+import { Token } from "./token"
+
 export type UserInfo = {
   id?: number,
   firstName?: string,
@@ -24,18 +26,20 @@ export type RegisterUser = {
 }
 
 export type RegisterUserSuccessResponse = {
-  userInfo: UserInfo;
+  toke: Token,
+  userInfo: UserInfo,
 }
 
 // Login User Section
 export type LoginUser = {
+  email: string,
   password: string,
 }
 
 export type LoginUserSuccessResponse = {
-  userInfo: UserInfo;
+  token: Token,
+  userInfo: UserInfo,
 }
-
 
 
 export type LogoutResponse = {
