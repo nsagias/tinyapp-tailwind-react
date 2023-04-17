@@ -4,25 +4,26 @@ import CopyToClipboardButton from "../buttons/CopyToClipboardButton";
 import { Link } from "react-router-dom";
 
 
-const SHORLINK_HOST = "http//127.0.0.1/3000/";
+const SHORLINK_HOST = "http://127.0.0.1:3000/";
 export default function ShortenLink({ shortenLinks, index }: IShortLinkProps ): JSX.Element {
 
-  const [copied, setCopied] = useState<string>(shortenLinks && shortenLinks.shortLink);
+  const [copied, setCopied] = useState<string>(shortenLinks && `${SHORLINK_HOST}${shortenLinks.shortUrl}`);
+
+  console.log("SHORT LINKS", shortenLinks)
 
   return (
     <div className="flex flex-col items-center justify-between w-full p-6 bg-white rounded-lg md:flex-row">
 
       {/* Link name */}
-      <p className="font-bold text-center text-darkViolet md:text-left">{shortenLinks && shortenLinks.fullLink}</p>
-
-
+      <p className="font-bold text-center text-darkViolet md:text-left">{shortenLinks && shortenLinks.longUrl
+}</p>
 
       {/* Shortened Link Container */}
       <div className="flex flex-col items-center justify-end flex-1 space-x-4 space-y-2 md:flex-row md:space-y-0">
         
         {/* Display Short Link */}
         <div className="font-bold text-cyan">
-          {shortenLinks && `${SHORLINK_HOST}${shortenLinks.shortLink}`}
+          {shortenLinks && `${SHORLINK_HOST}${shortenLinks.shortUrl}`}
         </div>
 
         {/* Copy Button */}
