@@ -8,15 +8,6 @@ import { getLinksByUserId } from "../../api/linkApi";
 import { LinksListSuccessReponse } from "../../types/api/linkApi";
   
 
-
-const shortenLinkData: ShortLinkData[] = [
-  { id: 1, fullLink: "https://somecoolwebsite.com", shortLink: `k4Ikyk` },
-  { id: 2, fullLink: "https://anothercoolwebsite.com", shortLink: `AbCdefk` },
-  { id: 3, fullLink: "https://bestcoolwebsite.com", shortLink: `Z24Ikyk` },
-];
-
-
-
 export default function ShortenSection() {
   const [shortenLinks, setShortLinks] = useState<any>([]);
   const [token, setToken] = useState<string>("")
@@ -29,10 +20,9 @@ export default function ShortenSection() {
   // TODO: Refactor
   const getLatestData = async() => {
     // TODO: Update with axios call 
- 
     const token = localStorage.getItem("token")
     const data = await getLinksByUserId(1, token!)
-  
+    setShortLinks(data && data.data);
 
   };
 
