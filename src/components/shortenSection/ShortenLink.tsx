@@ -3,6 +3,8 @@ import { IShortenLinkProps as IShortLinkProps } from "../../types/components/Sho
 import CopyToClipboardButton from "../buttons/CopyToClipboardButton";
 import { Link } from "react-router-dom";
 
+
+const SHORLINK_HOST = "http//127.0.0.1/3000/";
 export default function ShortenLink({ shortenLinks, index }: IShortLinkProps ): JSX.Element {
 
   const [copied, setCopied] = useState<string>(shortenLinks && shortenLinks.shortLink);
@@ -20,7 +22,7 @@ export default function ShortenLink({ shortenLinks, index }: IShortLinkProps ): 
         
         {/* Display Short Link */}
         <div className="font-bold text-cyan">
-          {shortenLinks && shortenLinks.shortLink}
+          {shortenLinks && `${SHORLINK_HOST}${shortenLinks.shortLink}`}
         </div>
 
         {/* Copy Button */}
