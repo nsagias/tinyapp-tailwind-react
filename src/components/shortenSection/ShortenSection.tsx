@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import { ShortLinkData } from "../../types/components/ShortLinks";
 import ShortenLink from "./ShortenLink";
 import ShortenForm from "./ShortenForm";
 import ShortenSectionContainer from "./ShortenSectionContainer";
-import axios from "axios";
 import { getLinksByUserId } from "../../api/linkApi";
-import { LinksListSuccessReponse } from "../../types/api/linkApi";
-  
+
 
 export default function ShortenSection() {
   const [shortenLinks, setShortLinks] = useState<any>([]);
@@ -23,7 +20,6 @@ export default function ShortenSection() {
     const token = localStorage.getItem("token")
     const data = await getLinksByUserId(1, token!)
     setShortLinks(data && data.data);
-
   };
 
   return (
