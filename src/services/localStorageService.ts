@@ -36,6 +36,11 @@ const localStorageService = {
       return null;
     }
     return JSON.parse(result);
+  },
+  populateLocalStorageItems(object: any) {
+    for (const [key, value] of Object.entries(object) as any) {
+      localStorageService.setLocalStorageItem(key, value);
+    };
   }
 };
 
