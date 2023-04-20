@@ -1,5 +1,3 @@
-import { error } from "console";
-
 // local storage api
 const localStorageService = {
   setLocalStorageItem(key: string, value: string) {
