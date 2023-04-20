@@ -6,32 +6,37 @@ const localStorageService = {
     localStorage.setItem(key, value);
   },
 
-  getLocalStorageItem(key: string) {
-    localStorage.getItem(key);
+  getLocalStorageItem(key: string): string | null {
+    return localStorage.getItem(key);
   },
   removeLocalStorageItem(key: string) {
     localStorage.removeItem(key);
   },
   getLocalStorageItemByIndex(index: number) {
-    localStorage.key(index);
+    return localStorage.key(index);
   },
   clearLocalStorage() {
     localStorage.clear();
   },
   localStorageLength() {
-    localStorage.length;
+    return localStorage.length;
   },
   getAllLocalStorageData() {
     localStorage;
   },
-  setLocalStorageAsArray(key: string, arrayValue: string[]) {
+  setLocalStorageAsArrayItem(key: string, arrayValue: string[]) {
     if (!Array.isArray(arrayValue))  {
-      throw new Error("Must be array");
+      throw new Error("value must be an array");
     }
-    localStorageService.setLocalStorageItem(key, JSON.stringify(arrayValue));
+   localStorageService.setLocalStorageItem(key, JSON.stringify(arrayValue));
   },
-
-
+  getLocalStorageArrayItem(key: string) {
+    const result = localStorageService.getLocalStorageItem(key) || null;
+    if (!result) {
+      return null;
+    }
+    return JSON.parse(result);
+  }
 };
 
 export default localStorageService;
