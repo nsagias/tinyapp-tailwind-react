@@ -1,22 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { 
-  AUTHENTICATION, 
-  INITIAL_STATE_AUTHENTICATION, 
-  IAuthentication 
-} from "../constants/authentication";
+import { AUTHENTICATION, INITIAL_STATE_AUTHENTICATION } from "../constants/authentication";
+import { IAuthentication } from "../../types/store/authentication"
 
 const authenticationSlice = createSlice({
   name: AUTHENTICATION,
   initialState: INITIAL_STATE_AUTHENTICATION,
   reducers: {
-    login(state: IAuthentication): void {
+    setAuthTrue(state: IAuthentication): void {
       state.isAuthenticated = true;
     },
-    logout(state: IAuthentication): void {
+    setAuthFalse(state: IAuthentication): void {
       state.isAuthenticated = false;
     }
   }
 });
 
-export const authenticationActions = authenticationSlice.actions;
+export const { setAuthTrue, setAuthFalse } = authenticationSlice.actions;
 export default authenticationSlice.reducer;
