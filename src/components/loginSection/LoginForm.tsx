@@ -2,10 +2,16 @@ import { useEffect, useState } from "react";
 import { loginUser } from "../../api/userApi";
 import useInput from "../../hooks/use-input";
 import { LoginUserSuccessResponse } from "../../types/api/userApi";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store/index"
+import { setAuthTrue } from "../../store/slices/authenticationSlice";
 
 export default function LoginForm({}): JSX.Element {
+  const selectIsAuthenticated = useSelector((state: RootState) => state.authentication.isAuthenticated);
+  const dispatch = useDispatch();
   const [token, setToken] = useState<string>("");
 
+  dispatch(setAuthTrue());
   useEffect(() => {
     localStorage.setItem("token", token);
   }, [token]);
@@ -38,22 +44,24 @@ export default function LoginForm({}): JSX.Element {
     if (!enteredPasswordIsValid) return;
 
     try {
-      // ltry to login user
+      // try to login user
       const response = await loginUser({ email: enteredEmail, password: enteredPassword}) as LoginUserSuccessResponse;
 
       // Set token
-      if (response && response.token && response.token.authToken) setToken(response.token.authToken)
-
+      if (response && response.token && response.token.authToken) {
+        setToken(response.token.authToken);
+      }
+      
       // Reset form values
       emailResetInput();
       passswordResetInput();
 
-    } catch (error: any) {
-      console.error(error)
-    }
-   
-  };
+      // TODO Add navigation to short link page
 
+    } catch (error: any) {
+      console.error(error);
+    }
+  };
 
 
   return (
