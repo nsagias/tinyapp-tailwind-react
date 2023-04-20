@@ -1,5 +1,5 @@
 // local storage api
-const localStorageService = {
+const localStorageService: LocalStorageService = {
 
   /**
    * Sets a new locale storage time in the browser
