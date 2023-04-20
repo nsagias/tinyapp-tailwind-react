@@ -24,13 +24,13 @@ const localStorageService = {
   getAllLocalStorageData() {
     localStorage;
   },
-  setLocaleStorageAsArray(key: string, arrayValue: string[]) {
+  setLocalStorageAsArray(key: string, arrayValue: string[]) {
     if (!Array.isArray(arrayValue))  {
       throw new Error("Must be array");
     }
     localStorageService.setLocalStorageItem(key, JSON.stringify(arrayValue));
   },
-  
+
 
 };
 
