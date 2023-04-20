@@ -3,7 +3,6 @@ import {
   DeleteShortLink,
   DeleteShortLinkResponse,
   GetLongURL,
-  LinkErrorMessage,
   LinksListSuccessReponse,
   LinkSuccessReponse,
   NewShortLink,
