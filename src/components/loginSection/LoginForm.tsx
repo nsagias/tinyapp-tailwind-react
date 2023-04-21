@@ -5,9 +5,11 @@ import { useDispatch } from "react-redux";
 import { setAuthTrue } from "../../store/slices/authenticationSlice";
 import localStorageService from "../../services/localStorageService";
 import { isAuthenticated } from "../../store/constants/authentication";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm({}): JSX.Element {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
     
   const {
     inputValue: enteredEmail,
@@ -41,18 +43,17 @@ export default function LoginForm({}): JSX.Element {
       const response = await loginUser({ email: enteredEmail, password: enteredPassword}) as LoginUserSuccessResponse;
      
       // Set token
-      if  (response && response.token && response.token.authToken && response.userInfo) {
+      if (response && response.token && response.token.authToken && response.userInfo) {
         localStorageService.setLocalStorageItem(isAuthenticated, "true");
         localStorageService.setLocalStorageItem("token", response.token.authToken);
         dispatch(setAuthTrue());
         localStorageService.populateLocalStorageItems(response.userInfo);
+        navigate("/shorturls");
       }
       
       // Reset form values
       emailResetInput();
       passswordResetInput();
-
-      // TODO Add navigation to short link page
 
     } catch (error: any) {
       console.error(error);
