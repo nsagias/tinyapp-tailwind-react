@@ -95,6 +95,16 @@ const localStorageService: LocalStorageService = {
     for ([key, value] of Object.entries(object)) {
       localStorageService.setLocalStorageItem(key, value);
     };
+  },
+
+  /**
+   * Remove items from local storage
+   * @param list 
+   */
+  removeItemsFromLocalStorage(list: string[]): void {
+    for (let i = 0; i < list.length; i++) {
+      localStorageService.removeLocalStorageItem(list[i]);
+    }
   }
 };
 
