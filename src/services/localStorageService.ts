@@ -86,8 +86,13 @@ const localStorageService: LocalStorageService = {
    * Populates local storage
    * @param object 
    */
-  populateLocalStorageItems(object: Storage): void {
-    for (const [key, value] of Object.entries(object)) {
+  populateLocalStorageItems(object: any): void {
+    if (!object) {
+      throw new Error()
+    }
+    let key: string;
+    let value: any;
+    for ([key, value] of Object.entries(object)) {
       localStorageService.setLocalStorageItem(key, value);
     };
   }
