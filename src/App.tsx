@@ -48,7 +48,7 @@ export default function App() {
           <Route path="/docs" element={ <DocsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/shorturls" element={<ShortenUrlPage /> } />
+          <Route path="/shorturls" element={<ShortenUrlPage isAuthenticated={isAthenticated} /> } />
           <Route path="/shorturls/:id" element={<ShortLinkPage />}/>
           <Route path="/" element={<HomePage />} /> 
           <Route path="*" element={<NotFoundPage />} />
