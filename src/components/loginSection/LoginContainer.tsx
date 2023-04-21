@@ -1,7 +1,5 @@
 import LoginForm from "./LoginForm";
 
-
-// Hero({ authorized}: {authorized: boolean}):JSX.Element
 export default function LoginContainer({}): JSX.Element {
 
   return(
