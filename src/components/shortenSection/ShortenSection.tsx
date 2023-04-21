@@ -3,22 +3,27 @@ import ShortenLink from "./ShortenLink";
 import ShortenForm from "./ShortenForm";
 import ShortenSectionContainer from "./ShortenSectionContainer";
 import { getLinksByUserId } from "../../api/linkApi";
+import localStorageService from "../../services/localStorageService";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
-
-export default function ShortenSection() {
-  const [shortenLinks, setShortLinks] = useState<any>([]);
-  const [token, setToken] = useState<string>("")
-
-  // TODO: Add new shorten link call to depency array.
+export default function ShortenSection({ isAuthenticated }: { isAuthenticated : boolean }): JSX.Element {
+  const [shortenLinks, setShortLinks] = useState<any>([]); 
+  const [token, setToken] = useState(localStorageService.getLocalStorageItem("token") || null);
+  const [id, setId] = useState(localStorageService.getLocalStorageItem("id") || null)
+  const selectIsAuthenticated = useSelector((state: RootState) => state.authentication.isAuthenticated);
+  
   useEffect( () => {
-    getLatestData();
-  }, []);
+    if (!isAuthenticated || !selectIsAuthenticated ) {
+      setId(null);
+      setToken(null);
+      setShortLinks([]);
+    }
+    getShortLinkData();
+  }, [isAuthenticated, selectIsAuthenticated]);
 
-  // TODO: Refactor
-  const getLatestData = async() => {
-    // TODO: Update with axios call 
-    const token = localStorage.getItem("token")
-    const data = await getLinksByUserId(1, token!)
+  const getShortLinkData = async() => {
+    const data = await getLinksByUserId(id, token!) || null;
     setShortLinks(data && data.data);
   };
 
