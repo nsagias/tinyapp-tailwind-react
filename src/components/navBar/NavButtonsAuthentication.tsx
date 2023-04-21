@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setAuthFalse } from "../../store/slices/authenticationSlice";
 
-export default function NavButtonsAuthentication({ authorized }: { authorized : boolean}) {
+export default function NavButtonsAuthentication({ authorized }: { authorized : boolean}): JSX.Element {
   const dispatch = useDispatch();
 
   const logoutHandler = () => {  
