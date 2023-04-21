@@ -12,8 +12,13 @@ import ShortenUrlPage from "./pages/shortenUrls/ShortenUrlPage";
 import ShortLinkPage from "./pages/shortLinks/ShortLinkPage";
 import LoginPage from "./pages/login/LoginPage";
 import RegistrationPage from "./pages/registration/RegistrationPage";
+import { useSelector } from "react-redux";
+import { RootState } from "./store";
+
 
 export default function App() {
+
+  const selectIsAuthenticated = useSelector((state: RootState) => state.authentication.isAuthenticated);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   // const routesAuthList = [
   //   {path:"/features", element:[<FeaturesPage />], logginRequired: isLoggedIn},
