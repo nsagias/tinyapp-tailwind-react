@@ -9,8 +9,6 @@ export default function ShortenLink({ shortenLinks, index }: IShortLinkProps ): 
 
   const [copied, setCopied] = useState<string>(shortenLinks && `${SHORLINK_HOST}${shortenLinks.shortUrl}`);
 
-  console.log("SHORT LINKS", shortenLinks)
-
   return (
     <div className="flex flex-col items-center justify-between w-full p-6 bg-white rounded-lg md:flex-row">
 
