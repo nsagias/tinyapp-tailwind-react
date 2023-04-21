@@ -62,5 +62,5 @@ interface LocalStorageService {
    * Populates local storage
    * @param object 
    */
-  populateLocalStorageItems(object: Storage): void;
+  populateLocalStorageItems(object: any): void;
 }
