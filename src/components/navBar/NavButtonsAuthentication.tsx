@@ -1,19 +1,12 @@
 import { Link } from "react-router-dom";
-import localStorageService from "../../services/localStorageService";
 import { useDispatch } from "react-redux";
 import { setAuthFalse } from "../../store/slices/authenticationSlice";
-
-
-const logoutStorageList = [
-  "active","email", "emailVerified", "firstName", "lastName", "id", "token"];
-
 
 export default function NavButtonsAuthentication({ authorized }: { authorized : boolean}) {
   const dispatch = useDispatch();
 
   const logoutHandler = () => {  
     dispatch(setAuthFalse);
-    localStorageService.removeItemsFromLocalStorage(logoutStorageList);
   };
 
   return (
