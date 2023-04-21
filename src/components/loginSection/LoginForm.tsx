@@ -1,14 +1,12 @@
 import { loginUser } from "../../api/userApi";
 import useInput from "../../hooks/use-input";
 import { LoginUserSuccessResponse } from "../../types/api/userApi";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../store/index"
+import { useDispatch } from "react-redux";
 import { setAuthTrue } from "../../store/slices/authenticationSlice";
 import localStorageService from "../../services/localStorageService";
 import { isAuthenticated } from "../../store/constants/authentication";
 
 export default function LoginForm({}): JSX.Element {
-  const selectIsAuthenticated = useSelector((state: RootState) => state.authentication.isAuthenticated);
   const dispatch = useDispatch();
     
   const {
@@ -39,12 +37,12 @@ export default function LoginForm({}): JSX.Element {
     if (!enteredPasswordIsValid) return;
 
     try {
-      // try to login user
+      // Login user
       const response = await loginUser({ email: enteredEmail, password: enteredPassword}) as LoginUserSuccessResponse;
      
       // Set token
       if  (response && response.token && response.token.authToken && response.userInfo) {
-        localStorageService.setLocalStorageItem(isAuthenticated, "true")
+        localStorageService.setLocalStorageItem(isAuthenticated, "true");
         localStorageService.setLocalStorageItem("token", response.token.authToken);
         dispatch(setAuthTrue());
         localStorageService.populateLocalStorageItems(response.userInfo);
