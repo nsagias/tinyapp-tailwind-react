@@ -1,10 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AUTHENTICATION, INITIAL_STATE_AUTHENTICATION } from "../constants/authentication";
-import { IAuthentication } from "../../types/store/authentication"
+import { AUTHENTICATION, isAuthenticated } from "../constants/authentication";
+import { IAuthentication } from "../../types/store/authentication";
+import localStorageService from "../../services/localStorageService";
+
+// Get current is authenticated state from local storage
+const localStorageIsAuthenticated = localStorageService.getLocalStorageItem(isAuthenticated);
+
+// Set initial state based on current authentication.
+export const initialAuthenticationState: IAuthentication = { 
+  isAuthenticated: localStorageIsAuthenticated ? true : false
+};
 
 const authenticationSlice = createSlice({
   name: AUTHENTICATION,
-  initialState: INITIAL_STATE_AUTHENTICATION,
+  initialState: initialAuthenticationState,
   reducers: {
     setAuthTrue(state: IAuthentication): void {
       state.isAuthenticated = true;
