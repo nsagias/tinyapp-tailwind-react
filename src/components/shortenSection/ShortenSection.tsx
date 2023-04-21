@@ -20,7 +20,7 @@ export default function ShortenSection({ isAuthenticated }: { isAuthenticated : 
       setShortLinks([]);
     }
     getShortLinkData();
-  }, [isAuthenticated, selectIsAuthenticated]);
+  }, [isAuthenticated, selectIsAuthenticated, shortenLinks]);
 
   const getShortLinkData = async() => {
     const data = await getLinksByUserId(id, token!) || null;
