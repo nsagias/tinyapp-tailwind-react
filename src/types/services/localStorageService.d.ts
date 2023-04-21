@@ -63,4 +63,10 @@ interface LocalStorageService {
    * @param object 
    */
   populateLocalStorageItems(object: any): void;
+
+  /**
+   * Remove items from locatl storage
+   * @param list 
+   */
+  removeItemsFromLocalStorage(list: string[]): void 
 }
