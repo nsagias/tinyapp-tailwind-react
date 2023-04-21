@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/footerSection/Footer";
@@ -19,7 +19,11 @@ import { RootState } from "./store";
 export default function App() {
 
   const selectIsAuthenticated = useSelector((state: RootState) => state.authentication.isAuthenticated);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isAthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+  useEffect( () => {
+    setIsAuthenticated(selectIsAuthenticated);
+  }, [selectIsAuthenticated ]);
   // const routesAuthList = [
   //   {path:"/features", element:[<FeaturesPage />], logginRequired: isLoggedIn},
   //   {path:"/pricing", element:[<PricingPage />],logginRequired: isLoggedIn},
@@ -37,7 +41,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <NavBar authorized={isLoggedIn} />
+      <NavBar authorized={isAthenticated} />
         <Routes>
           <Route path="/features" element={<FeaturesPage />} />
           <Route path="/pricing" element={<PricingPage />} />
