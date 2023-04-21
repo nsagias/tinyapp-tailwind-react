@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AUTHENTICATION, isAuthenticated } from "../constants/authentication";
+import { AUTHENTICATION, isAuthenticated, logoutStorageList } from "../constants/authentication";
 import { IAuthentication } from "../../types/store/authentication";
 import localStorageService from "../../services/localStorageService";
 
@@ -11,6 +11,7 @@ export const initialAuthenticationState: IAuthentication = {
   isAuthenticated: localStorageIsAuthenticated ? true : false
 };
 
+// TODO: is add cancelling token for setAuthFalse
 const authenticationSlice = createSlice({
   name: AUTHENTICATION,
   initialState: initialAuthenticationState,
@@ -20,6 +21,7 @@ const authenticationSlice = createSlice({
     },
     setAuthFalse(state: IAuthentication): void {
       state.isAuthenticated = false;
+      localStorageService.removeItemsFromLocalStorage(logoutStorageList);
     }
   }
 });
