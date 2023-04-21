@@ -6,7 +6,7 @@ export default function NavButtonsAuthentication({ authorized }: { authorized : 
   const dispatch = useDispatch();
 
   const logoutHandler = () => {  
-    dispatch(setAuthFalse);
+    dispatch(setAuthFalse());
   };
 
   return (
