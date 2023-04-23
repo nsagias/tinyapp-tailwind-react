@@ -10,12 +10,12 @@ import { RootState } from "../../store";
 export default function ShortenSection({ isAuthenticated }: { isAuthenticated : boolean }): JSX.Element {
   const [shortenLinks, setShortLinks] = useState<any>([]); 
   const [token, setToken] = useState(localStorageService.getLocalStorageItem("token") || null);
-  const [id, setId] = useState(localStorageService.getLocalStorageItem("id") || null)
+  const [userId, setUserId] = useState(localStorageService.getLocalStorageItem("id") || null)
   const selectIsAuthenticated = useSelector((state: RootState) => state.authentication.isAuthenticated);
   
-  useEffect( () => {
+  useEffect(() => {
     if (!isAuthenticated || !selectIsAuthenticated ) {
-      setId(null);
+      setUserId(null);
       setToken(null);
       setShortLinks([]);
     }
@@ -23,19 +23,16 @@ export default function ShortenSection({ isAuthenticated }: { isAuthenticated : 
   }, [isAuthenticated, selectIsAuthenticated]);
 
   const getShortLinkData = async() => {
-    const data = await getLinksByUserId(id, token!) || null;
+    const data = await getLinksByUserId(userId, token!) || null;
     setShortLinks(data && data.data);
   };
 
   return (
     <section id="shorten-section" className="relative bg-gray-100 pb-10">
-
       {/* Shorten Section Container */}
       <ShortenSectionContainer>
-
         {/* Shorten Form */}
         <ShortenForm />
-
         {/* Display Shorten Links */}
         {shortenLinks && Array.isArray(shortenLinks) && shortenLinks.map((links, index: number) => (
           <ShortenLink 
@@ -45,7 +42,6 @@ export default function ShortenSection({ isAuthenticated }: { isAuthenticated : 
             />
         ))}
       </ShortenSectionContainer>
-
     </section>
   );
 }
