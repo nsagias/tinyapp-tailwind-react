@@ -31,7 +31,7 @@ export const getCreateShortLink = async (req: NewShortLink, token: string): Prom
 
 
 export const updateShortLinkByUserId = async (req: UpdateShortLink, token: string): Promise<LinkSuccessReponse> => {
-  const response = await linkApi.patch<LinkSuccessReponse>(`/urls/delete`, { req, headers: {
+  const response = await linkApi.patch<LinkSuccessReponse>(`/urls/update`, { req, headers: {
     "Authorization": token
   }});
   return response.data;
@@ -46,8 +46,8 @@ export const deleteShorLinkByUserId = async (req: DeleteShortLink, token: string
 };
 
 
-export const getLinkByUserIdAndShortLink = async (req: GetLongURL, token: string): Promise<LinkSuccessReponse> => {
-  const response = await linkApi.get<LinkSuccessReponse>(`/urls/users/${req.userId}/shortUrl/${req.shortUrl}`, { headers: {
+export const getLinkByUserIdAndShortLink = async (req: any, token: string): Promise<LinkSuccessReponse> => {
+  const response = await linkApi.get<LinkSuccessReponse>(`/urls/users/${req.userId}/shortUrl/${req.shortUrl.id}`, { headers: {
     "Authorization": token
   }});
   return response.data;
