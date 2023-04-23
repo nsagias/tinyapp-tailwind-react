@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { validURL } from "../Utils/utils";
 
 export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any }):JSX.Element {
-  const [shortLink, setShortLink] = useState<string>(shortLinkData && shortLinkData.data && shortLinkData.data.longUrl);
+
+  const longUrl = shortLinkData && shortLinkData.data && shortLinkData.data.longUrl;
+  const [shortLink, setShortLink] = useState<string>("");
+  // const [selectedLinkData, setSelectedLinkData] = useState( shortLinkData ) ;
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
+  
+
+  useEffect(() => {
+    setShortLink(longUrl)
+  }, [longUrl]);
+  
 
   const handleSubmitUpdateLink = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
