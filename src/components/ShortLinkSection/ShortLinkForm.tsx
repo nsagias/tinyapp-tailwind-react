@@ -39,7 +39,7 @@ export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any })
         name="shorten-link"
         type={"text"}
         placeholder={"Enter Link Here"}
-        value={shortLink}
+        value={shortLink || ""}
         onChange={(e) => setShortLink(e.target.value)}
       >  
       </input>
