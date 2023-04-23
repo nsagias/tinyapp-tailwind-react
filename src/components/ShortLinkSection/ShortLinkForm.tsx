@@ -1,32 +1,34 @@
 import { useEffect, useState } from "react";
 import { validURL } from "../Utils/utils";
+import localStorageService from "../../services/localStorageService";
 
-export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any }):JSX.Element {
+export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any,  onSelectedShortLink: any }):JSX.Element {
 
   const longUrl = shortLinkData && shortLinkData.data && shortLinkData.data.longUrl;
-  const [shortLink, setShortLink] = useState<string>("");
-  // const [selectedLinkData, setSelectedLinkData] = useState( shortLinkData ) ;
+  const [selectedLongUrl, setSelectedLongUrl] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
+  const [userId, setUserId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
+  const [token, setToken] = useState(localStorageService.getLocalStorageItem("token"));
   
-
   useEffect(() => {
-    setShortLink(longUrl)
+    setSelectedLongUrl(longUrl);
   }, [longUrl]);
   
 
   const handleSubmitUpdateLink = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     // check for value
-    if (shortLink === "") {
+    if (selectedLongUrl === "") {
       return setErrorMessage("Please Enter Value");
     }
     // check for valid link
-    const isValidURL = validURL(shortLink);
+    const isValidURL = validURL(selectedLongUrl);
     if (!isValidURL) {
       return setErrorMessage("Please Valid Link");
     }
+  
     setErrorMessage("");
-    setShortLink("");
+    setSelectedLongUrl("");
   };
 
   return (
@@ -39,8 +41,8 @@ export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any })
         name="shorten-link"
         type={"text"}
         placeholder={"Enter Link Here"}
-        value={shortLink || ""}
-        onChange={(e) => setShortLink(e.target.value)}
+        value={selectedLongUrl || ""}
+        onChange={(e) => setSelectedLongUrl(e.target.value)}
       >  
       </input>
       {/* Update Button */}
