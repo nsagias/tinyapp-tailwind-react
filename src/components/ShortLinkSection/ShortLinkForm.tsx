@@ -5,13 +5,17 @@ import localStorageService from "../../services/localStorageService";
 export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any,  onSelectedShortLink: any }):JSX.Element {
 
   const longUrl = shortLinkData && shortLinkData.data && shortLinkData.data.longUrl;
+  const shortUrl = shortLinkData && shortLinkData.data && shortLinkData.data.shortUrl;
   const [selectedLongUrl, setSelectedLongUrl] = useState<string>("");
+  const [selectedShortUrl, setSelectedShortUrl] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
   const [userId, setUserId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
   const [token, setToken] = useState(localStorageService.getLocalStorageItem("token"));
   
+  console.log("SHORT LINK DATA", shortLinkData)
   useEffect(() => {
     setSelectedLongUrl(longUrl);
+    setSelectedShortUrl(shortUrl);
   }, [longUrl]);
   
 
@@ -26,13 +30,11 @@ export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any,  
     if (!isValidURL) {
       return setErrorMessage("Please Valid Link");
     }
-  
     setErrorMessage("");
-    setSelectedLongUrl("");
   };
 
   return (
-    <form onSubmit={handleSubmitUpdateLink} 
+    <form  
       id="link-form" 
       className="relative flex flex-col w-full p-10 -mt-20 space-y-4 bg-darkViolet rounded-lg md:flex-row md:space-y-0 md:space-x-3">
       <input
@@ -49,6 +51,7 @@ export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any,  
       <button
         className="px-10 py-3 text-white bg-cyan rounded-lg hover:bg-cyanLight focus:outline-none md:py-2" 
         disabled={false}
+        onClick={() => handleSubmitUpdateLink}
         >Update</button>
 
       {/* Delete Button */}
