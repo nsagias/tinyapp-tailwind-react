@@ -1,25 +1,21 @@
 import { useState } from "react";
 import { validURL } from "../Utils/utils";
 
-export default function ShortLinkForm() {
-  const [shortLink, setShortLink] = useState<string>("http://google.com");
+export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any }):JSX.Element {
+  const [shortLink, setShortLink] = useState<string>(shortLinkData && shortLinkData.data && shortLinkData.data.longUrl);
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
- 
 
   const handleSubmitUpdateLink = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    
     // check for value
     if (shortLink === "") {
       return setErrorMessage("Please Enter Value");
     }
- 
     // check for valid link
     const isValidURL = validURL(shortLink);
     if (!isValidURL) {
       return setErrorMessage("Please Valid Link");
     }
-
     setErrorMessage("");
     setShortLink("");
   };
