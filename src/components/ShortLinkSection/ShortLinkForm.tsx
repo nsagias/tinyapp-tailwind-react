@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { validURL } from "../Utils/utils";
 import localStorageService from "../../services/localStorageService";
+import { useNavigate } from "react-router-dom";
 
 export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any,  onSelectedShortLink: any }):JSX.Element {
-
+  const navigate = useNavigate();
   const longUrl = shortLinkData && shortLinkData.data && shortLinkData.data.longUrl;
   const shortUrl = shortLinkData && shortLinkData.data && shortLinkData.data.shortUrl;
   const [selectedLongUrl, setSelectedLongUrl] = useState<string>("");
@@ -32,9 +33,17 @@ export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any,  
     }
     setErrorMessage("");
   };
+  
+  const deleleLink = async (e: React.FormEvent): Promise<void> => {
+    // e.preventDefault();
+    // TODO: add api call here
+    // on success true delete
+    // navigate back to urls
+    await navigate("/shorturls");
+  };
 
   return (
-    <form  
+    <div 
       id="link-form" 
       className="relative flex flex-col w-full p-10 -mt-20 space-y-4 bg-darkViolet rounded-lg md:flex-row md:space-y-0 md:space-x-3">
       <input
@@ -51,19 +60,20 @@ export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any,  
       <button
         className="px-10 py-3 text-white bg-cyan rounded-lg hover:bg-cyanLight focus:outline-none md:py-2" 
         disabled={false}
-        onClick={() => handleSubmitUpdateLink}
+        onClick={(e) => handleSubmitUpdateLink(e)}
         >Update</button>
 
       {/* Delete Button */}
       <button
         className="px-10 py-3 text-white bg-red rounded-lg hover:bg-cyanLight focus:outline-none md:py-2" 
         disabled={false}
+        onClick={(e) => deleleLink(e)}
         >Delete</button>
         
       {/* Error Message */}
       {errorMessage && (
         <div id="form-error-message" className="absolute lg:left-7 bottom-3 text-red text-sm">{errorMessage}</div>
       )}
-    </form>
+    </div>
   );
 }
