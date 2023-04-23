@@ -2,10 +2,10 @@ import { useState } from "react";
 import { validURL } from "../Utils/utils";
 
 export default function ShortLinkForm() {
-
   const [shortLink, setShortLink] = useState<string>("http://google.com");
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
-  
+ 
+
   const handleSubmitUpdateLink = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     
@@ -19,7 +19,7 @@ export default function ShortLinkForm() {
     if (!isValidURL) {
       return setErrorMessage("Please Valid Link");
     }
-   
+
     setErrorMessage("");
     setShortLink("");
   };
@@ -51,9 +51,9 @@ export default function ShortLinkForm() {
         >Delete</button>
         
       {/* Error Message */}
-      { errorMessage && (
+      {errorMessage && (
         <div id="form-error-message" className="absolute lg:left-7 bottom-3 text-red text-sm">{errorMessage}</div>
-      ) }
+      )}
     </form>
   );
 }
