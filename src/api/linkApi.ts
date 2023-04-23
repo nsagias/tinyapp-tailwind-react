@@ -47,7 +47,7 @@ export const deleteShorLinkByUserId = async (req: DeleteShortLink, token: string
 
 
 export const getLinkByUserIdAndShortLink = async (req: any, token: string): Promise<LinkSuccessReponse> => {
-  const response = await linkApi.get<LinkSuccessReponse>(`/urls/users/${req.userId}/shortUrl/${req.shortUrl.id}`, { headers: {
+  const response = await linkApi.get<LinkSuccessReponse>(`/urls/users/${req.userId}/shortUrl/${req.shortUrl}`, { headers: {
     "Authorization": token
   }});
   return response.data;
