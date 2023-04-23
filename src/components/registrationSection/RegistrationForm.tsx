@@ -11,6 +11,7 @@ export default function RegistrationForm({}): JSX.Element {
     localStorage.setItem("token", token);
   }, [token]);
 
+  console.log("TOKEN", token);
 
   // First Name Input
   const {
@@ -52,7 +53,7 @@ export default function RegistrationForm({}): JSX.Element {
     inputChangeHandler: passwordInputChangeHandler,
     inputBlurHandler: passwordInputBlurHandler,
     inputValueReset: passwordValueReset
-  } = useInput((value: string) => value.trim().length >= 8);
+  } = useInput((value: string) => value.trim().length >= 5);
 
   // Form is disabled
   const isFormDisabled = !firstNameInputIsValid || !lastNameInputIsValid || !emailInputIsValid || !passwordInputIsValid;
@@ -68,7 +69,9 @@ export default function RegistrationForm({}): JSX.Element {
       const response = await registerUser({ firstName: enteredFirstName, lastName: enteredLastName, email: enteredEmail, password: enteredPassword}) as RegisterUserSuccessResponse;
 
       // Set token
-      if (response && response.token && response.token.authToken) setToken(response.token.authToken)
+      if (response && response.token && response.token.authToken) {
+        setToken(response.token.authToken);
+      }
 
       // Reset form
       firstNameValueReset();
@@ -76,11 +79,12 @@ export default function RegistrationForm({}): JSX.Element {
       emaiValueReset();
       passwordValueReset();
       
-    } catch (error) {
-      
-    }
+      // TODO Add navigation to short link page
 
- 
+    } catch (error: any) {
+      console.error(error);
+
+    }
   };
 
   return (
