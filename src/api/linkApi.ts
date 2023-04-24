@@ -30,8 +30,8 @@ export const getCreateShortLink = async (req: NewShortLink, token: string): Prom
 };
 
 
-export const updateShortLinkByUserId = async (req: UpdateShortLink, token: string): Promise<LinkSuccessReponse> => {
-  const response = await linkApi.patch<LinkSuccessReponse>(`/urls/update`, { req, headers: {
+export const updateShortLinkByUserId = async (data: UpdateShortLink, token: string): Promise<LinkSuccessReponse> => {
+  const response = await linkApi.post<LinkSuccessReponse>(`/urls/update`, { data, headers: {
     "Authorization": token
   }});
   return response.data;
