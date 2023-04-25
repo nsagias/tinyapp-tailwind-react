@@ -15,7 +15,7 @@ export default function HeroShortLinksSection({ shortLinkData }: { shortLinkData
             <>
               <h3 className="text-5xl font-bold text-center lg:text-6xl">Link Stats</h3>
               {/* Marketing  brangind text*/}
-              <p className="text-2xl text-center text-gray-400 ">Click count: {shortLinkData && shortLinkData.data.count}</p>
+              <p className="text-2xl text-center text-gray-400 ">Click count: {shortLinkData && shortLinkData.data && shortLinkData.data.count || 0}</p>
             </>
             {/* Button */}
             <HeroButtonsContainer>
@@ -24,7 +24,7 @@ export default function HeroShortLinksSection({ shortLinkData }: { shortLinkData
             </HeroButtonsContainer>
           </HeroContentContainerShortLink>
           {/* Hero Image */}
-          <HeroImage />
+          {/* <HeroImage /> */}
         </HeroContainerShortLink>
     </section>
   );
