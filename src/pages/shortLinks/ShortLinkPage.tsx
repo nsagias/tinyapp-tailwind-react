@@ -4,13 +4,10 @@ import localStorageService from "../../services/localStorageService";
 import HeroShortLinksSection from "../../components/heroSection/HeroShortLinksSection";
 import ShortLinkSection from "../../components/shortLinkSection/ShortLinkSection";
 import { getLinkByUserIdAndShortLink } from "../../api/linkApi";
-import { LinkSuccessReponse } from "../../types/api/linkApi";
+import { RequestSelectedShortLink } from "../../types/api/linkApi";
 
 
-export type RequestSelectedShortLink = { 
-  userId: number,
-  shortUrl: any,
-}
+
 
 export default function ShortLinkPage({}): JSX.Element {
   const selectedShortLink = useParams();

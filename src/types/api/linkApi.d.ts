@@ -54,3 +54,8 @@ export type  GetLongURL = {
   userId: number,
   shortUrl: string,
 }
+
+export type RequestSelectedShortLink = { 
+  userId: number,
+  shortUrl: any,
+}
