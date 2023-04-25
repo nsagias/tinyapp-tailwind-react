@@ -1,45 +1,54 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { validURL } from "../Utils/utils";
 import localStorageService from "../../services/localStorageService";
-import { useNavigate } from "react-router-dom";
+import { updateShortLinkByUserId } from "../../api/linkApi";
 
-export default function ShortLinkForm({ shortLinkData }: { shortLinkData: any,  onSelectedShortLink: any }):JSX.Element {
+export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged }: { onShortLinkData: any, onShortLinkDataChanged: any }):JSX.Element {
   const navigate = useNavigate();
-  const longUrl = shortLinkData && shortLinkData.data && shortLinkData.data.longUrl;
-  const shortUrl = shortLinkData && shortLinkData.data && shortLinkData.data.shortUrl;
+  const longUrl = onShortLinkData && onShortLinkData.data && onShortLinkData.data.longUrl;
+  const shortUrl = onShortLinkData && onShortLinkData.data && onShortLinkData.data.shortUrl;
   const [selectedLongUrl, setSelectedLongUrl] = useState<string>("");
-  const [selectedShortUrl, setSelectedShortUrl] = useState<string>("");
+  const [ _, setSelectedShortUrl] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
-  const [userId, setUserId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
-  const [token, setToken] = useState(localStorageService.getLocalStorageItem("token"));
-  
-  console.log("SHORT LINK DATA", shortLinkData)
+  const [token] = useState(localStorageService.getLocalStorageItem("token"));
+  const [userId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
+
   useEffect(() => {
     setSelectedLongUrl(longUrl);
+  },[onShortLinkData, longUrl]);
+
+  useEffect(() => {
     setSelectedShortUrl(shortUrl);
-  }, [longUrl]);
-  
+  }, [onShortLinkData, shortUrl]);
+ 
 
   const handleSubmitUpdateLink = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     // check for value
-    if (selectedLongUrl === "") {
-      return setErrorMessage("Please Enter Value");
-    }
+    if (selectedLongUrl === "") return setErrorMessage("Please Enter Value");
+
     // check for valid link
-    const isValidURL = validURL(selectedLongUrl);
-    if (!isValidURL) {
-      return setErrorMessage("Please Valid Link");
-    }
+    const isValidURL = validURL(selectedLongUrl!);
+    if (!isValidURL) return setErrorMessage("Please Valid Link");
+
+    try {
+      const updatedData = await updateShortLinkByUserId({ userId, shortUrl, longUrl: selectedLongUrl }, token!);
+      await onShortLinkDataChanged(updatedData);
+      } catch (error: any) {
+        console.log("update error", error);
+      }
     setErrorMessage("");
-  };
-  
+    };
+
+
   const deleleLink = async (e: React.FormEvent): Promise<void> => {
-    // e.preventDefault();
+    e.preventDefault();
     // TODO: add api call here
     // on success true delete
+
     // navigate back to urls
-    await navigate("/shorturls");
+    navigate("/shorturls");
   };
 
   return (
