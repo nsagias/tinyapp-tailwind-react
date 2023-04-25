@@ -12,9 +12,13 @@ export type UrlModel = {
 
 export type LinkSuccessReponse = {
   message: string,  
-  data: UrlModel,
+  data?: UrlModel,
 }
 
+export type UpdateShortLinkResponse = {
+  message: string,
+  data: UpdateShortLink,
+}
 
 export type LinkErrorMessage = {
   message: string
