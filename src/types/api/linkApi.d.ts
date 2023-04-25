@@ -37,7 +37,7 @@ export type NewShortLink = {
 export type UpdateShortLink = {
   userId: number,
   shortUrl: string,
-  longUrl: UrlModel
+  longUrl: string
 }
 
 
