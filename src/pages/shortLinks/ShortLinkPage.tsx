@@ -7,6 +7,11 @@ import { getLinkByUserIdAndShortLink } from "../../api/linkApi";
 import { LinkSuccessReponse } from "../../types/api/linkApi";
 
 
+export type RequestSelectedShortLink = { 
+  userId: number,
+  shortUrl: any,
+}
+
 export default function ShortLinkPage({}): JSX.Element {
   const selectedShortLink = useParams();
   const [shortLinkData, setShortLinkData] = useState<any>();
@@ -21,7 +26,7 @@ export default function ShortLinkPage({}): JSX.Element {
     }
   }, []);
 
-  const getSelectedShortLink = async (requesInfo: any, token: string) => {
+  const getSelectedShortLink = async (requesInfo: RequestSelectedShortLink, token: string) => {
     try {
       const data = await getLinkByUserIdAndShortLink(requesInfo, token);
       if (!data) throw new Error("Error on short link page");
