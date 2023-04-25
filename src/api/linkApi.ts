@@ -7,6 +7,7 @@ import {
   LinkSuccessReponse,
   NewShortLink,
   UpdateShortLink,
+  UpdateShortLinkResponse,
   UserId
 } from "../types/api/linkApi";
 
@@ -30,8 +31,8 @@ export const getCreateShortLink = async (req: NewShortLink, token: string): Prom
 };
 
 
-export const updateShortLinkByUserId = async (data: UpdateShortLink, token: string): Promise<LinkSuccessReponse> => {
-  const response = await linkApi.post<LinkSuccessReponse>(`/urls/update`, { data, headers: {
+export const updateShortLinkByUserId = async (data: UpdateShortLink, token: string): Promise<UpdateShortLinkResponse> => {
+  const response = await linkApi.post<UpdateShortLinkResponse>(`/urls/update`, { data, headers: {
     "Authorization": token
   }});
   return response.data;
@@ -46,8 +47,8 @@ export const deleteShorLinkByUserId = async (req: DeleteShortLink, token: string
 };
 
 
-export const getLinkByUserIdAndShortLink = async (req: any, token: string): Promise<LinkSuccessReponse> => {
-  const response = await linkApi.get<LinkSuccessReponse>(`/urls/users/${req.userId}/shortUrl/${req.shortUrl}`, { headers: {
+export const getLinkByUserIdAndShortLink = async (req: any, token: string): Promise<any> => {
+  const response = await linkApi.get<any>(`/urls/users/${req.userId}/shortUrl/${req.shortUrl}`, { headers: {
     "Authorization": token
   }});
   return response.data;
