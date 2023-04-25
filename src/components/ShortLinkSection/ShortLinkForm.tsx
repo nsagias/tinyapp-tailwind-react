@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { validURL } from "../Utils/utils";
 import localStorageService from "../../services/localStorageService";
 import { updateShortLinkByUserId } from "../../api/linkApi";
+import { UpdateShortLink, UpdateShortLinkResponse } from "../../types/api/linkApi";
 
-export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged }: { onShortLinkData: any, onShortLinkDataChanged: any }):JSX.Element {
+
+export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged }: { onShortLinkData: any, onShortLinkDataChanged: (shortLinkData: UpdateShortLinkResponse) => void }):JSX.Element {
   const navigate = useNavigate();
   const longUrl = onShortLinkData && onShortLinkData.data && onShortLinkData.data.longUrl;
   const shortUrl = onShortLinkData && onShortLinkData.data && onShortLinkData.data.shortUrl;
@@ -34,7 +36,7 @@ export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged 
 
     try {
       const updatedData = await updateShortLinkByUserId({ userId, shortUrl, longUrl: selectedLongUrl }, token!);
-      await onShortLinkDataChanged(updatedData);
+      onShortLinkDataChanged(updatedData);
       } catch (error: any) {
         console.log("update error", error);
       }
