@@ -1,11 +1,11 @@
 import axios, { AxiosInstance } from "axios";
 import { 
+  CreateShortLink,
+  CreateShortLinkResponse,
   DeleteShortLink,
   DeleteShortLinkResponse,
   GetLongURL,
   LinksListSuccessReponse,
-  LinkSuccessReponse,
-  NewShortLink,
   UpdateShortLink,
   UpdateShortLinkResponse,
   UserId
@@ -23,24 +23,20 @@ export const getLinksByUserId = async (id: any, token: string): Promise<LinksLis
 };
 
 
-export const getCreateShortLink = async (req: NewShortLink, token: string): Promise<LinkSuccessReponse> => {
-  const response = await linkApi.post<LinkSuccessReponse>(`/urls/new`, { req, headers: {
-    "Authorization": token
-  }});
+export const createShortLink = async (data: CreateShortLink, token: string): Promise<CreateShortLinkResponse> => {
+  const response = await linkApi.post<CreateShortLinkResponse>(`/urls/new`, { data, token });
   return response.data;
 };
 
 
 export const updateShortLinkByUserId = async (data: UpdateShortLink, token: string): Promise<UpdateShortLinkResponse> => {
-  const response = await linkApi.post<UpdateShortLinkResponse>(`/urls/update`, { data, headers: {
-    "Authorization": token
-  }});
+  const response = await linkApi.post<UpdateShortLinkResponse>(`/urls/update`, { data, token });
   return response.data;
 };
 
 
-export const deleteShorLinkByUserId = async (req: DeleteShortLink, token: string): Promise<DeleteShortLinkResponse> => {
-  const response = await linkApi.delete<DeleteShortLinkResponse>("/urls/delete", {data: req, headers: {
+export const deleteShorLinkByUserId = async (data: DeleteShortLink, token: string): Promise<DeleteShortLinkResponse> => {
+  const response = await linkApi.delete<DeleteShortLinkResponse>("/urls/delete", {data, headers: {
     "Authorization": token
   }});
   return response.data;
