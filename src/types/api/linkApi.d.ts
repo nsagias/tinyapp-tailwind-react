@@ -15,9 +15,25 @@ export type LinkSuccessReponse = {
   data?: UrlModel,
 }
 
+export type UpdateShortLink = {
+  userId: number,
+  shortUrl: string,
+  longUrl: string
+}
+
 export type UpdateShortLinkResponse = {
   message: string,
   data: UpdateShortLink,
+}
+
+export type CreateShortLink = {
+  userId: number,
+  longUrl: string
+}
+
+export type CreateShortLinkResponse = {
+  message: string,
+  data: NewShortLink,
 }
 
 export type LinkErrorMessage = {
@@ -32,18 +48,6 @@ export type LinksListSuccessReponse = {
   message: string,  
   data: UrlModel[],
 }
-
-export type NewShortLink = {
-  userId: number,
-  longUrl: string
-}
-
-export type UpdateShortLink = {
-  userId: number,
-  shortUrl: string,
-  longUrl: string
-}
-
 
 export type DeleteShortLink = {
   userId: number,
