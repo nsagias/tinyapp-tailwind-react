@@ -4,18 +4,21 @@ import localStorageService from "../../services/localStorageService";
 import HeroShortLinksSection from "../../components/heroSection/HeroShortLinksSection";
 import ShortLinkSection from "../../components/shortLinkSection/ShortLinkSection";
 import { getLinkByUserIdAndShortLink } from "../../api/linkApi";
-import { RequestSelectedShortLink } from "../../types/api/linkApi";
-
-
-
+import { RequestSelectedShortLink, UpdateShortLink, UpdateShortLinkResponse } from "../../types/api/linkApi";
 
 export default function ShortLinkPage({}): JSX.Element {
   const selectedShortLink = useParams();
-  const [shortLinkData, setShortLinkData] = useState<any>();
   const [userId, setUserId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
   const [token, setToken] = useState(localStorageService.getLocalStorageItem("token"));
   const [shortUrl, setShortUrl] = useState<any>(selectedShortLink.id);
-
+  const [shortLinkData, setShortLinkData] = useState<UpdateShortLinkResponse>({
+    message: "",
+    data: {
+      userId: 0,
+      shortUrl: "",
+      longUrl: "",
+    }
+  });
 
   useEffect(() => {
     if (userId && token) {
@@ -39,7 +42,7 @@ export default function ShortLinkPage({}): JSX.Element {
       <HeroShortLinksSection shortLinkData={shortLinkData}/>
       <ShortLinkSection
         onShortLinkData={shortLinkData}
-        onShortLinkDataChanged={(shortLinkData: string) => setShortLinkData(shortLinkData)}
+        onShortLinkDataChanged={(shortLinkData: UpdateShortLinkResponse) => setShortLinkData(shortLinkData)}
       />
     </>
   );
