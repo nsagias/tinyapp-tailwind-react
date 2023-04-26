@@ -1,31 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { validURL } from "../Utils/utils";
+import { createShortLink } from "../../api/linkApi";
+import localStorageService from "../../services/localStorageService";
 
 export default function ShortenForm() {
 
-  const [shortenLink, setShortenLink] = useState<string>("");
+  const [longUrl, setLongUrl] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
+  const [userId, setUserId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
+  const [token, setToken] = useState(localStorageService.getLocalStorageItem("token"));
+
+  useEffect(() => {
+
+  }, []);
   
   const handleSubmitLink = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     
     // check for value
-    if (shortenLink === "") {
+    if (longUrl === "") {
       return setErrorMessage("Please Enter Value");
     }
  
     // check for valid link
-    const isValidURL = validURL(shortenLink);
+    const isValidURL = validURL(longUrl);
     if (!isValidURL) {
       return setErrorMessage("Please Valid Link");
     }
    
-    // setvalue to clear
-    // TODO: Axios update database here
-    // TODO: refresh screen after database is updated
+
+   try {
+  
+    // userId: number;
+    // longUrl: string;
+    console.log()
+      const createShortLinkResponse = await createShortLink({userId, longUrl}, token!)
+      console.log("CREATE SHORT LINK RESPOSNE", createShortLinkResponse);
+
+   } catch (error: any) {
+    console.log(error)
+    
+   }
     // clear error message
     setErrorMessage("");
-    setShortenLink("");
+    setLongUrl("");
   };
 
   return (
@@ -38,8 +56,8 @@ export default function ShortenForm() {
         name="shorten-link"
         type={"text"}
         placeholder={"Enter Link Here"}
-        value={shortenLink}
-        onChange={(e) => setShortenLink(e.target.value)}
+        value={longUrl}
+        onChange={(e) => setLongUrl(e.target.value)}
         >  
       </input>
       <button
