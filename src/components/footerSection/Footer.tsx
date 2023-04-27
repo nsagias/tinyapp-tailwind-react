@@ -27,9 +27,9 @@ const footerMenuList: FooterMenuData[] = [
 ];
 
 export const footerSocialMediaList: FooterSocialMediaItemData[] = [
-  {linkURL: "# ", imageURL: "images/icon-facebook.svg"},
-  {linkURL: "# ", imageURL: "images/icon-twitter.svg"},
-  {linkURL: "# ", imageURL: "images/icon-instagram.svg"}
+  {linkURL: "# ", imageURL: "/images/icon-facebook.svg"},
+  {linkURL: "# ", imageURL: "/images/icon-twitter.svg"},
+  {linkURL: "# ", imageURL: "/images/icon-instagram.svg"}
 ];
 
 export default function Footer({ authorized}: {authorized: boolean}): JSX.Element {
