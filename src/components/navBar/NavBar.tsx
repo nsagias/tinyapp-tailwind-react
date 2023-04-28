@@ -10,6 +10,9 @@ import NavButtonHamburger from "./NavButtonHamburger";
 import { MobileMenuItem, NavBarMenuItemData } from "../../types/components/NavBar";
 import NavMobileMenuContainer from "./NavMobileMenuContainer";
 import NavMobileMenu from "./NavMobileMenu";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setAuthFalse } from "../../store/slices/authenticationSlice";
 
 const navBarMenuList: NavBarMenuItemData[] = [
   { id: 1, menuItemName: "Features" , url: "/features", logginRequired: 0, role: 4},
@@ -33,6 +36,9 @@ const mobileMenuItemsAuth: MobileMenuItem[] = [
 
 
 export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): JSX.Element {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [menu, setMenu] = useState<NavBarMenuItemData[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const isLoggedIn = isAthenticated ? 1 : 0;
@@ -41,6 +47,11 @@ export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): J
     setMenu(navBarMenuList);
   },[]);
 
+
+  const logoutHandler = () => {
+    dispatch(setAuthFalse());
+    navigate("/");
+  };
 
 
   return (
@@ -61,11 +72,16 @@ export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): J
         </NavBarLeft>
         {/* Right Side Menu */}
         <NavBarRight>
-          <NavButtonsAuth authorized={isAthenticated}/>
+          <NavButtonsAuth
+            isAthenticated={isAthenticated}
+            onLogout={logoutHandler}
+          />
         </NavBarRight>
-
-        <NavButtonHamburger isOpen={isOpen}/>
-
+        
+        <NavButtonHamburger
+          onOpen={isOpen}
+          onSetOpen={(isOpen: boolean) => setIsOpen(isOpen)}
+          />
         <NavMobileMenuContainer isOpen={isOpen}>
           {mobileMenuItems && Array.isArray(mobileMenuItems) && mobileMenuItems.length > 0 && mobileMenuItems.map((data, index) => (
             <NavMobileMenu linkURL={data.linkURL} styling={data.styling} buttonName={data.buttonName} key={index}/>
