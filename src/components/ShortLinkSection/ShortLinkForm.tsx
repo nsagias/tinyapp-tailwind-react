@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { validURL } from "../Utils/utils";
 import localStorageService from "../../services/localStorageService";
 import { deleteShorLinkByUserId, updateShortLinkByUserId } from "../../api/linkApi";
-import { DeleteShortLinkResponse, UpdateShortLinkResponse } from "../../types/api/linkApi";
+import { UpdateShortLinkResponse } from "../../types/api/linkApi";
 
 
-  export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged, onSetDeleteResponse }: {
+  export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged }: {
     onShortLinkData: UpdateShortLinkResponse,
-    onShortLinkDataChanged: (shortLinkData: UpdateShortLinkResponse) => void,
-    onSetDeleteResponse: (deleteResponse: DeleteShortLinkResponse) => void
+    onShortLinkDataChanged: (shortLinkData: UpdateShortLinkResponse) => void
   }):JSX.Element {
   const navigate = useNavigate();
   const longUrl = onShortLinkData && onShortLinkData.data && onShortLinkData.data.longUrl;
@@ -51,14 +50,12 @@ import { DeleteShortLinkResponse, UpdateShortLinkResponse } from "../../types/ap
   const deleleLink = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     try {
-      const deleteShortlinkResponse = await deleteShorLinkByUserId({userId, shortUrl }, token!);
-      onSetDeleteResponse(deleteShortlinkResponse);
+      await deleteShorLinkByUserId({userId, shortUrl }, token!);
+      // navigate back to urls
+      navigate("/shorturls");
     } catch (error) {
       console.log("delete error", error);
-    }
-
-    // navigate back to urls
-    navigate("/shorturls");
+    }  
   };
 
   return (

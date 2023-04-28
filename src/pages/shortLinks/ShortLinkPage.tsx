@@ -4,7 +4,7 @@ import localStorageService from "../../services/localStorageService";
 import HeroShortLinksSection from "../../components/heroSection/HeroShortLinksSection";
 import ShortLinkSection from "../../components/shortLinkSection/ShortLinkSection";
 import { getLinkByUserIdAndShortLink } from "../../api/linkApi";
-import { DeleteShortLinkResponse, RequestSelectedShortLink, UpdateShortLink, UpdateShortLinkResponse } from "../../types/api/linkApi";
+import { RequestSelectedShortLink, UpdateShortLink, UpdateShortLinkResponse } from "../../types/api/linkApi";
 
 export default function ShortLinkPage({}): JSX.Element {
   const selectedShortLink = useParams();
@@ -19,8 +19,7 @@ export default function ShortLinkPage({}): JSX.Element {
       longUrl: "",
     }
   });
-  const [deleteResponse, setDeleteResponse] = useState<DeleteShortLinkResponse>({ message: false });
-
+  
   useEffect(() => {
     if (userId && token) {
       getSelectedShortLink({userId, shortUrl}, token);
@@ -32,7 +31,6 @@ export default function ShortLinkPage({}): JSX.Element {
       const data = await getLinkByUserIdAndShortLink(requesInfo, token);
       if (!data) throw new Error("Error on short link page");
       setShortLinkData(data);
-
     } catch (error: any) {
       console.log("Error on short link page", error);
     }
@@ -44,7 +42,6 @@ export default function ShortLinkPage({}): JSX.Element {
       <ShortLinkSection
         onShortLinkData={shortLinkData}
         onShortLinkDataChanged={(shortLinkData: UpdateShortLinkResponse) => setShortLinkData(shortLinkData)}
-        onSetDeleteResponse={(deleteResponse: DeleteShortLinkResponse) => setDeleteResponse(deleteResponse)}
       />
     </>
   );
