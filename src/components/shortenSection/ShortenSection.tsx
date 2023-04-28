@@ -6,25 +6,28 @@ import { getLinksByUserId } from "../../api/linkApi";
 import localStorageService from "../../services/localStorageService";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import { LinksListSuccessReponse } from "../../types/api/linkApi";
 
 export default function ShortenSection({ isAuthenticated }: { isAuthenticated : boolean }): JSX.Element {
-  const [shortenLinks, setShortLinks] = useState<any>([]); 
+  const [shortenLinks, setShortLinks] = useState<LinksListSuccessReponse>({ message: "", data: [] }); 
   const [token, setToken] = useState(localStorageService.getLocalStorageItem("token") || null);
-  const [userId, setUserId] = useState(localStorageService.getLocalStorageItem("id") || null)
+  const [userId, setUserId] = useState<number | null>(JSON.parse(localStorageService.getLocalStorageItem("id")!)) || null;
   const selectIsAuthenticated = useSelector((state: RootState) => state.authentication.isAuthenticated);
+  const [createShortLinkResponse, setCreateShortLinkResponse] = useState<any>(null);
   
   useEffect(() => {
-    if (!isAuthenticated || !selectIsAuthenticated ) {
+    if ( !isAuthenticated || !selectIsAuthenticated ) {
       setUserId(null);
       setToken(null);
-      setShortLinks([]);
+      setShortLinks({ message: "", data: [] });
     }
     getShortLinkData();
-  }, [isAuthenticated, selectIsAuthenticated]);
+  }, [isAuthenticated, selectIsAuthenticated, createShortLinkResponse]);
+
 
   const getShortLinkData = async() => {
     const data = await getLinksByUserId(userId, token!) || null;
-    setShortLinks(data && data.data);
+    setShortLinks(data);
   };
 
   return (
@@ -32,14 +35,13 @@ export default function ShortenSection({ isAuthenticated }: { isAuthenticated : 
       {/* Shorten Section Container */}
       <ShortenSectionContainer>
         {/* Shorten Form */}
-        <ShortenForm />
+        <ShortenForm onSetCreateShortLinkResponse={setCreateShortLinkResponse} />
         {/* Display Shorten Links */}
-        {shortenLinks && Array.isArray(shortenLinks) && shortenLinks.map((links, index: number) => (
+        {shortenLinks.data && Array.isArray(shortenLinks.data) && shortenLinks.data.map((links) => (
           <ShortenLink 
             shortenLinks={links}
             key={links.id} 
-            index={index + 1} 
-            />
+          />
         ))}
       </ShortenSectionContainer>
     </section>
