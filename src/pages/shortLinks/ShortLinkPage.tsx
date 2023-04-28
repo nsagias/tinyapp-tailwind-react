@@ -4,7 +4,7 @@ import localStorageService from "../../services/localStorageService";
 import HeroShortLinksSection from "../../components/heroSection/HeroShortLinksSection";
 import ShortLinkSection from "../../components/shortLinkSection/ShortLinkSection";
 import { getLinkByUserIdAndShortLink } from "../../api/linkApi";
-import { RequestSelectedShortLink, UpdateShortLink, UpdateShortLinkResponse } from "../../types/api/linkApi";
+import { RequestSelectedShortLink, UpdateShortLinkResponse } from "../../types/api/linkApi";
 
 export default function ShortLinkPage({}): JSX.Element {
   const selectedShortLink = useParams();
