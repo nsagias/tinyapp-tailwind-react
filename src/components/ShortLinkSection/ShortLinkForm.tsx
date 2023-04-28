@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { validURL } from "../Utils/utils";
 import localStorageService from "../../services/localStorageService";
-import { updateShortLinkByUserId } from "../../api/linkApi";
+import { deleteShorLinkByUserId, updateShortLinkByUserId } from "../../api/linkApi";
 import { UpdateShortLinkResponse } from "../../types/api/linkApi";
 
 
@@ -35,8 +35,8 @@ import { UpdateShortLinkResponse } from "../../types/api/linkApi";
     if (!isValidURL) return setErrorMessage("Please Valid Link");
 
     try {
-      const updatedData = await updateShortLinkByUserId({ userId, shortUrl, longUrl: selectedLongUrl }, token!);
-      onShortLinkDataChanged(updatedData);
+      const updatedDataResponse = await updateShortLinkByUserId({ userId, shortUrl, longUrl: selectedLongUrl }, token!);
+      onShortLinkDataChanged(updatedDataResponse);
       } catch (error: any) {
         console.log("update error", error);
       }
@@ -46,8 +46,11 @@ import { UpdateShortLinkResponse } from "../../types/api/linkApi";
 
   const deleleLink = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    // TODO: add api call here
-    // on success true delete
+    try {
+      const deleteShortlinkResponse = await deleteShorLinkByUserId({userId, shortUrl }, token!);
+    } catch (error) {
+      console.log("delete error", error);
+    }
 
     // navigate back to urls
     navigate("/shorturls");
