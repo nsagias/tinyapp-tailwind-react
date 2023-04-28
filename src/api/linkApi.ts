@@ -36,9 +36,7 @@ export const updateShortLinkByUserId = async (data: UpdateShortLink, token: stri
 
 
 export const deleteShorLinkByUserId = async (data: DeleteShortLink, token: string): Promise<DeleteShortLinkResponse> => {
-  const response = await linkApi.delete<DeleteShortLinkResponse>("/urls/delete", {data, headers: {
-    "Authorization": token
-  }});
+  const response = await linkApi.post<DeleteShortLinkResponse>("/urls/delete", { data, token });
   return response.data;
 };
 
