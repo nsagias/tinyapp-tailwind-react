@@ -16,9 +16,6 @@ import { setAuthFalse } from "../../store/slices/authenticationSlice";
 import useWindowDimensions from "../../hooks/use-window-dimensions";
 
 
-
-
-
 export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,7 +33,7 @@ export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): J
     setMenu(navBarMenuList);
   },[]);
 
-  const logoutHandler = () => {
+  const logoutHandler = async () => {
     dispatch(setAuthFalse());
     navigate("/");
   };
@@ -56,10 +53,9 @@ export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): J
   ];
 
   const mobileMenuItemsAuth: MobileMenuItem[] =  [
-
     { linkURL: "/login" , styling: "w-full pt-6 border-t border-gray-400 text-center", buttonName: "Login", logginRequired:0, role: 4},
     { linkURL: "/register", styling: "w-full text-center py-3 rounded-full bg-cyan", buttonName: "Sign Up",logginRequired: 0, role: 4},
-    { linkURL: "", styling: "w-full text-center mt-6 py-3 rounded-full bg-cyan", buttonName: "Logout", onClickAction: () => logoutHandler,  logginRequired: 1, role: 4},
+    { linkURL: "", styling: "w-full text-center mt-6 py-3 rounded-full bg-cyan", buttonName: "Logout", onClickAction: () => logoutHandler(),  logginRequired: 1, role: 4},
   ];
 
 
@@ -67,18 +63,22 @@ export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): J
     <nav className="relative container z-50 mx-auto p-6">
       {/* Container for all items */}
       <NavBarContainer>
+
         {/* Left Side Container for Logo and Menu */}
         <NavBarLeft>
           {/* Logo */}
           <NavLogo />
-          {/* Menu */}
+
+          {/* Main Menu */}
           <NavMenu>
             {menu && Array.isArray(menu) && menu.length > 0 && menu.filter(x => x.logginRequired <= isLoggedIn).map((menuItem) => (
               <NavMenuItem menuItemName={menuItem.menuItemName} url={menuItem.url} key={menuItem.id} />
             ))}
           </NavMenu>
+
         {/* Left Side Menu */}
         </NavBarLeft>
+
         {/* Right Side Menu */}
         <NavBarRight>
           <NavButtonsAuth
@@ -87,19 +87,22 @@ export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): J
           />
         </NavBarRight>
         
+        {/* Hamburger Button */}
         <NavButtonHamburger
           onOpen={isOpen}
           onSetOpen={(isOpen: boolean) => setIsOpen(isOpen)}
-          />
-        <NavMobileMenuContainer isOpen={isOpen}>
+        />
 
+        {/* Mobile Menu */}
+        <NavMobileMenuContainer isOpen={isOpen}>
           {mobileMenuItems && Array.isArray(mobileMenuItems) && mobileMenuItems.length > 0 && mobileMenuItems.map((data, index) => (
             <NavMobileMenu linkURL={data.linkURL} styling={data.styling} buttonName={data.buttonName} key={index}/>
           ))}
-          {mobileMenuItemsAuth && Array.isArray(mobileMenuItemsAuth) && mobileMenuItemsAuth.length > 0 && mobileMenuItemsAuth.map((data, index) => (
-            <NavMobileMenu linkURL={data.linkURL} styling={data.styling} buttonName={data.buttonName} onClickAction={data.onClickAction}key={index}/>
+          {mobileMenuItemsAuth && Array.isArray(mobileMenuItemsAuth) && mobileMenuItemsAuth.length > 0 && mobileMenuItemsAuth.filter(x => x.logginRequired! === isLoggedIn).map((data, index) => (
+            <NavMobileMenu linkURL={data.linkURL} styling={data.styling} buttonName={data.buttonName} onClickAction={data.onClickAction} key={index}/>
           ))}
         </NavMobileMenuContainer>
+
       </NavBarContainer>
     </nav>
   );
