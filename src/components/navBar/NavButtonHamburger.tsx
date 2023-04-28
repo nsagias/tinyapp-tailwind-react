@@ -1,4 +1,3 @@
-import React from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function NavButtonHamburger({onOpen, onSetOpen}: {onOpen: boolean, onSetOpen: (isOpen: boolean) => any }): JSX.Element {
