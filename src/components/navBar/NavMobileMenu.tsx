@@ -1,15 +1,10 @@
 import { Link } from "react-router-dom";
 import { MobileMenuItem } from "../../types/components/NavBar";
 
-export default function NavMobileMenu({ linkURL, styling, buttonName }: MobileMenuItem): JSX.Element {
+export default function NavMobileMenu({ linkURL, styling, buttonName, onClickAction }: MobileMenuItem): JSX.Element {
   return (
     <div className="flex flex-col py-1 items-center justify-center w-full space-y-6 font-bold text-white rounded-sm">
-      {/* <a href={`${linkURL}`} className={`${styling}`}>{buttonName}</a> */}
-      <Link 
-        className={`${styling}`}
-        to={`${linkURL}`}
-        >{buttonName}
-      </Link>
+      <Link  className={`${styling}`} to={`${linkURL}` || ""}  onClick={onClickAction || null}>{buttonName}</Link>
     </div>
   );
 }
