@@ -23,5 +23,5 @@ export type MobileMenuItem = {
   buttonName: string,
   logginRequired?: number,
   role?: number,
-  onClickAction?: any,
+  onClickAction: () => void,
 };
