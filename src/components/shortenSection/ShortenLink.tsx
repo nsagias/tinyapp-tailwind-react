@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const SHORLINK_HOST = "http://127.0.0.1:3000/";
 
-export default function ShortenLink({ shortenLinks, index }: IShortLinkProps ): JSX.Element {
+export default function ShortenLink({ shortenLinks }: IShortLinkProps ): JSX.Element {
   // set state for copying to clipboard
   const [copied] = useState<string>(shortenLinks && `${SHORLINK_HOST}${shortenLinks.shortUrl}`);
 
@@ -26,7 +26,8 @@ export default function ShortenLink({ shortenLinks, index }: IShortLinkProps ): 
         {/* Copy Button */}
         <CopyToClipboardButton 
           copy={copied} 
-          className={`p-2 px-8 text-white ${ index && index % 2 ? "bg-darkViolet" : "bg-cyan" } rounded-lg hover:opacity-70 focus:outline-none`}
+          // className={`p-2 px-8 text-white ${ index && index % 2 ? "bg-darkViolet" : "bg-cyan" } rounded-lg hover:opacity-70 focus:outline-none`}
+          className={`p-2 px-8 text-white bg-cyan rounded-lg hover:opacity-70 focus:outline-none`}
         />
         {/* Edit Button */}
         <Link to={`/shorturls/${JSON.parse(shortLink)}`}>

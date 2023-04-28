@@ -6,7 +6,6 @@ export type ShortLinkData = {
 
 export interface IShortenLinkProps {
   shortenLinks: IShortenLinkData;
-  index: number;
 }
 
 export interface IShortLinkProps {
