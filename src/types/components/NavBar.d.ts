@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 // A type that describe menu item input
 export type NavBarMenuItemName = { 
   menuItemName: string, 
@@ -16,9 +18,10 @@ export type NavBarMenuItemData = {
 };
 
 export type MobileMenuItem = {
-  linkURL: string,
+  linkURL: any,
   styling: string,
   buttonName: string,
   logginRequired?: number,
   role?: number,
+  onClickAction?: any,
 };
