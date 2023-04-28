@@ -13,6 +13,7 @@ import NavMobileMenu from "./NavMobileMenu";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setAuthFalse } from "../../store/slices/authenticationSlice";
+import useWindowDimensions from "../../hooks/use-window-dimensions";
 
 const navBarMenuList: NavBarMenuItemData[] = [
   { id: 1, menuItemName: "Features" , url: "/features", logginRequired: 0, role: 4},
@@ -38,10 +39,15 @@ const mobileMenuItemsAuth: MobileMenuItem[] = [
 export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { width } = useWindowDimensions();
+  
   const [menu, setMenu] = useState<NavBarMenuItemData[]>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const isLoggedIn = isAthenticated ? 1 : 0;
+
+  useEffect(() => {
+    if (width > 1024) setIsOpen(false);
+  }, [width]); 
 
   useEffect(() => {
     setMenu(navBarMenuList);
