@@ -12,58 +12,56 @@ import NavMobileMenuContainer from "./NavMobileMenuContainer";
 import NavMobileMenu from "./NavMobileMenu";
 
 const navBarMenuList: NavBarMenuItemData[] = [
-  { id: 1, menuItemName: "Features" , url: "/features"},
-  { id: 2, menuItemName: "Pricing", url: "/pricing" },
-  { id: 3, menuItemName: "Documentation", url: "/docs" },
-  { id: 4, menuItemName: "Short Links", url: "/shorturls"},
+  { id: 1, menuItemName: "Features" , url: "/features", logginRequired: 0, role: 4},
+  { id: 2, menuItemName: "Pricing", url: "/pricing", logginRequired: 0, role: 4},
+  { id: 3, menuItemName: "Documentation", url: "/docs", logginRequired: 0, role: 4},
+  { id: 4, menuItemName: "Short Links", url: "/shorturls", logginRequired: 1, role: 4},
 ];
 
 const mobileMenuItems: MobileMenuItem[] = [
-  { linkURL: "/features", styling: "w-full text-center", buttonName: "Features"},
-  { linkURL: "/pricing ", styling: "w-full text-center", buttonName: "Pricing"},
-  { linkURL: "/docs ", styling: "w-full text-center", buttonName: "Documentation"},
-  { linkURL: "/shorturls ", styling: "w-full text-center", buttonName: "Short Links"},
+  { linkURL: "/features", styling: "w-full text-center", buttonName: "Features", logginRequired: 0, role: 4},
+  { linkURL: "/pricing ", styling: "w-full text-center", buttonName: "Pricing", logginRequired: 0, role: 4},
+  { linkURL: "/docs ", styling: "w-full text-center", buttonName: "Documentation", logginRequired: 0, role: 4},
+  { linkURL: "/shorturls ", styling: "w-full text-center", buttonName: "Short Links", logginRequired: 1, role: 4},
 ];
 
 const mobileMenuItemsAuth: MobileMenuItem[] = [
-  { linkURL: "# ", styling: "w-full pt-6 border-t border-gray-400 text-center", buttonName: "Login"},
-  { linkURL: "# ", styling: "w-full text-center py-3 rounded-full bg-cyan", buttonName: "Sign Up"},
-  { linkURL: "# ", styling: "w-full text-center mt-6 py-3 rounded-full bg-cyan", buttonName: "Logout"},
+  { linkURL: "# ", styling: "w-full pt-6 border-t border-gray-400 text-center", buttonName: "Login", logginRequired:0, role: 4},
+  { linkURL: "# ", styling: "w-full text-center py-3 rounded-full bg-cyan", buttonName: "Sign Up",logginRequired: 0, role: 4},
+  { linkURL: "# ", styling: "w-full text-center mt-6 py-3 rounded-full bg-cyan", buttonName: "Logout", logginRequired: 1, role: 4},
 ];
 
 
-export default function NavBar({ authorized}: {authorized: boolean}): JSX.Element {
+export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): JSX.Element {
   const [menu, setMenu] = useState<NavBarMenuItemData[]>();
-   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const isLoggedIn = isAthenticated ? 1 : 0;
 
-  // TODO: update menu if logged in
   useEffect(() => {
     setMenu(navBarMenuList);
   },[]);
 
+
+
   return (
     <nav className="relative container mx-auto p-6">
-
       {/* Container for all items */}
       <NavBarContainer>
-        
         {/* Left Side Container for Logo and Menu */}
         <NavBarLeft>
-
           {/* Logo */}
           <NavLogo />
-
           {/* Menu */}
           <NavMenu>
-            {menu && Array.isArray(menu) && menu.length > 0 && menu.map((menuItem) => (
+            {menu && Array.isArray(menu) && menu.length > 0 && menu.filter(x => x.logginRequired <= isLoggedIn).map((menuItem) => (
               <NavMenuItem menuItemName={menuItem.menuItemName} url={menuItem.url} key={menuItem.id} />
             ))}
           </NavMenu>
+        {/* Left Side Menu */}
         </NavBarLeft>
-
         {/* Right Side Menu */}
         <NavBarRight>
-          <NavButtonsAuth authorized={authorized}/>
+          <NavButtonsAuth authorized={isAthenticated}/>
         </NavBarRight>
 
         <NavButtonHamburger isOpen={isOpen}/>
