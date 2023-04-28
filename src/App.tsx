@@ -42,8 +42,6 @@ export default function App() {
   const routeAuth = routesAuthList && Array.isArray(routesAuthList) && routesAuthList.filter(x => x.logginRequired <= isLoggedIn).filter(x => x.role >= rolelevel).map((route, index) => (
     <Route path={`${route.path}`} element={route.element} key={index} />
   ));
-  console.log("ROUTE AUTH", routeAuth);
-
 
   return (
     <div className="App">
