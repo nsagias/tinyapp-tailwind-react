@@ -113,6 +113,7 @@ export default function RegistrationForm({}): JSX.Element {
               onChange={firstNamInputChangeHandler}
               onBlur={firstNameInputBlurHandler}
               placeholder="Enter your first name"
+              autoFocus
             />  
 
             {/* LastName Input */}
