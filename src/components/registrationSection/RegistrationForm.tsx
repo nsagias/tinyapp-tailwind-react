@@ -2,16 +2,15 @@ import { useEffect, useState } from "react";
 import useInput from "../../hooks/use-input";
 import { registerUser } from "../../api/userApi";
 import { RegisterUserSuccessResponse } from "../../types/api/userApi";
+import { useNavigate } from "react-router-dom";
+import localStorageService from "../../services/LocalStorageService";
+import { isAuthenticated } from "../../store/constants/authentication";
+import { useDispatch } from "react-redux";
+import { setAuthTrue } from "../../store/slices/authenticationSlice";
 
 export default function RegistrationForm({}): JSX.Element {
-
-  const [token, setToken] = useState<string>("");
-
-  useEffect(() => {
-    localStorage.setItem("token", token);
-  }, [token]);
-
-  console.log("TOKEN", token);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // First Name Input
   const {
@@ -69,8 +68,12 @@ export default function RegistrationForm({}): JSX.Element {
       const response = await registerUser({ firstName: enteredFirstName, lastName: enteredLastName, email: enteredEmail, password: enteredPassword}) as RegisterUserSuccessResponse;
 
       // Set token
-      if (response && response.token && response.token.authToken) {
-        setToken(response.token.authToken);
+      if (response && response.token && response.token.authToken && response.userInfo) {
+        localStorageService.setLocalStorageItem(isAuthenticated, "true");
+        localStorageService.setLocalStorageItem("token", response.token.authToken);
+        dispatch(setAuthTrue());
+        localStorageService.populateLocalStorageItems(response.userInfo);
+        navigate("/shorturls");
       }
 
       // Reset form
@@ -78,8 +81,7 @@ export default function RegistrationForm({}): JSX.Element {
       lastNameValueReset();
       emaiValueReset();
       passwordValueReset();
-      
-      // TODO Add navigation to short link page
+
 
     } catch (error: any) {
       console.error(error);
