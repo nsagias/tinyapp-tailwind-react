@@ -1,5 +1,5 @@
-import HeroNotFoundSection from "../../components/heroSection/HeroNotFoundSection";
-import NotFound from "../../components/routeComponents/NotFound";
+import HeroNotFoundSection from "../../components/HeroSection/HeroNotFoundSection";
+import NotFound from "../../components/RouteComponents/NotFound";
 
 export default function NotFoundPage({}): JSX.Element {
   return (

@@ -1,6 +1,6 @@
 import CTASection from "../../components/CTASection/CTASection";
-import HeroDocumentationSection from "../../components/heroSection/HeroDocumentationSection";
-import MarketingSectionContainer from "../../components/marketingSection/MarketingSectionContainer";
+import HeroDocumentationSection from "../../components/HeroSection/HeroDocumentationSection";
+import MarketingSectionContainer from "../../components/MarketingSection/MarketingSectionContainer";
 
 export default function Docs():JSX.Element {
   return (

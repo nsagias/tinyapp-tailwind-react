@@ -1,4 +1,5 @@
 import RegistrationForm from "./RegistrationForm";
+
 export default function RegistrationContainter({}): JSX.Element {
 
   return(

@@ -1,4 +1,4 @@
-import RegistrationContainter from "../../components/registrationSection/RegistrationContainer";
+import RegistrationContainter from "../../components/RegistrationSection/RegistrationContainer";
 
 export default function RegistrationPage({}): JSX.Element {
   return (
