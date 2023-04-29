@@ -9,7 +9,7 @@ export default function MarketingFeatures() {
 
 
       {/* Marketing Box 1 */}
-      <div className="relative flex flex-col p-6 space-y-6 bg-white rounded-lg md:w-1/3">
+      <div className="relative flex flex-col  p-6 space-y-6 bg-white rounded-lg md:w-1/3">
         {/* Image Wrapper/Position */}
         <div className="absolute -ml-10 left-1/2 -top-10 md:left-16">
           {/* Image Container */}
@@ -23,7 +23,7 @@ export default function MarketingFeatures() {
 
 
       {/* Marketing Box 2 */}
-      <div className="relative flex flex-col p-6 space-y-6 bg-white rounded-lg md:w-1/3">
+      <div className="relative flex flex-col mt-24 p-6 space-y-6 bg-white rounded-lg md:w-1/3 md:mt-0">
         {/* Image Wrapper/Position */}
         <div className="absolute -ml-10 left-1/2 -top-10 md:left-16">
           {/* Image Container */}
@@ -36,7 +36,7 @@ export default function MarketingFeatures() {
       </div>
 
        {/* Marketing Box 3 */}
-       <div className="relative flex flex-col p-6 space-y-6 bg-white rounded-lg md:w-1/3">
+       <div className="relative flex flex-col mt-24 p-6 space-y-6 bg-white rounded-lg md:w-1/3 md:mt-0">
         {/* Image Wrapper/Position */}
         <div className="absolute -ml-10 left-1/2 -top-10 md:left-16">
           {/* Image Container */}
