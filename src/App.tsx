@@ -28,19 +28,19 @@ export default function App() {
   }, [selectIsAuthenticated ]);
 
   const routesAuthList = [
-    {path:"/features",  element:[<FeaturesPage />],     logginRequired: 0, role: 4},
-    {path:"/pricing",   element:[<PricingPage />],      logginRequired: 0, role: 4},
-    {path:"/docs",      element:[<DocsPage />],         logginRequired: 0, role: 4},
-    {path:"/login",     element:[<LoginPage />],        logginRequired: 0, role: 4},
-    {path:"/register",  element:[<RegistrationPage />], logginRequired: 0, role: 4},
-    {path:"/shorturls", element:[<ShortenUrlPage isAuthenticated={isAthenticated} />], logginRequired: 1, role: 3},
-    {path:"/shorturls/:id", element:[<ShortLinkPage />],logginRequired: 1, role: 3},
-    {path:"/",          element:[<HomePage />],         logginRequired: 0, role: 4},
-    {path:"*",          element:[<NotFoundPage />],     logginRequired: 0, role: 4},
+    {id: 1, path:"/features",  element:[<FeaturesPage />],     logginRequired: 0, role: 4},
+    {id: 2, path:"/pricing",   element:[<PricingPage />],      logginRequired: 0, role: 4},
+    {id: 3, path:"/docs",      element:[<DocsPage />],         logginRequired: 0, role: 4},
+    {id: 4, path:"/login",     element:[<LoginPage />],        logginRequired: 0, role: 4},
+    {id: 5, path:"/register",  element:[<RegistrationPage />], logginRequired: 0, role: 4},
+    {id: 6, path:"/shorturls", element:[<ShortenUrlPage isAuthenticated={isAthenticated} />], logginRequired: 1, role: 3},
+    {id: 7, path:"/shorturls/:id", element:[<ShortLinkPage />],logginRequired: 1, role: 3},
+    {id: 8, path:"/",          element:[<HomePage />],         logginRequired: 0, role: 4},
+    {id: 9, path:"*",          element:[<NotFoundPage />],     logginRequired: 0, role: 4},
   ];
 
-  const routeAuth = routesAuthList && Array.isArray(routesAuthList) && routesAuthList.filter(x => x.logginRequired <= isLoggedIn).filter(x => x.role >= rolelevel).map((route, index) => (
-    <Route path={`${route.path}`} element={route.element} key={index} />
+  const routeAuth = routesAuthList && Array.isArray(routesAuthList) && routesAuthList.filter(x => x.logginRequired <= isLoggedIn).filter(x => x.role >= rolelevel).map((route) => (
+    <Route path={`${route.path}`} element={route.element} key={route.id} />
   ));
 
   return (

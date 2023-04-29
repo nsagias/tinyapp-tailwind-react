@@ -52,16 +52,16 @@ export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): J
   ];
 
   const mobileMenuItems: MobileMenuItem[] = [
-    { linkURL: "", styling: "w-full text-center", buttonName: "Features", onClickAction: () => navCloseMobileMenuHandler("/features"), logginRequired: 0, role: 4},
-    { linkURL: "", styling: "w-full text-center", buttonName: "Pricing", onClickAction: () => navCloseMobileMenuHandler("/pricing"),logginRequired: 0, role: 4},
-    { linkURL: "", styling: "w-full text-center", buttonName: "Documentation", onClickAction: () => navCloseMobileMenuHandler("/docs"), logginRequired: 0, role: 4},
-    { linkURL: "", styling: "w-full text-center", buttonName: "Short Links", onClickAction: () => navCloseMobileMenuHandler("/shorturls"),logginRequired: 1, role: 4},
+    { id: 1, linkURL: "", styling: "w-full text-center", buttonName: "Features", onClickAction: () => navCloseMobileMenuHandler("/features"), logginRequired: 0, role: 4},
+    { id: 2, linkURL: "", styling: "w-full text-center", buttonName: "Pricing", onClickAction: () => navCloseMobileMenuHandler("/pricing"),logginRequired: 0, role: 4},
+    { id: 3,linkURL: "", styling: "w-full text-center", buttonName: "Documentation", onClickAction: () => navCloseMobileMenuHandler("/docs"), logginRequired: 0, role: 4},
+    { id: 4,linkURL: "", styling: "w-full text-center", buttonName: "Short Links", onClickAction: () => navCloseMobileMenuHandler("/shorturls"),logginRequired: 1, role: 4},
   ];
 
   const mobileMenuItemsAuth: MobileMenuItem[] =  [
-    { linkURL: "" , styling: "w-full pt-6 border-t border-gray-400 text-center", buttonName: "Login", onClickAction: () => navCloseMobileMenuHandler("/login"), logginRequired:0, role: 4},
-    { linkURL: "", styling: "w-full text-center py-3 rounded-full bg-cyan", buttonName: "Sign Up", onClickAction: () => navCloseMobileMenuHandler("/register"),  logginRequired: 0, role: 4},
-    { linkURL: "", styling: "w-full text-center mt-6 py-3 rounded-full bg-cyan", buttonName: "Logout", onClickAction: () => logoutHandler(), logginRequired: 1, role: 4},
+    { id: 1,linkURL: "" , styling: "w-full pt-6 border-t border-gray-400 text-center", buttonName: "Login", onClickAction: () => navCloseMobileMenuHandler("/login"), logginRequired:0, role: 4},
+    { id: 2,linkURL: "", styling: "w-full text-center py-3 rounded-full bg-cyan", buttonName: "Sign Up", onClickAction: () => navCloseMobileMenuHandler("/register"),  logginRequired: 0, role: 4},
+    { id: 3,linkURL: "", styling: "w-full text-center mt-6 py-3 rounded-full bg-cyan", buttonName: "Logout", onClickAction: () => logoutHandler(), logginRequired: 1, role: 4},
   ];
 
 
@@ -101,11 +101,11 @@ export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): J
 
         {/* Mobile Menu */}
         <NavMobileMenuContainer isOpen={isOpen}>
-          {mobileMenuItems && Array.isArray(mobileMenuItems) && mobileMenuItems.length > 0 && mobileMenuItems.map((data, index) => (
-            <NavMobileMenu linkURL={data.linkURL} styling={data.styling} buttonName={data.buttonName} onClickAction={data.onClickAction} key={index}/>
+          {mobileMenuItems && Array.isArray(mobileMenuItems) && mobileMenuItems.length > 0 && mobileMenuItems.map((data) => (
+            <NavMobileMenu linkURL={data.linkURL} styling={data.styling} buttonName={data.buttonName} onClickAction={data.onClickAction} key={data.id}/>
           ))}
-          {mobileMenuItemsAuth && Array.isArray(mobileMenuItemsAuth) && mobileMenuItemsAuth.length > 0 && mobileMenuItemsAuth.filter(x => x.logginRequired! === isLoggedIn).map((data, index) => (
-            <NavMobileMenu linkURL={data.linkURL} styling={data.styling} buttonName={data.buttonName} onClickAction={data.onClickAction} key={index}/>
+          {mobileMenuItemsAuth && Array.isArray(mobileMenuItemsAuth) && mobileMenuItemsAuth.length > 0 && mobileMenuItemsAuth.filter(x => x.logginRequired! === isLoggedIn).map((data) => (
+            <NavMobileMenu linkURL={data.linkURL} styling={data.styling} buttonName={data.buttonName} onClickAction={data.onClickAction} key={data.id}/>
           ))}
         </NavMobileMenuContainer>
 

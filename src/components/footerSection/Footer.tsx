@@ -9,27 +9,27 @@ import FooterLogo from "./FooterLogo";
 
 const footerMenuList: FooterMenuData[] = [ 
   { footerMenuTitle: "Features", footerData: [
-    { URL: "# ", linkName: "Link shortenning"},
-    { URL: "# ", linkName: "Branding links"},
-    { URL: "# ", linkName: "Analytics"}
+    { id: 1, URL: "# ", linkName: "Link shortenning"},
+    { id: 2, URL: "# ", linkName: "Branding links"},
+    { id: 3, URL: "# ", linkName: "Analytics"}
   ]}, 
   { footerMenuTitle: "Resources", footerData: [
-    { URL: "# ", linkName: "Blog"},
-    { URL: "# ", linkName: "Developers"},
-    { URL: "# ", linkName: "Support"}
+    { id: 4, URL: "# ", linkName: "Blog"},
+    { id: 5, URL: "# ", linkName: "Developers"},
+    { id: 6, URL: "# ", linkName: "Support"}
   ]},
   { footerMenuTitle: "Company", footerData: [
-    { URL: "# ", linkName: "About"},
-    { URL: "# ", linkName: "Our Team"},
-    { URL: "# ", linkName: "Careers"},
-    { URL: "# ", linkName: "Contact Us"}
+    { id: 7, URL: "# ", linkName: "About"},
+    { id: 8, URL: "# ", linkName: "Our Team"},
+    { id: 9, URL: "# ", linkName: "Careers"},
+    { id: 10,URL: "# ", linkName: "Contact Us"}
   ]}
 ];
 
 export const footerSocialMediaList: FooterSocialMediaItemData[] = [
-  {linkURL: "# ", imageURL: "/images/icon-facebook.svg"},
-  {linkURL: "# ", imageURL: "/images/icon-twitter.svg"},
-  {linkURL: "# ", imageURL: "/images/icon-instagram.svg"}
+  {id: 1, linkURL: "# ", imageURL: "/images/icon-facebook.svg"},
+  {id: 2, linkURL: "# ", imageURL: "/images/icon-twitter.svg"},
+  {id: 3, linkURL: "# ", imageURL: "/images/icon-instagram.svg"}
 ];
 
 export default function Footer({ authorized}: {authorized: boolean}): JSX.Element {
@@ -57,11 +57,12 @@ export default function Footer({ authorized}: {authorized: boolean}): JSX.Elemen
 
         {/* Social Media Footer */}
         <FooterSocialMediaContainer>
-          {footerSocialMediaList && Array.isArray(footerSocialMediaList) && footerSocialMediaList.length > 0 && footerSocialMediaList.map((data, index) => (
+          {footerSocialMediaList && Array.isArray(footerSocialMediaList) && footerSocialMediaList.length > 0 && footerSocialMediaList.map((data) => (
             <FooterSocialMediaItem 
               linkURL={data.linkURL} 
               imageURL={data.imageURL} 
-              key={index}
+              id={data.id}
+              key={data.id}
             />
           ))}
         </FooterSocialMediaContainer>
