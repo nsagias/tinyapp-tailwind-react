@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { validURL } from "../Utils/utils";
-import localStorageService from "../../services/localStorageService";
+import localStorageService from "../../services/LocalStorageService";
 import { deleteShorLinkByUserId, updateShortLinkByUserId } from "../../api/linkApi";
 import { UpdateShortLinkResponse } from "../../types/api/linkApi";
 

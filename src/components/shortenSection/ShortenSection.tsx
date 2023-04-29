@@ -3,7 +3,7 @@ import ShortenLink from "./ShortenLink";
 import ShortenForm from "./ShortenForm";
 import ShortenSectionContainer from "./ShortenSectionContainer";
 import { getLinksByUserId } from "../../api/linkApi";
-import localStorageService from "../../services/localStorageService";
+import localStorageService from "../../services/LocalStorageService";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { LinksListSuccessReponse } from "../../types/api/linkApi";
