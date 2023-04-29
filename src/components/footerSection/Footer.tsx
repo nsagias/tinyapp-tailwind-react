@@ -8,17 +8,17 @@ import FooterLogo from "./FooterLogo";
 
 
 const footerMenuList: FooterMenuData[] = [ 
-  { footerMenuTitle: "Features", footerData: [
+  {id: 1,  footerMenuTitle: "Features", footerData: [
     { id: 1, URL: "# ", linkName: "Link shortenning"},
     { id: 2, URL: "# ", linkName: "Branding links"},
     { id: 3, URL: "# ", linkName: "Analytics"}
   ]}, 
-  { footerMenuTitle: "Resources", footerData: [
+  {id: 2, footerMenuTitle: "Resources", footerData: [
     { id: 4, URL: "# ", linkName: "Blog"},
     { id: 5, URL: "# ", linkName: "Developers"},
     { id: 6, URL: "# ", linkName: "Support"}
   ]},
-  { footerMenuTitle: "Company", footerData: [
+  {id: 3, footerMenuTitle: "Company", footerData: [
     { id: 7, URL: "# ", linkName: "About"},
     { id: 8, URL: "# ", linkName: "Our Team"},
     { id: 9, URL: "# ", linkName: "Careers"},
@@ -50,6 +50,7 @@ export default function Footer({ authorized}: {authorized: boolean}): JSX.Elemen
             <FooterMenu 
               footerMenuTitle={data.footerMenuTitle}
               footerData={data.footerData}
+              id={data.id}
               key={index}
             />
           ))}
