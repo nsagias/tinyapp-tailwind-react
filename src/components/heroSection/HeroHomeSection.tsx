@@ -15,7 +15,7 @@ export default function HeroHomeSection({}):JSX.Element {
             <>
               <h1 className="text-5xl font-bold text-center lg:text-6xl lg:max-w-md lg:text-left">Your short links host</h1>
               {/* Marketing  brangind text*/}
-              <p className="text-2xl text-center text-gray-400 lg:max-w-md lg:text-left">Build your brand and get detailed insights on how your links are ranking.</p>
+              <p className="text-2xl text-center text-gray-400 lg:max-w-md lg:text-left">Build your brand and get detailed insights and statistics.</p>
             </>
 
             {/* Button */}
