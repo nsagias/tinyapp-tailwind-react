@@ -69,6 +69,7 @@ import { UpdateShortLinkResponse } from "../../types/api/linkApi";
         type={"text"}
         placeholder={"Enter Link Here"}
         value={selectedLongUrl || ""}
+        autoFocus
         onChange={(e) => setSelectedLongUrl(e.target.value)}
       >  
       </input>
