@@ -52,16 +52,16 @@ export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): J
   ];
 
   const mobileMenuItems: MobileMenuItem[] = [
-    { id: 1, linkURL: "", styling: "w-full text-center", buttonName: "Features", onClickAction: () => navCloseMobileMenuHandler("/features"), logginRequired: 0, role: 4},
-    { id: 2, linkURL: "", styling: "w-full text-center", buttonName: "Pricing", onClickAction: () => navCloseMobileMenuHandler("/pricing"),logginRequired: 0, role: 4},
-    { id: 3,linkURL: "", styling: "w-full text-center", buttonName: "Documentation", onClickAction: () => navCloseMobileMenuHandler("/docs"), logginRequired: 0, role: 4},
-    { id: 4,linkURL: "", styling: "w-full text-center", buttonName: "Short Links", onClickAction: () => navCloseMobileMenuHandler("/shorturls"),logginRequired: 1, role: 4},
+    { id: 1, linkURL: "/features", styling: "w-full text-center", buttonName: "Features", onClickAction: () => navCloseMobileMenuHandler("/features"), logginRequired: 0, role: 4},
+    { id: 2, linkURL: "/pricing", styling: "w-full text-center", buttonName: "Pricing", onClickAction: () => navCloseMobileMenuHandler("/pricing"),logginRequired: 0, role: 4},
+    { id: 3,linkURL: "/docs", styling: "w-full text-center", buttonName: "Documentation", onClickAction: () => navCloseMobileMenuHandler("/docs"), logginRequired: 0, role: 4},
+    { id: 4,linkURL: "/shorturls", styling: "w-full text-center", buttonName: "Short Links", onClickAction: () => navCloseMobileMenuHandler("/shorturls"),logginRequired: 1, role: 4},
   ];
 
   const mobileMenuItemsAuth: MobileMenuItem[] =  [
-    { id: 1,linkURL: "" , styling: "w-full pt-6 border-t border-gray-400 text-center", buttonName: "Login", onClickAction: () => navCloseMobileMenuHandler("/login"), logginRequired:0, role: 4},
-    { id: 2,linkURL: "", styling: "w-full text-center py-3 rounded-full bg-cyan", buttonName: "Sign Up", onClickAction: () => navCloseMobileMenuHandler("/register"),  logginRequired: 0, role: 4},
-    { id: 3,linkURL: "", styling: "w-full text-center mt-6 py-3 rounded-full bg-cyan", buttonName: "Logout", onClickAction: () => logoutHandler(), logginRequired: 1, role: 4},
+    { id: 1,linkURL: "/login" , styling: "w-full pt-6 border-t border-gray-400 text-center", buttonName: "Login", onClickAction: () => navCloseMobileMenuHandler("/login"), logginRequired:0, role: 4},
+    { id: 2,linkURL: "/register", styling: "w-full text-center py-3 rounded-full bg-cyan", buttonName: "Sign Up", onClickAction: () => navCloseMobileMenuHandler("/register"),  logginRequired: 0, role: 4},
+    { id: 3,linkURL: "/", styling: "w-full text-center mt-6 py-3 rounded-full bg-cyan", buttonName: "Logout", onClickAction: () => logoutHandler(), logginRequired: 1, role: 4},
   ];
 
 
