@@ -87,7 +87,7 @@ export default function LoginForm({}): JSX.Element {
                 onBlur={emailInputBlurHandler}
                 placeholder="Enter your email"
                 autoFocus
-                />  
+              />  
 
               {/* Password Input */}
               <input
