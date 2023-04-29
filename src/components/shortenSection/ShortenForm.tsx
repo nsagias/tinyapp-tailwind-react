@@ -46,6 +46,7 @@ export default function ShortenForm({ onSetCreateShortLinkResponse }: { onSetCre
         placeholder={"Enter Link Here"}
         value={longUrl}
         onChange={(e) => setLongUrl(e.target.value)}
+        autoFocus
       >
       </input>
 
