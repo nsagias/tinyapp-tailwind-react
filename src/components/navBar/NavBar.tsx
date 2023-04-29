@@ -101,7 +101,7 @@ export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): J
 
         {/* Mobile Menu */}
         <NavMobileMenuContainer isOpen={isOpen}>
-          {mobileMenuItems && Array.isArray(mobileMenuItems) && mobileMenuItems.length > 0 && mobileMenuItems.map((data) => (
+          {mobileMenuItems && Array.isArray(mobileMenuItems) && mobileMenuItems.length > 0 && mobileMenuItems.filter(x => x.logginRequired! === isLoggedIn).map((data) => (
             <NavMobileMenu linkURL={data.linkURL} styling={data.styling} buttonName={data.buttonName} onClickAction={data.onClickAction} key={data.id}/>
           ))}
           {mobileMenuItemsAuth && Array.isArray(mobileMenuItemsAuth) && mobileMenuItemsAuth.length > 0 && mobileMenuItemsAuth.filter(x => x.logginRequired! === isLoggedIn).map((data) => (
