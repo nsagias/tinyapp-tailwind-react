@@ -12,9 +12,10 @@ import {
 } from "../types/api/linkApi";
 
 
-const linkApi: AxiosInstance = axios.create({
-  baseURL: 'http://0.0.0.0:3001/'
-});
+// const linkApi: AxiosInstance = axios.create({
+//   baseURL: 'http://0.0.0.0:3001/'
+// });
+const linkApi: AxiosInstance = axios.create();
 
 
 export const getLinksByUserId = async (id: any, token: string): Promise<LinksListSuccessReponse> => {
