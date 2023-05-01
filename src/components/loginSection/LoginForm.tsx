@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 export default function LoginForm({}): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-    
+
   const {
     inputValue: enteredEmail,
     hasError: emailInputIsValid,
