@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+
+  client:
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '/tinyapp-tailwind-react/src/app'
+      - '/tinyapp-tailwind-react/node_modules'
+    ports:
+      - 3007:3000
+    environment:
+      - NODE_ENV=development
