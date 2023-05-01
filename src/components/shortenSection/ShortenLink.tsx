@@ -3,10 +3,10 @@ import { IShortenLinkProps as IShortLinkProps } from "../../types/components/Sho
 import CopyToClipboardButton from "../Buttons/CopyToClipboardButton";
 import { Link } from "react-router-dom";
 
-
-const SHORLINK_HOST = "http://127.0.0.1:3000/";
+const SHORLINK_HOST = "http://0.0.0.0:3001/u/";
 
 export default function ShortenLink({ shortenLinks }: IShortLinkProps ): JSX.Element {
+
   // set state for copying to clipboard
   const [copied] = useState<string>(shortenLinks && `${SHORLINK_HOST}${shortenLinks.shortUrl}`);
 
