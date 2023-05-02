@@ -3,7 +3,6 @@ import { registerUser } from "../../api/userApi";
 import { RegisterUserSuccessResponse } from "../../types/api/userApi";
 import { useNavigate } from "react-router-dom";
 import localStorageService from "../../services/LocalStorageService";
-import { isAuthenticated } from "../../store/constants/authentication";
 import { useDispatch } from "react-redux";
 import { setAuthTrue } from "../../store/slices/authenticationSlice";
 
