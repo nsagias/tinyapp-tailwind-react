@@ -56,7 +56,7 @@ export default function LoginForm({}): JSX.Element {
       passswordResetInput();
 
     } catch (error: any) {
-      console.error(error);
+      console.error(error || error.response);
     }
   };
 
