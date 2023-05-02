@@ -7,8 +7,11 @@ import localStorageService from "../../services/LocalStorageService";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { LinksListSuccessReponse } from "../../types/api/linkApi";
+import { ShortenSectionProps } from "../../types/components/ShortenLinks";
 
-export default function ShortenSection({ isAuthenticated }: { isAuthenticated : boolean }): JSX.Element {
+
+
+export default function ShortenSection({ isAuthenticated }: ShortenSectionProps ): JSX.Element {
   const [shortenLinks, setShortLinks] = useState<LinksListSuccessReponse>({ message: "", data: [] }); 
   const [token, setToken] = useState(localStorageService.getLocalStorageItem("token") || null);
   const [userId, setUserId] = useState<number | null>(JSON.parse(localStorageService.getLocalStorageItem("id")!)) || null;
