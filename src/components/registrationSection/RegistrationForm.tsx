@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import useInput from "../../hooks/use-input";
 import { registerUser } from "../../api/userApi";
 import { RegisterUserSuccessResponse } from "../../types/api/userApi";
