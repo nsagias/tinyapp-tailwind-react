@@ -11,3 +11,13 @@ export interface IShortenLinkProps {
 export interface IShortLinkProps {
   shortenLinks: IShortenLinkData;
 }
+
+export type ShortLinkSectionProps = {
+  onShortLinkData: UpdateShortLinkResponse,
+  onShortLinkDataChanged: (shortLinkData: UpdateShortLinkResponse) => void
+}
+
+export type ShortLinkFormProps = {
+  onShortLinkData: UpdateShortLinkResponse,
+  onShortLinkDataChanged: (shortLinkData: UpdateShortLinkResponse) => void
+}

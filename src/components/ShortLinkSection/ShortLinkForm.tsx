@@ -3,13 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { validURL } from "../Utils/utils";
 import localStorageService from "../../services/LocalStorageService";
 import { deleteShorLinkByUserId, updateShortLinkByUserId } from "../../api/linkApi";
-import { UpdateShortLinkResponse } from "../../types/api/linkApi";
+import { ShortLinkFormProps } from "../../types/components/ShortLinks";
 
 
-  export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged }: {
-    onShortLinkData: UpdateShortLinkResponse,
-    onShortLinkDataChanged: (shortLinkData: UpdateShortLinkResponse) => void
-  }):JSX.Element {
+export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged }: ShortLinkFormProps ):JSX.Element {
   const navigate = useNavigate();
   const longUrl = onShortLinkData && onShortLinkData.data && onShortLinkData.data.longUrl;
   const shortUrl = onShortLinkData && onShortLinkData.data && onShortLinkData.data.shortUrl;
