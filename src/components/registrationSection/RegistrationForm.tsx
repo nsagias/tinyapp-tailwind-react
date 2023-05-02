@@ -84,7 +84,7 @@ export default function RegistrationForm({}): JSX.Element {
 
 
     } catch (error: any) {
-      console.error(error);
+      console.error(error || error.response);
 
     }
   };
