@@ -7,8 +7,8 @@ export default function ShortenForm({ onSetCreateShortLinkResponse }: { onSetCre
 
   const [longUrl, setLongUrl] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
-  const [userId, setUserId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
-  const [token, setToken] = useState(localStorageService.getLocalStorageItem("token"));
+  const [userId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
+  const [token] = useState(localStorageService.getLocalStorageItem("token"));
 
   
   const handleSubmitLink = async (e: React.FormEvent): Promise<void> => {
