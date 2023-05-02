@@ -1,4 +1,4 @@
-enum LocalStorageItem {
+export enum LocalStorageItem {
   Active = "active",
   Email = "email",
   EmailVerified = "emailVerified",

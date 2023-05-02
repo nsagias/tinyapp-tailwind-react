@@ -2,13 +2,14 @@ import { useState } from "react";
 import { validURL } from "../Utils/utils";
 import { createShortLink } from "../../api/linkApi";
 import localStorageService from "../../services/LocalStorageService";
+import { LocalStorageItem } from "../../types/services/LocalStorageItems";
 
 export default function ShortenForm({ onSetCreateShortLinkResponse }: { onSetCreateShortLinkResponse: any }): JSX.Element {
 
   const [longUrl, setLongUrl] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
-  const [userId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
-  const [token] = useState(localStorageService.getLocalStorageItem("token"));
+  const [userId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem(LocalStorageItem.Id)!));
+  const [token] = useState(localStorageService.getLocalStorageItem(LocalStorageItem.Token));
 
   
   const handleSubmitLink = async (e: React.FormEvent): Promise<void> => {
