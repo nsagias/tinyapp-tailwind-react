@@ -24,7 +24,7 @@ export default function ShortLinkPage({}): JSX.Element {
     if (userId && token) {
       getSelectedShortLink({userId, shortUrl}, token);
     }
-  }, []);
+  }, [shortUrl, token, userId]);
 
   const getSelectedShortLink = async (requesInfo: RequestSelectedShortLink, token: string) => {
     try {
