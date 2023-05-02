@@ -4,8 +4,19 @@ import { LoginUserSuccessResponse } from "../../types/api/userApi";
 import { useDispatch } from "react-redux";
 import { setAuthTrue } from "../../store/slices/authenticationSlice";
 import localStorageService from "../../services/LocalStorageService";
-import { isAuthenticated } from "../../store/constants/authentication";
 import { useNavigate } from "react-router-dom";
+
+enum LocalStorageItem {
+  Active = "active",
+  Email = "email",
+  EmailVerified = "emailVerified",
+  FirstName = "firstName",
+  LastName = "lastName",
+  Id = "id",
+  Token = "token",
+  IsAuthenticated = "isAuthenticated"
+}
+
 
 export default function LoginForm({}): JSX.Element {
   const dispatch = useDispatch();
@@ -44,8 +55,8 @@ export default function LoginForm({}): JSX.Element {
      
       // Set token
       if (response && response.token && response.token.authToken && response.userInfo) {
-        localStorageService.setLocalStorageItem(isAuthenticated, "true");
-        localStorageService.setLocalStorageItem("token", response.token.authToken);
+        localStorageService.setLocalStorageItem(LocalStorageItem.IsAuthenticated, "true");
+        localStorageService.setLocalStorageItem(LocalStorageItem.Token, response.token.authToken);
         dispatch(setAuthTrue());
         localStorageService.populateLocalStorageItems(response.userInfo);
         navigate("/shorturls");
