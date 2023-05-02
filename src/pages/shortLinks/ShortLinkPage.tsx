@@ -6,10 +6,22 @@ import ShortLinkSection from "../../components/ShortLinkSection/ShortLinkSection
 import { getLinkByUserIdAndShortLink } from "../../api/linkApi";
 import { RequestSelectedShortLink, UpdateShortLinkResponse } from "../../types/api/linkApi";
 
+enum LocalStorageItem {
+  Active = "active",
+  Email = "email",
+  EmailVerified = "emailVerified",
+  FirstName = "firstName",
+  LastName = "lastName",
+  Id = "id",
+  Token = "token",
+  IsAuthenticated = "isAuthenticated"
+};
+
+
 export default function ShortLinkPage({}): JSX.Element {
   const selectedShortLink = useParams();
-  const [userId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
-  const [token] = useState(localStorageService.getLocalStorageItem("token"));
+  const [userId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem(LocalStorageItem.Id)!));
+  const [token] = useState(localStorageService.getLocalStorageItem(LocalStorageItem.Token));
   const [shortUrl] = useState<any>(selectedShortLink.id);
   const [shortLinkData, setShortLinkData] = useState<UpdateShortLinkResponse>({
     message: "",
