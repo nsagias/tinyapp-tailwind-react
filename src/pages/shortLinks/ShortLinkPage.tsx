@@ -33,6 +33,7 @@ export default function ShortLinkPage({}): JSX.Element {
       setShortLinkData(data);
     } catch (error: any) {
       console.log("Error on short link page", error);
+      console.log("Error on short link page", error.response);
     }
   };
 

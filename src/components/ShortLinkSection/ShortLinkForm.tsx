@@ -41,7 +41,7 @@ import { UpdateShortLinkResponse } from "../../types/api/linkApi";
       const updatedDataResponse = await updateShortLinkByUserId({ userId, shortUrl, longUrl: selectedLongUrl }, token!);
       onShortLinkDataChanged(updatedDataResponse);
       } catch (error: any) {
-        console.log("update error", error);
+        console.log("update error", error || error.response);
       }
     setErrorMessage("");
     };
@@ -53,8 +53,8 @@ import { UpdateShortLinkResponse } from "../../types/api/linkApi";
       await deleteShorLinkByUserId({userId, shortUrl }, token!);
       // navigate back to urls
       navigate("/shorturls");
-    } catch (error) {
-      console.log("delete error", error);
+    } catch (error: any) {
+      console.log("delete error", error || error.response);
     }  
   };
 

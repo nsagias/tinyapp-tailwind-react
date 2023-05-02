@@ -13,7 +13,7 @@ export default function UpdateShortLink({ shortenLinks}: IShortLinkProps): JSX.E
       <p className="font-bold text-center text-darkViolet md:text-left">{shortenLinks && shortenLinks.fullLink}</p>
 
       {/* Shortened Link Container */}
-      <div className="flex flex-col items-center justify-end flex-1 space-x-4 space-y-2 md:flex-row md:space-y-0">
+      <div className="flex flex-col items-cent`er justify-end flex-1 space-x-4 space-y-2 md:flex-row md:space-y-0">
         
         {/* Display Short Link */}
         <div className="font-bold text-cyan">
