@@ -10,7 +10,6 @@ import { LinksListSuccessReponse } from "../../types/api/linkApi";
 import { ShortenSectionProps } from "../../types/components/ShortenLinks";
 
 
-
 export default function ShortenSection({ isAuthenticated }: ShortenSectionProps ): JSX.Element {
   const [shortenLinks, setShortLinks] = useState<LinksListSuccessReponse>({ message: "", data: [] }); 
   const [token, setToken] = useState(localStorageService.getLocalStorageItem("token") || null);

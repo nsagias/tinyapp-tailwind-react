@@ -8,9 +8,9 @@ import { RequestSelectedShortLink, UpdateShortLinkResponse } from "../../types/a
 
 export default function ShortLinkPage({}): JSX.Element {
   const selectedShortLink = useParams();
-  const [userId, setUserId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
-  const [token, setToken] = useState(localStorageService.getLocalStorageItem("token"));
-  const [shortUrl, setShortUrl] = useState<any>(selectedShortLink.id);
+  const [userId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
+  const [token] = useState(localStorageService.getLocalStorageItem("token"));
+  const [shortUrl] = useState<any>(selectedShortLink.id);
   const [shortLinkData, setShortLinkData] = useState<UpdateShortLinkResponse>({
     message: "",
     data: {
