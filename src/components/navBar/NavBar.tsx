@@ -7,7 +7,7 @@ import NavBarLeft from "./NavBarLeft";
 import NavBarContainer from "./NavBarContainer";
 import NavLogo from "./NavLogo";
 import NavButtonHamburger from "./NavButtonHamburger";
-import { MobileMenuItem, NavBarMenuItemData } from "../../types/components/NavBar";
+import { MobileMenuItem, NavBarMenuItemData, NavBarProps } from "../../types/components/NavBar";
 import NavMobileMenuContainer from "./NavMobileMenuContainer";
 import NavMobileMenu from "./NavMobileMenu";
 import { useDispatch } from "react-redux";
@@ -16,7 +16,7 @@ import { setAuthFalse } from "../../store/slices/authenticationSlice";
 import useWindowDimensions from "../../hooks/use-window-dimensions";
 
 
-export default function NavBar({ isAthenticated }: {isAthenticated: boolean}): JSX.Element {
+export default function NavBar({ isAthenticated }: NavBarProps ): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { width } = useWindowDimensions();
