@@ -7,6 +7,17 @@ import { isAuthenticated } from "../../store/constants/authentication";
 import { useDispatch } from "react-redux";
 import { setAuthTrue } from "../../store/slices/authenticationSlice";
 
+enum LocalStorageItem {
+  Active = "active",
+  Email = "email",
+  EmailVerified = "emailVerified",
+  FirstName = "firstName",
+  LastName = "lastName",
+  Id = "id",
+  Token = "token",
+  IsAuthenticated = "isAuthenticated"
+}
+
 export default function RegistrationForm({}): JSX.Element {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -68,8 +79,8 @@ export default function RegistrationForm({}): JSX.Element {
 
       // Set token
       if (response && response.token && response.token.authToken && response.userInfo) {
-        localStorageService.setLocalStorageItem(isAuthenticated, "true");
-        localStorageService.setLocalStorageItem("token", response.token.authToken);
+        localStorageService.setLocalStorageItem(LocalStorageItem.IsAuthenticated, "true");
+        localStorageService.setLocalStorageItem(LocalStorageItem.Token, response.token.authToken);
         dispatch(setAuthTrue());
         localStorageService.populateLocalStorageItems(response.userInfo);
         navigate("/shorturls");
@@ -80,7 +91,6 @@ export default function RegistrationForm({}): JSX.Element {
       lastNameValueReset();
       emaiValueReset();
       passwordValueReset();
-
 
     } catch (error: any) {
       console.error(error || error.response);
