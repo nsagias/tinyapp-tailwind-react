@@ -34,7 +34,7 @@ export const footerSocialMediaList: FooterSocialMediaItemData[] = [
 
 export default function Footer({ authorized}: {authorized: boolean}): JSX.Element {
 
-  const [footerData, setFooterData] = useState<FooterMenuData[]>(footerMenuList)
+  const [footerData] = useState<FooterMenuData[]>(footerMenuList)
 
   return (
     <footer className={`py-16 bg-darkerViolet`}>

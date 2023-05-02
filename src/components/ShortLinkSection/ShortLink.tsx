@@ -4,7 +4,7 @@ import CopyToClipboardButton from "../Buttons/CopyToClipboardButton";
 
 export default function UpdateShortLink({ shortenLinks}: IShortLinkProps): JSX.Element {
 
-  const [copied, setCopied] = useState<string>(shortenLinks && shortenLinks.shortLink);
+  const [copied] = useState<string>(shortenLinks && shortenLinks.shortLink);
 
   return (
     <div className="flex flex-col items-center justify-between w-full p-6 bg-white rounded-lg md:flex-row">
