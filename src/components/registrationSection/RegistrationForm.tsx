@@ -5,17 +5,8 @@ import { useNavigate } from "react-router-dom";
 import localStorageService from "../../services/LocalStorageService";
 import { useDispatch } from "react-redux";
 import { setAuthTrue } from "../../store/slices/authenticationSlice";
+import { LocalStorageItem } from "../../types/services/LocalStorageItems";
 
-enum LocalStorageItem {
-  Active = "active",
-  Email = "email",
-  EmailVerified = "emailVerified",
-  FirstName = "firstName",
-  LastName = "lastName",
-  Id = "id",
-  Token = "token",
-  IsAuthenticated = "isAuthenticated"
-}
 
 export default function RegistrationForm({}): JSX.Element {
   const dispatch = useDispatch();

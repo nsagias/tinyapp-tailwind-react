@@ -8,17 +8,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { LinksListSuccessReponse } from "../../types/api/linkApi";
 import { ShortenSectionProps } from "../../types/components/ShortenLinks";
+import { LocalStorageItem } from "../../types/services/LocalStorageItems";
 
-enum LocalStorageItem {
-  Active = "active",
-  Email = "email",
-  EmailVerified = "emailVerified",
-  FirstName = "firstName",
-  LastName = "lastName",
-  Id = "id",
-  Token = "token",
-  IsAuthenticated = "isAuthenticated"
-}
 
 export default function ShortenSection({ isAuthenticated }: ShortenSectionProps ): JSX.Element {
   const [shortenLinks, setShortLinks] = useState<LinksListSuccessReponse>({ message: "", data: [] }); 

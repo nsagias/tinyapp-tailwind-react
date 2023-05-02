@@ -5,17 +5,7 @@ import HeroShortLinksSection from "../../components/HeroSection/HeroShortLinksSe
 import ShortLinkSection from "../../components/ShortLinkSection/ShortLinkSection";
 import { getLinkByUserIdAndShortLink } from "../../api/linkApi";
 import { RequestSelectedShortLink, UpdateShortLinkResponse } from "../../types/api/linkApi";
-
-enum LocalStorageItem {
-  Active = "active",
-  Email = "email",
-  EmailVerified = "emailVerified",
-  FirstName = "firstName",
-  LastName = "lastName",
-  Id = "id",
-  Token = "token",
-  IsAuthenticated = "isAuthenticated"
-};
+import { LocalStorageItem } from "../../types/services/LocalStorageItems";
 
 
 export default function ShortLinkPage({}): JSX.Element {

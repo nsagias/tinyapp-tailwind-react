@@ -2,17 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { AUTHENTICATION, logoutStorageList } from "../constants/authentication";
 import { IAuthentication } from "../../types/store/authentication";
 import localStorageService from "../../services/LocalStorageService";
+import { LocalStorageItem } from "../../types/services/LocalStorageItems";
 
-enum LocalStorageItem {
-  Active = "active",
-  Email = "email",
-  EmailVerified = "emailVerified",
-  FirstName = "firstName",
-  LastName = "lastName",
-  Id = "id",
-  Token = "token",
-  IsAuthenticated = "isAuthenticated"
-}
 
 // Get current is authenticated state from local storage
 const localStorageIsAuthenticated = localStorageService.getLocalStorageItem(LocalStorageItem.IsAuthenticated);

@@ -4,17 +4,8 @@ import { validURL } from "../Utils/utils";
 import localStorageService from "../../services/LocalStorageService";
 import { deleteShorLinkByUserId, updateShortLinkByUserId } from "../../api/linkApi";
 import { ShortLinkFormProps } from "../../types/components/ShortLinks";
+import { LocalStorageItem } from "../../types/services/LocalStorageItems";
 
-enum LocalStorageItem {
-  Active = "active",
-  Email = "email",
-  EmailVerified = "emailVerified",
-  FirstName = "firstName",
-  LastName = "lastName",
-  Id = "id",
-  Token = "token",
-  IsAuthenticated = "isAuthenticated"
-}
 
 export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged }: ShortLinkFormProps ):JSX.Element {
   const navigate = useNavigate();
