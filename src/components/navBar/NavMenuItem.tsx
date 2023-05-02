@@ -5,7 +5,6 @@ import { NavBarMenuItemName } from "../../types/components/NavBar";
 export default function NavMenuItem({ menuItemName, url} : NavBarMenuItemName): JSX.Element {
   return (
     <>
-      {/* <a href={url} className="text-grayViolet hover:text-darkerViolet">{menuItemName}</a> */}
       <Link 
         className="text-grayViolet hover:text-darkerViolet" 
         to={url}>{menuItemName}
