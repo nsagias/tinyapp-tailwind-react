@@ -5,6 +5,16 @@ import localStorageService from "../../services/LocalStorageService";
 import { deleteShorLinkByUserId, updateShortLinkByUserId } from "../../api/linkApi";
 import { ShortLinkFormProps } from "../../types/components/ShortLinks";
 
+enum LocalStorageItem {
+  Active = "active",
+  Email = "email",
+  EmailVerified = "emailVerified",
+  FirstName = "firstName",
+  LastName = "lastName",
+  Id = "id",
+  Token = "token",
+  IsAuthenticated = "isAuthenticated"
+}
 
 export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged }: ShortLinkFormProps ):JSX.Element {
   const navigate = useNavigate();
@@ -13,8 +23,8 @@ export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged 
   const [selectedLongUrl, setSelectedLongUrl] = useState<string>("");
   const [ _, setSelectedShortUrl] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
-  const [token] = useState(localStorageService.getLocalStorageItem("token"));
-  const [userId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem("id")!));
+  const [token] = useState(localStorageService.getLocalStorageItem(LocalStorageItem.Token));
+  const [userId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem(LocalStorageItem.Id)!));
 
   useEffect(() => {
     setSelectedLongUrl(longUrl);
