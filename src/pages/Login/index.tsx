@@ -1,4 +1,4 @@
-import LoginContainer from "./LoginSection/LoginContainer";
+import LoginContainer from "./Components/LoginSection/LoginContainer";
 
 export default function LoginPage(): JSX.Element {
   return (
