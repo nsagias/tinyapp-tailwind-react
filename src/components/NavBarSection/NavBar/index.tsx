@@ -7,7 +7,7 @@ import NavBarLeft from "./Components/NavBarLeft";
 import NavBarContainer from "./Components/NavBarContainer";
 import NavLogo from "./Components/NavBarLogo";
 import NavButtonHamburger from "./Components/NavButtonHamburger";
-import { MobileMenuItem, NavBarMenuItemData, NavBarProps } from "../../../types/components/NavBar";
+import { MobileMenuItem, NavBarMenuItemData, NavBarProps } from "../../../types/components/NavBar/NavBar";
 import NavMobileMenuContainer from "../NavMobile/Components/NavMobileMenuContainer";
 import NavMobileMenu from "../NavMobile/Components/NavMobileMenu";
 import { useDispatch } from "react-redux";

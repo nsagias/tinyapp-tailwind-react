@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { NavBarMenuItemNameProps } from "../../../../../types/components/NavBar";
+import { NavBarMenuItemNameProps } from "../../../../../types/components/NavBar/NavBar";
 
 
 export default function NavMenuItem({ menuItemName, url } : NavBarMenuItemNameProps ): JSX.Element {

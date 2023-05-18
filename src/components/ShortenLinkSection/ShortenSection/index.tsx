@@ -7,7 +7,7 @@ import localStorageService from "../../../services/LocalStorageService";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { LinksListSuccessReponse } from "../../../types/api/linkApi";
-import { ShortenSectionProps } from "../../../types/components/ShortenLinks";
+import { ShortenSectionProps } from "../../../types/components/ShortenLinks/ShortenLinks";
 import { LocalStorageItem } from "../../../types/services/LocalStorageItems";
 
 
