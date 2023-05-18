@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import HeroButtonsContainer from "../../../../components/HeroSection/Components/HeroButtonsContainer";
+import HeroButtonsContainer from "../../../../components/HeroComponents/Components/HeroButtonsContainer";
 import HeroContentContainerShortLink from "../../../ShortLinks/ShortLInksHero/HercoContentContainerShortLinks";
 import HeroContainerShortLink from "../../../ShortLinks/ShortLInksHero/HeroContainerShortLink";
 

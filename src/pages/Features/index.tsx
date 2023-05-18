@@ -1,6 +1,6 @@
-import CTASection from "../../components/CTASection";
+import CTASection from "../Home/CTASection";
 import HeroFeaturesSection from "./HeroFeaturesSection";
-import MarketingSectionContainer from "../../components/MarketingSection/MarketingSectionContainer";
+import MarketingSectionContainer from "../Home/MarketingSection/MarketingSectionContainer";
 
 export default function Features(): JSX.Element {
   return (
