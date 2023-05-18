@@ -1,9 +1,9 @@
-import HeroButtonsContainer from "../Components/HeroButtonsContainer";
-import HeroContainer from "../HeroContentContainers/HeroHomeContainer";
-import HeroContentContainer from "../Components/HeroContentContainer";
-import HeroImage from "../Components/HeroLandingPageImage";
+import HeroButtonsContainer from "../../../components/HeroSection/Components/HeroButtonsContainer";
+import HeroContainer from "../../Home/HeroHomeContainer";
+import HeroContentContainer from "../../../components/HeroSection/Components/HeroContentContainer";
+import HeroImage from "../../../components/HeroSection/Components/HeroLandingPageImage";
 
-export default function HeroDocumentationSection(): JSX.Element {
+export default function HeroPricingSection():JSX.Element {
   return (
     <section id="hero">
       {/* Hero Container */}
@@ -13,7 +13,7 @@ export default function HeroDocumentationSection(): JSX.Element {
           <HeroContentContainer>
             {/* Title */}
             <>
-              <h1 className="text-5xl font-bold text-center lg:text-6xl lg:max-w-md lg:text-left">Detailed Documents</h1>
+              <h1 className="text-5xl font-bold text-center lg:text-6xl lg:max-w-md lg:text-left">Pricing</h1>
               {/* Marketing  brangind text*/}
               <p className="text-2xl text-center text-gray-400 lg:max-w-md lg:text-left">Build your brand and get detailed insights on how your links are ranking.</p>
             </>

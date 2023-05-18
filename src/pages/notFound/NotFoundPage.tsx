@@ -1,4 +1,4 @@
-import HeroNotFoundSection from "../../components/HeroSection/HeroNotFoundSection";
+import HeroNotFoundSection from "./HeroNotFoundSection";
 
 export default function NotFoundPage(): JSX.Element {
   return (

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { IShortenLinkProps as IShortLinkProps } from "../../../types/components/ShortenLinks/ShortLinks";
-import CopyToClipboardButton from "../../Buttons/CopyToClipboardButton";
+import { IShortenLinkProps as IShortLinkProps } from "../../../../types/components/ShortenLinks/ShortLinks";
+import CopyToClipboardButton from "../../../../components/Buttons/CopyToClipboardButton";
 import { Link } from "react-router-dom";
 
 const SHORLINK_HOST = "http://0.0.0.0:3001/u/";

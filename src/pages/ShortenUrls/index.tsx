@@ -1,5 +1,5 @@
-import HeroShortenUrlsSection from "../../components/HeroSection/HeroShortenLinkSection";
-import ShortenSection from "../../components/ShortenLinkSection/ShortenSection";
+import HeroShortenUrlsSection from "../../components/HeroSection/HeroShortenURLsLinkSection";
+import ShortenSection from "./ShortenLinkSection/ShortenSection";
 
 export default function ShortenUrlPage({ isAuthenticated }: { isAuthenticated : boolean }): JSX.Element {
   return (
