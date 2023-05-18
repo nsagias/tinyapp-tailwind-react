@@ -11,10 +11,9 @@ export default function ShortenForm({ onSetCreateShortLinkResponse }: { onSetCre
   const [userId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem(LocalStorageItem.Id)!));
   const [token] = useState(localStorageService.getLocalStorageItem(LocalStorageItem.Token));
 
-  
+
   const handleSubmitLink = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    
     // check for value
     if (longUrl === "") return setErrorMessage("Please Enter Value");
     
@@ -38,7 +37,6 @@ export default function ShortenForm({ onSetCreateShortLinkResponse }: { onSetCre
       id="link-form" 
       className="relative flex flex-col w-full p-10 -mt-20 space-y-4 bg-darkViolet rounded-lg md:flex-row md:space-y-0 md:space-x-3"
     >
-
       <input
         className={`flex-1 p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none ${errorMessage && "border-red border-8"}`}
         id="shorten-link" 
@@ -50,7 +48,6 @@ export default function ShortenForm({ onSetCreateShortLinkResponse }: { onSetCre
         autoFocus
       >
       </input>
-
       <button
         className="px-10 py-3 text-white bg-cyan rounded-lg hover:bg-cyanLight focus:outline-none md:py-2" 
         disabled={false}

@@ -8,7 +8,6 @@ export default function HeroFeaturesSection():JSX.Element {
     <section id="hero">
       {/* Hero Container */}
         <HeroContainer>
-
           {/* Content Container */}
           <HeroContentContainer>
             {/* Title */}
@@ -17,18 +16,14 @@ export default function HeroFeaturesSection():JSX.Element {
               {/* Marketing  brangind text*/}
               <p className="text-2xl text-center text-gray-400 lg:max-w-md lg:text-left">Our features build your brand.</p>
             </>
-
             {/* Button */}
             <HeroButtonsContainer>
             {/* TODO ADD onClick and routing */}
               <a href="# " className="py-5 px-10 text-2xl font-bold text-white bg-cyan rounded-full lg:py-4 hover:opacity-70">Get Started</a>
             </HeroButtonsContainer>
-           
           </HeroContentContainer>
-
           {/* Hero Image */}
           <HeroImage />
-          
         </HeroContainer>
     </section>
   );
