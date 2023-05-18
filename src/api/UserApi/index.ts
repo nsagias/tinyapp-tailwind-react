@@ -5,7 +5,7 @@ import {
   LogoutResponse,
   RegisterUser,
   RegisterUserSuccessResponse,
-} from "../types/api/userApi";
+} from "../../types/api/userApi";
 
 
 // const userApi: AxiosInstance = axios.create({

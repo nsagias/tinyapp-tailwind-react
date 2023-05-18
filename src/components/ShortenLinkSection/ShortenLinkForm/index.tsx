@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { validURL } from "../../Utils/ValidURL";
-import { createShortLink } from "../../../api/linkApi";
+import { createShortLink } from "../../../api/LinkApi";
 import localStorageService from "../../../services/LocalStorageService";
 import { LocalStorageItem } from "../../../types/services/LocalStorageItems";
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ShortenLink from "../ShortenLink";
 import ShortenForm from "../ShortenLinkForm";
 import ShortenSectionContainer from "../ShortenSectionContainer";
-import { getLinksByUserId } from "../../../api/linkApi";
+import { getLinksByUserId } from "../../../api/LinkApi";
 import localStorageService from "../../../services/LocalStorageService";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";

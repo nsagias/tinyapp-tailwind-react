@@ -9,7 +9,7 @@ import {
   UpdateShortLink,
   UpdateShortLinkResponse,
   UserId
-} from "../types/api/linkApi";
+} from "../../types/api/linkApi";
 
 
 // const linkApi: AxiosInstance = axios.create({

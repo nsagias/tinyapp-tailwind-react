@@ -1,5 +1,5 @@
 import useInput from "../../../hooks/use-input";
-import { registerUser } from "../../../api/userApi";
+import { registerUser } from "../../../api/UserApi";
 import { RegisterUserSuccessResponse } from "../../../types/api/userApi";
 import { useNavigate } from "react-router-dom";
 import localStorageService from "../../../services/LocalStorageService";

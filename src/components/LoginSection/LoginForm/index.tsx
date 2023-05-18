@@ -1,4 +1,4 @@
-import { loginUser } from "../../../api/userApi";
+import { loginUser } from "../../../api/UserApi";
 import useInput from "../../../hooks/use-input";
 import { LoginUserSuccessResponse } from "../../../types/api/userApi";
 import { useDispatch } from "react-redux";
