@@ -8,7 +8,7 @@ import { RequestSelectedShortLink, UpdateShortLinkResponse } from "../../types/a
 import { LocalStorageItem } from "../../types/services/LocalStorageItems";
 
 
-export default function ShortLinkPage({}): JSX.Element {
+export default function ShortLinkPage(): JSX.Element {
   const selectedShortLink = useParams();
   const [userId] = useState<number>(JSON.parse(localStorageService.getLocalStorageItem(LocalStorageItem.Id)!));
   const [token] = useState(localStorageService.getLocalStorageItem(LocalStorageItem.Token));
