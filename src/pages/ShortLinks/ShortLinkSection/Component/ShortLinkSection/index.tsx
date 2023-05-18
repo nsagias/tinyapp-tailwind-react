@@ -1,4 +1,4 @@
-import { ShortLinkSectionProps } from "../../../../types/components/ShortenLinks/ShortLinks";
+import { ShortLinkSectionProps } from "../../../../../types/components/ShortenLinks/ShortLinks";
 import ShortLinkForm from "../ShortLinkForm";
 import ShortLinkContainer from "../../ShortLinkSectionContainer";
 

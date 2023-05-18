@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { IShortLinkProps } from "../../../../types/components/ShortenLinks/ShortLinks";
-import CopyToClipboardButton from "../../../Buttons/CopyToClipboardButton";
+import { IShortLinkProps } from "../../../../../types/components/ShortenLinks/ShortLinks";
+import CopyToClipboardButton from "../../../../../components/Buttons/CopyToClipboardButton";
 
 export default function UpdateShortLink({ shortenLinks}: IShortLinkProps ): JSX.Element {
 
