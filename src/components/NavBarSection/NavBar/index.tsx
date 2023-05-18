@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import NavMenu from "./NavMenu";
-import NavBarRight from "./NavBarRIght";
-import NavButtonsAuth from "./NavButtonsAuthentication";
-import NavMenuItem from "./NavMenuItem";
-import NavBarLeft from "./NavBarLeft";
-import NavBarContainer from "./NavBarContainer";
-import NavLogo from "./NavLogo";
-import NavButtonHamburger from "./NavButtonHamburger";
-import { MobileMenuItem, NavBarMenuItemData, NavBarProps } from "../../types/components/NavBar";
-import NavMobileMenuContainer from "./NavMobileMenuContainer";
-import NavMobileMenu from "./NavMobileMenu";
+import NavMenu from "../NavBarMenu/NavMenu";
+import NavBarRight from "../NavBarRight/NavBarRIght";
+import NavButtonsAuth from "../NavButtonsAuthentication/NavButtonsAuthentication";
+import NavMenuItem from "../NavBarMenuItem/NavMenuItem";
+import NavBarLeft from "../NavBarLeft";
+import NavBarContainer from "../NavBarContainer";
+import NavLogo from "../NavBarLogo/NavLogo";
+import NavButtonHamburger from "../NavButtonHamburger/NavButtonHamburger";
+import { MobileMenuItem, NavBarMenuItemData, NavBarProps } from "../../../types/components/NavBar";
+import NavMobileMenuContainer from "../NavMobileMenuContainer";
+import NavMobileMenu from "../NavMobileMenu";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setAuthFalse } from "../../store/slices/authenticationSlice";
-import useWindowDimensions from "../../hooks/use-window-dimensions";
+import { setAuthFalse } from "../../../store/slices/authenticationSlice";
+import useWindowDimensions from "../../../hooks/use-window-dimensions";
 
 
 export default function NavBar({ isAthenticated }: NavBarProps ): JSX.Element {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/FooterSection/Footer";
-import NavBar from "./components/NavBar/NavBar";
+import NavBar from "./components/NavBarSection/NavBar";
 import HomePage from "./pages/Home/HomePage";
 import FeaturesPage from "./pages/Features/FeaturesPage";
 import PricingPage from "./pages/Pricing/PricingPage";
