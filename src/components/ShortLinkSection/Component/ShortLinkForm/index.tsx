@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { validURL } from "../../../Utils";
+import { validURL } from "../../../Utils/ValidURL";
 import localStorageService from "../../../../services/LocalStorageService";
 import { deleteShorLinkByUserId, updateShortLinkByUserId } from "../../../../api/linkApi";
 import { ShortLinkFormProps } from "../../../../types/components/ShortLinks";
