@@ -1,5 +1,5 @@
-import HeroContainerShortenUrls from "../../../pages/ShortenUrls/HeroContainerShortenUrls";
-import HeroContentContainerShortenUrls from "../HeroContentContainers/HeroContainerContainerShortenLinks";
+import HeroContainerShortenUrls from "../HeroContainerShortenUrls";
+import HeroContentContainerShortenUrls from "../HeroContainerContainerShortenLinks";
 
 
 export default function HeroShortenUrlsSection():JSX.Element {
