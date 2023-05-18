@@ -1,7 +1,8 @@
-
 export async function copyToClipboard (copy: string): Promise<void> {
   await navigator.clipboard.writeText(copy);
 }
+
+
 
 // https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
 export function validURL(URL: string) {
