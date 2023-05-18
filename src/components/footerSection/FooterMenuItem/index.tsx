@@ -1,4 +1,4 @@
-import { FooterData } from "../../types/components/Footer";
+import { FooterData } from "../../../types/components/Footer";
 
 export default function FooterMenuItem({ footerData }: FooterData): JSX.Element {
   return (

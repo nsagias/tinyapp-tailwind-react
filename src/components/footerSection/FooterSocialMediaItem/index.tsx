@@ -1,4 +1,4 @@
-import { FooterSocialMediaItemData } from "../../types/components/Footer";
+import { FooterSocialMediaItemData } from "../../../types/components/Footer";
 
 export default function FooterSocialMediaItem({ linkURL, imageURL, id }: FooterSocialMediaItemData ) {
   return (

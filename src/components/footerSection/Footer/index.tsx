@@ -1,4 +1,4 @@
-import MenuContainer from "../MenuContainer";
+import MenuContainer from "../FooterMenuContainer";
 import FooterMenu from "../FooterMenu";
 import { FooterMenuData, FooterSocialMediaItemData } from "../../../types/components/Footer";
 import { useState } from "react";
