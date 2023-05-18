@@ -1,4 +1,4 @@
-import CTASection from "../../components/CTASection/CTASection";
+import CTASection from "../../components/CTASection";
 import HeroFeaturesSection from "../../components/HeroSection/HeroFeaturesSection";
 import MarketingSectionContainer from "../../components/MarketingSection/MarketingSectionContainer";
 
