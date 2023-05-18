@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import HeroButtonsContainer from "./Components/HeroButtonsContainer";
 import HeroImage from "./Components/HeroLandingPageImage";
-import HeroContentContainerShortLink from "./Components/HercoContentContainerShortLinks";
-import HeroContainerShortLink from "./Components/HeroContainerShortLink";
+import HeroContentContainerShortLink from "./HeroContentContainers/HercoContentContainerShortLinks";
+import HeroContainerShortLink from "./HeroContentContainers/HeroContainerShortLink";
 
 export default function HeroShortLinksSection({ shortLinkData }: { shortLinkData: any }):JSX.Element {
   return (
@@ -15,7 +15,7 @@ export default function HeroShortLinksSection({ shortLinkData }: { shortLinkData
             <>
               <h3 className="text-5xl font-bold text-center lg:text-6xl">Link Stats</h3>
               {/* Marketing  brangind text*/}
-              <p className="text-2xl text-center text-gray-400 ">Click count: {shortLinkData && shortLinkData.data && shortLinkData.data.count || 0}</p>
+              <p className="text-2xl text-center text-gray-400 ">Click count: {(shortLinkData && shortLinkData.data && shortLinkData.data.count) || 0}</p>
             </>
             {/* Button */}
             <HeroButtonsContainer>
