@@ -1,9 +1,9 @@
 import HeroButtonsContainer from "./Components/HeroButtonsContainer";
 import HeroContainer from "./HeroContentContainers/HeroHomeContainer";
-import HeroContentContainer from "./HeroContentContainers/HeroContentContainer";
+import HeroContentContainer from "./Components/HeroContentContainer";
 import HeroImage from "./Components/HeroLandingPageImage";
 
-export default function HeroDocumentationSection({}):JSX.Element {
+export default function HeroDocumentationSection(): JSX.Element {
   return (
     <section id="hero">
       {/* Hero Container */}
