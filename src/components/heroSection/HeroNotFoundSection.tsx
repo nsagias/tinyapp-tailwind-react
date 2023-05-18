@@ -1,5 +1,5 @@
-import HeroContainer from "./components/HeroHomeContainer";
-import HeroContentContainer from "./components/HeroContentContainer";
+import HeroContainer from "./Components/HeroHomeContainer";
+import HeroContentContainer from "./Components/HeroContentContainer";
 
 
 export default function HeroNotFoundSection({}):JSX.Element {

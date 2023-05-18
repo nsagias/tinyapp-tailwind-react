@@ -1,7 +1,7 @@
-import HeroButtonsContainer from "./components/HeroButtonsContainer";
-import HeroContainer from "./components/HeroHomeContainer";
-import HeroContentContainer from "./components/HeroContentContainer";
-import HeroImage from "./components/HeroLandingPageImage";
+import HeroButtonsContainer from "./Components/HeroButtonsContainer";
+import HeroContainer from "./Components/HeroHomeContainer";
+import HeroContentContainer from "./Components/HeroContentContainer";
+import HeroImage from "./Components/HeroLandingPageImage";
 
 export default function HeroPricingSection({}):JSX.Element {
   return (

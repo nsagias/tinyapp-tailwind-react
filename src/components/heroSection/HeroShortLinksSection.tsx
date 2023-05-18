@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import HeroButtonsContainer from "./components/HeroButtonsContainer";
-import HeroImage from "./components/HeroLandingPageImage";
-import HeroContentContainerShortLink from "./components/HeroContentContainerShortLink";
-import HeroContainerShortLink from "./components/HeroContainerShortLink";
+import HeroButtonsContainer from "./Components/HeroButtonsContainer";
+import HeroImage from "./Components/HeroLandingPageImage";
+import HeroContentContainerShortLink from "./Components/HercoContentContainerShortLinks";
+import HeroContainerShortLink from "./Components/HeroContainerShortLink";
 
 export default function HeroShortLinksSection({ shortLinkData }: { shortLinkData: any }):JSX.Element {
   return (
