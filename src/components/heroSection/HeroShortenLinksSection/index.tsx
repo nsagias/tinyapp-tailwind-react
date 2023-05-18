@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import HeroButtonsContainer from "../Components/HeroButtonsContainer";
-import HeroImage from "../Components/HeroLandingPageImage";
 import HeroContentContainerShortLink from "../HeroContentContainers/HercoContentContainerShortLinks";
 import HeroContainerShortLink from "../HeroContentContainers/HeroContainerShortLink";
 
@@ -23,8 +22,6 @@ export default function HeroShortLinksSection({ shortLinkData }: { shortLinkData
               <Link to={"/shorturls"} className="py-5 px-10 text-xl font-bold text-white bg-cyan rounded-full lg:py-4 hover:opacity-70">Return To Short Links</Link>
             </HeroButtonsContainer>
           </HeroContentContainerShortLink>
-          {/* Hero Image */}
-          {/* <HeroImage /> */}
         </HeroContainerShortLink>
     </section>
   );
