@@ -1,4 +1,4 @@
-import HeroContainer from "./components/HeroContainer";
+import HeroContainer from "./components/HeroHomeContainer";
 import HeroContentContainer from "./components/HeroContentContainer";
 
 

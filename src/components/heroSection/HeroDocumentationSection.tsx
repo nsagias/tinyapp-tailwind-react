@@ -1,5 +1,5 @@
 import HeroButtonsContainer from "./components/HeroButtonsContainer";
-import HeroContainer from "./components/HeroContainer";
+import HeroContainer from "./components/HeroHomeContainer";
 import HeroContentContainer from "./components/HeroContentContainer";
 import HeroImage from "./components/HeroLandingPageImage";
 
