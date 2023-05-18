@@ -1,10 +1,10 @@
-import MenuContainer from "./MenuContainer";
-import FooterMenu from "./FooterMenu";
-import { FooterMenuData, FooterSocialMediaItemData } from "../../types/components/Footer";
+import MenuContainer from "../MenuContainer";
+import FooterMenu from "../FooterMenu";
+import { FooterMenuData, FooterSocialMediaItemData } from "../../../types/components/Footer";
 import { useState } from "react";
-import FooterSocialMediaContainer from "./FooterSocialMediaContainer";
-import FooterSocialMediaItem from "./FooterSocialMediaItem";
-import FooterLogo from "./FooterLogo";
+import FooterSocialMediaContainer from "../FooterSocialMediaContainer";
+import FooterSocialMediaItem from "../FooterSocialMediaItem";
+import FooterLogo from "../FooterLogo";
 
 
 const footerMenuList: FooterMenuData[] = [ 
