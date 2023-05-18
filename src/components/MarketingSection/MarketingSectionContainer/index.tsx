@@ -1,5 +1,5 @@
-import MarketingFeatures from "./MarketingFeatures";
-import MarketingHeaderSection from "./MarketingHeaderSection";
+import MarketingFeatures from "../MarketingFeatures";
+import MarketingHeaderSection from "../MarketingHeaderSection";
 
 export default function MarketingSectionContainer() {
   return (
