@@ -1,6 +1,6 @@
-import CTASection from "../../components/CTASection";
-import HeroPricingSection from "../../components/HeroSection/HeroPricingSection";
-import MarketingSectionContainer from "../../components/MarketingSection/MarketingSectionContainer";
+import CTASection from "../../Components/CTASection";
+import HeroPricingSection from "../../Components/HeroSection/HeroPricingSection";
+import MarketingSectionContainer from "../../Components/MarketingSection/MarketingSectionContainer";
 
 export default function PricingPage(): JSX.Element {
   return (

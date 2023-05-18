@@ -1,6 +1,6 @@
-import CTASection from "../../components/CTASection";
-import HeroLandingPage from "../../components/HeroSection/HeroHomeSection";
-import MarketingSectionContainer from "../../components/MarketingSection/MarketingSectionContainer";
+import CTASection from "../../Components/CTASection";
+import HeroLandingPage from "../../Components/HeroSection/HeroHomeSection";
+import MarketingSectionContainer from "../../Components/MarketingSection/MarketingSectionContainer";
 
 export default function HomeContainer({}): JSX.Element {
   return (
