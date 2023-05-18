@@ -2,7 +2,7 @@ import { loginUser } from "../../../api/UserApi";
 import useInput from "../../../hooks/use-input";
 import { LoginUserSuccessResponse } from "../../../types/api/userApi";
 import { useDispatch } from "react-redux";
-import { setAuthTrue } from "../../../store/slices/authenticationSlice";
+import { setAuthTrue } from "../../../store/slices/AuthenticationSlice";
 import localStorageService from "../../../services/LocalStorageService";
 import { useNavigate } from "react-router-dom";
 import { LocalStorageItem } from "../../../types/services/LocalStorageItems";

@@ -4,7 +4,7 @@ import { RegisterUserSuccessResponse } from "../../../types/api/userApi";
 import { useNavigate } from "react-router-dom";
 import localStorageService from "../../../services/LocalStorageService";
 import { useDispatch } from "react-redux";
-import { setAuthTrue } from "../../../store/slices/authenticationSlice";
+import { setAuthTrue } from "../../../store/slices/AuthenticationSlice";
 import { LocalStorageItem } from "../../../types/services/LocalStorageItems";
 
 

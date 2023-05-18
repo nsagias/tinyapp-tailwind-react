@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AUTHENTICATION, logoutStorageList } from "../constants/authentication";
-import { IAuthentication } from "../../types/store/authentication";
-import localStorageService from "../../services/LocalStorageService";
-import { LocalStorageItem } from "../../types/services/LocalStorageItems";
+import { AUTHENTICATION, logoutStorageList } from "../../constants/authentication";
+import { IAuthentication } from "../../../types/store/authentication";
+import localStorageService from "../../../services/LocalStorageService";
+import { LocalStorageItem } from "../../../types/services/LocalStorageItems";
 
 
 // Get current is authenticated state from local storage

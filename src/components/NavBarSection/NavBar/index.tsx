@@ -12,7 +12,7 @@ import NavMobileMenuContainer from "../NavMobile/Components/NavMobileMenuContain
 import NavMobileMenu from "../NavMobile/Components/NavMobileMenu";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setAuthFalse } from "../../../store/slices/authenticationSlice";
+import { setAuthFalse } from "../../../store/slices/AuthenticationSlice";
 import useWindowDimensions from "../../../hooks/use-window-dimensions";
 
 
