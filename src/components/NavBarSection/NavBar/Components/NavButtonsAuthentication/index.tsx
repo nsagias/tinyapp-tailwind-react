@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { NavButtonsAuthenticationProps } from "../../../types/components/NavBar";
+import { NavButtonsAuthenticationProps } from "../../../../../types/components/NavBar";
 
 
 export default function NavButtonsAuthentication({ isAthenticated, onLogout }: NavButtonsAuthenticationProps ): JSX.Element {
