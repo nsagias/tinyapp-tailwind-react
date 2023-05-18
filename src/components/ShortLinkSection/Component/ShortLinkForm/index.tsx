@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { validURL } from "../Utils/utils";
-import localStorageService from "../../services/LocalStorageService";
-import { deleteShorLinkByUserId, updateShortLinkByUserId } from "../../api/linkApi";
-import { ShortLinkFormProps } from "../../types/components/ShortLinks";
-import { LocalStorageItem } from "../../types/services/LocalStorageItems";
+import { validURL } from "../../../Utils/utils";
+import localStorageService from "../../../../services/LocalStorageService";
+import { deleteShorLinkByUserId, updateShortLinkByUserId } from "../../../../api/linkApi";
+import { ShortLinkFormProps } from "../../../../types/components/ShortLinks";
+import { LocalStorageItem } from "../../../../types/services/LocalStorageItems";
 
 
 export default function ShortLinkForm({ onShortLinkData, onShortLinkDataChanged }: ShortLinkFormProps ):JSX.Element {

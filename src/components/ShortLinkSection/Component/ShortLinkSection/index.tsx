@@ -1,6 +1,6 @@
-import { ShortLinkSectionProps } from "../../types/components/ShortLinks";
-import ShortLinkForm from "./ShortLinkForm";
-import ShortLinkContainer from "./ShortLinkSectionContainer";
+import { ShortLinkSectionProps } from "../../../../types/components/ShortLinks";
+import ShortLinkForm from "../ShortLinkForm";
+import ShortLinkContainer from "../../ShortLinkSectionContainer";
 
   
 export default function ShortLinkSection({ onShortLinkData, onShortLinkDataChanged}: ShortLinkSectionProps ): JSX.Element {

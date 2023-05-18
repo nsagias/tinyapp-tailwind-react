@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import localStorageService from "../../services/LocalStorageService";
 import HeroShortLinksSection from "../../components/HeroSection/HeroShortLinksSection";
-import ShortLinkSection from "../../components/ShortLinkSection/ShortLinkSection";
+import ShortLinkSection from "../../components/ShortLinkSection/Component/ShortLinkSection";
 import { getLinkByUserIdAndShortLink } from "../../api/linkApi";
 import { RequestSelectedShortLink, UpdateShortLinkResponse } from "../../types/api/linkApi";
 import { LocalStorageItem } from "../../types/services/LocalStorageItems";
