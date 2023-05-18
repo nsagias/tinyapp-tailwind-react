@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { validURL } from "../Utils/utils";
-import { createShortLink } from "../../api/linkApi";
-import localStorageService from "../../services/LocalStorageService";
-import { LocalStorageItem } from "../../types/services/LocalStorageItems";
+import { validURL } from "../../Utils/utils";
+import { createShortLink } from "../../../api/linkApi";
+import localStorageService from "../../../services/LocalStorageService";
+import { LocalStorageItem } from "../../../types/services/LocalStorageItems";
 
 export default function ShortenForm({ onSetCreateShortLinkResponse }: { onSetCreateShortLinkResponse: any }): JSX.Element {
 
