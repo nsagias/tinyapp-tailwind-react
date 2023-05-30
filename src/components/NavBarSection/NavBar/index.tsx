@@ -14,7 +14,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setAuthFalse } from "../../../store/slices/AuthenticationSlice";
 import useWindowDimensions from "../../../hooks/use-window-dimensions";
-
+import { motion } from "framer-motion";
+import { navVariants } from "../navVariants";
 
 export default function NavBar({ isAthenticated }: NavBarProps ): JSX.Element {
   const dispatch = useDispatch();
@@ -66,7 +67,11 @@ export default function NavBar({ isAthenticated }: NavBarProps ): JSX.Element {
 
 
   return (
-    <nav className="relative container z-50 mx-auto p-6">
+    <motion.nav className="relative container z-50 mx-auto p-6"
+      variants={navVariants}
+      initial="hidden"
+      whileInView="visible"
+    >
       {/* Container for all items */}
       <NavBarContainer>
 
@@ -110,6 +115,6 @@ export default function NavBar({ isAthenticated }: NavBarProps ): JSX.Element {
         </NavMobileMenuContainer>
 
       </NavBarContainer>
-    </nav>
+    </motion.nav>
   );
 } 
